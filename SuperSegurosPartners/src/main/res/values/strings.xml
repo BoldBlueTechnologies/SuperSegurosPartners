@@ -1,6 +1,75 @@
 <resources>
-    <string name="app_name">Súper Seguros</string>
-    <string name="cotizaTu">Cotiza tu</string>
-    <string name="seguro">seguro</string>
-    <string name="aqui">aquí</string>
+    <string name="app_name_superapi">Súper Seguros</string>
+    <string name="cotizaTu_superapi">Cotiza tu</string>
+    <string name="seguro_superapi">seguro</string>
+    <string name="aqui_superapi">aquí</string>
+    <string name="laProteccionQue_superapi">La protección que tu auto y tú, se merecen.</string>
+    <string name="conCoberturasQue_superapi">Con coberturas que se adaptan a ti, disfruta cada viaje con la tranquilidad de estar siempre protegido.</string>
+    <string name="tuSeguroDesde_superapi">Tu seguro desde $184 mxn al mes</string>
+    <string name="disfrutaCadaViaje_superapi">Disfruta cada viaje con un Súper respaldo.</string>
+    <string name="cotizaTuSeguro_superapi">Cotiza tu seguro</string>
+    <string name="estoEsLoQue_superapi">Esto es lo que cubre tu seguro de auto</string>
+    <string name="queCubreElSeguro_superapi">¿Qué cubre el seguro?</string>
+    <string name="coberturas_superapi">Coberturas</string>.
+    <string name="conoceADetalleLasCoberturas_superapi">Conoce a detalle las coberturas</string>
+    <string name="auto_superapi">Auto</string>
+    <string name="vacio_superapi"></string>
+    <string name="coberturasPersonalizadas_superapi">Coberturas personalizadas</string>
+    <string name="danosMaterialesPorPerdidaParcial_superapi">Daños materiales por pérdida parcial</string>
+    <string name="danosMaterialesPorPerdidaTotal_superapi">Daños Materiales Pérdida Total</string>
+    <string name="roboTotal_superapi">Robo total</string>
+    <string name="responsabilidadCivilPorDanosATerceros_superapi">Responsabilidad Civil por Daños a Terceros (LUC)</string>
+    <string name="responsabilidadCivilPorFallecimiento_superapi">Responsabilidad Civil por Fallecimiento</string>
+    <string name="gastosMedicos_superapi">Gastos médicos</string>
+    <string name="asistenciaJuridica_superapi">Asistencia Jurídica</string>
+    <string name="asistenciaVialYEnViajesGS_superapi">Asistencia Vial y en Viajes</string>
+    <string name="asistenciaEnEU_superapi">Asistencia en Estados Unidos</string>
+    <string name="cotizaTuSeguroDeAuto_superapi">Cotiza tu seguro de auto en menos de 1 minuto</string>
+    <string name="seleccionaElAnoMarcaModelo_superapi">Selecciona el año, marca y modelo de tu auto</string>
+    <string name="marca_superapi">Marca</string>
+    <string name="seleccionaLaMarcaDeTuAuto_superapi">Selecciona la Marca de tu auto</string>
+    <string name="seleccionaElAnoDeTuAuto_superapi">Selecciona el Año de tu auto</string>
+    <string name="seleccionaElModeloDeTuAuto_superapi">Selecciona el Modelo de tu auto</string>
+    <string name="seleccionaLaVersionDeTuAuto_superapi">Selecciona la Versión de tu auto</string>
+    <string name="busqueda_superapi">Búsqueda</string>
+    <string name="seleccionaUnaMarca_superapi">Selecciona una marca</string>
+    <string name="seleccionaUnAno_superapi">Selecciona un año</string>
+    <string name="seleccionaUnModelo_superapi">Selecciona un modelo</string>
+    <string name="seleccionaUnaVersion_superapi">Selecciona una versión</string>
+    <string name="ano_superapi">Año</string>
+    <string name="modelo_superapi">Modelo</string>
+    <string name="version_superapi">Versión</string>
+    <string name="codigoPostal_superapi">Código postal</string>
+    <string name="escribeTuCP_superapi">Escribe tu CP</string>
+    <string name="cotizarSeguro_superapi">Cotizar seguro</string>
+    <string name="tuPlanPersonalizado_superapi">Tu plan personalizado</string>
+    <string name="sleccionaUnaAseguradora_superapi">Selecciona una aseguradora</string>
+    <string name="desde_superapi">Desde:</string>
+    <string name="seleccionaUnaCobertura_superapi">Selecciona una cobertura</string>
+    <string name="formaDePago_superapi">Forma de pago</string>
+    <string name="detallesDelAutoAsegurado_superapi">Detalles del auto asegurado</string>
+    <string name="tuSuperSeguroDeAutoPor_superapi">Tu Súper seguro de auto por:</string>
+    <string name="anualmente_superapi">Anualmente</string>
+    <string name="trimestralmente_superapi">Trimestralmente</string>
+    <string name="semestralmente_superapi">Semestralmente</string>
+    <string name="mensualmente_superapi">Mensualmente</string>
+    <string name="unpago_superapi">1 pago</string>
+    <string name="cuatropagos_superapi">4 pagos</string>
+    <string name="dospagos_superapi">2 pagos</string>
+    <string name="docepagos_superapi">12 pagos</string>
+    <string name="alano_superapi">al año</string>
+    <string name="masbarato_superapi">% más barato</string>
+    <string name="seguroRespaldoYOperadoPor_superapi">*Seguro respaldado y operado por:</string>
+    <string name="generalDeSeguros_superapi">General de Seguros S.A. de C.V.</string>
+    <string name="editaTusCoberturas_superapi">Edita tus coberturas</string>
+    <string name="cubreHasta_superapi">Cubre hasta</string>
+    <string name="danosAlBehiculoPorTerceroSinSeguro_superapi">Daños al Vehículo por Tercero sin Seguro</string>
+    <string name="muerteAccidental_superapi">Muerte Accidental</string>
+
+    <string-array name="tiposCoberturas_superapi">
+        <item>Plus</item>
+        <item>Amplia</item>
+        <item>Limitada</item>
+        <item>Básica</item>
+    </string-array>
 </resources>

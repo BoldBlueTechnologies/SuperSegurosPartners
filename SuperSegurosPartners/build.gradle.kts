@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.app.boldblue.superseguros.partners"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 26
@@ -32,7 +32,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

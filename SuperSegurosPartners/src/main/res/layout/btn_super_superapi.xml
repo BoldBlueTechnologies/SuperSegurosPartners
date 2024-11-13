@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/btnSuper"
     android:layout_height="wrap_content"
@@ -10,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:background="@drawable/gradient_1"
+        android:background="@drawable/gradient_1_superapi"
         android:gravity="center_vertical"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
@@ -19,26 +20,27 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/logo_super"/>
+            android:src="@drawable/logo_color_blanco_superapi"/>
         <LinearLayout
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_width="1dp"
-            android:background="@color/white1"
+            android:background="@color/white1_superapi"
             android:layout_height="23dp"
             android:orientation="vertical"/>
         <LinearLayout
             android:layout_weight="1"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="12sp"
-                android:textColor="@color/white1"
-                android:text="@string/cotizaTu"/>
+                android:layout_gravity="bottom"
+                android:textColor="@color/white1_superapi"
+                android:text="@string/cotizaTu_superapi"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,22 +50,22 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
                     android:textSize="12sp"
-                    android:textColor="@color/white1"
-                    android:text="@string/seguro"/>
+                    android:textColor="@color/white1_superapi"
+                    android:text="@string/seguro_superapi"/>
                 <TextView
                     android:layout_marginStart="4dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
                     android:textSize="12sp"
-                    android:textColor="@color/white1"
-                    android:text="@string/aqui"/>
+                    android:textColor="@color/white1_superapi"
+                    android:text="@string/aqui_superapi"/>
             </LinearLayout>
         </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/familiasuper"/>
+            android:src="@drawable/segurodeauto_superapi"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
