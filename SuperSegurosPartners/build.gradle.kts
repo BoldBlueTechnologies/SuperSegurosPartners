@@ -1,7 +1,14 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
 }
+
+val ApiPropertiesFile = rootProject.file("apikey.properties")
+val apiProperties = Properties()
+apiProperties.load(FileInputStream(ApiPropertiesFile))
 
 android {
     namespace = "com.app.boldblue.superseguros.partners"
@@ -15,11 +22,16 @@ android {
 
     buildTypes {
         release {
+            buildConfigField("String", "apipartnersSuper", "\"${apiProperties["apipartnersSuper"]}\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        debug {
+            buildConfigField("String", "apipartnersSuper", "\"${apiProperties["apipartnersSuper"]}\"")
+            isMinifyEnabled = false
         }
     }
     compileOptions {
@@ -28,6 +40,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    buildFeatures{
+        buildConfig = true
     }
 }
 

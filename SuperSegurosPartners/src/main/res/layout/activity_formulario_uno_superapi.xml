@@ -68,12 +68,12 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/itemMarca"
+                    android:id="@+id/itemMarca_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardElevation="4dp"
-                    android:backgroundTint="@color/purple1_superapi">
+                    android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
                         android:layout_margin="2dp"
                         android:background="@color/white1_superapi"
@@ -82,6 +82,7 @@
                         android:gravity="center"
                         android:orientation="horizontal">
                         <TextView
+                            android:id="@+id/textbrand_superapi"
                             android:layout_weight="1"
                             android:layout_marginStart="12dp"
                             android:layout_width="match_parent"
@@ -119,6 +120,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/itemyear_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -169,6 +171,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/itemmodel_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -219,6 +222,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/itemversion_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
