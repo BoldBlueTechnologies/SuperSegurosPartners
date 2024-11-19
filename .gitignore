@@ -23,7 +23,7 @@
 hs_err_pid*
 replay_pid*
 *.iml
-.gradle
+
 /local.properties
 /.idea/caches
 /.idea/libraries
