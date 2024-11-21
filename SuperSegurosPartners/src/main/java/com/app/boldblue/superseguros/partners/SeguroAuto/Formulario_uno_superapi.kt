@@ -1,127 +1,175 @@
 package com.app.boldblue.superseguros.partners.SeguroAuto
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.WindowManager
-import android.widget.Adapter
-import android.widget.EditText
-import android.widget.ImageView
+import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
-import androidx.core.widget.addTextChangedListener
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.app.boldblue.superseguros.partners.Adapters.AdapterBusqueda_superapi
-import com.app.boldblue.superseguros.partners.R
+import androidx.core.content.ContextCompat
+import com.app.boldblue.superseguros.partners.R.*
 import com.app.boldblue.superseguros.partners.Services.HelperConnectSuperApi
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import org.json.JSONArray
 
 class Formulario_uno_superapi : AppCompatActivity() {
 
-    var token= ""
-    var arrayListbrand = ArrayList<String>()
-    var arrayListYear = ArrayList<String>()
-    var arrayListModel = ArrayList<String>()
-    var arrayListVersion = ArrayList<String>()
-    lateinit var textbrand_superapi : TextView
-    lateinit var itemMarca : CardView
-    lateinit var itemyear : CardView
-    lateinit var itemmodel : CardView
-    lateinit var itemversion : CardView
+    var tokenSuperApi = ""
+    private lateinit var txtCPSuperApi : TextView
+    private lateinit var cardCPSuperApi : CardView
+    private lateinit var itemCPSuperApi : LinearLayout
+
+    private lateinit var btnCotizaSuperApi : CardView
+
+    private lateinit var itemVersionSuperApi : LinearLayout
+    private lateinit var cardVersionSuperApi : CardView
+    private lateinit var txtVersionSuperApi : TextView
+
+    private lateinit var itemModeloSuperApi : LinearLayout
+    private lateinit var cardModeloSuperApi : CardView
+    private lateinit var txtModeloSuperApi : TextView
+
+    private lateinit var itemAnoSuperApi : LinearLayout
+    private lateinit var cardAnoSuperApi : CardView
+    private lateinit var txtAnoSuperApi : TextView
+
+    private lateinit var itemMarcaSuperApi : LinearLayout
+    private lateinit var cardMarcaSuperApi : CardView
+    private lateinit var txtMarcaSuperApi : TextView
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_formulario_uno_superapi)
+        setContentView(layout.activity_formulario_uno_superapi)
         val helperConnectSuperApi = HelperConnectSuperApi()
         val map = HashMap<String,Any>()
-
         map["email"]="marodriguez@midoconline.com"
-        map["password"]="12345678";
-        textbrand_superapi = findViewById(R.id.textbrand_superapi)
-        itemMarca = findViewById(R.id.itemMarca_superapi)
-        itemyear = findViewById(R.id.itemyear_superapi)
-        itemmodel = findViewById(R.id.itemmodel_superapi)
-        itemversion = findViewById(R.id.itemversion_superapi)
-        val myToolbar: Toolbar = findViewById(R.id.toolbar)
-        myToolbar.setTitle(R.string.vacio_superapi)
-        myToolbar.setNavigationIcon(R.drawable.back_purple_superapi)
-        myToolbar.setTitleTextColor(getColor(R.color.white1_superapi))
+        map["password"]="12345678"
+        helperConnectSuperApi.login(map,this)
+
+        txtCPSuperApi = findViewById(id.txtCPSuperApi)
+        cardCPSuperApi = findViewById(id.cardCPSuperApi)
+        itemCPSuperApi = findViewById(id.itemCPSuperApi)
+
+        itemVersionSuperApi = findViewById(id.itemVersionSuperApi)
+        cardVersionSuperApi = findViewById(id.cardVersionSuperApi)
+        txtVersionSuperApi = findViewById(id.txtVersionSuperApi)
+
+        itemModeloSuperApi = findViewById(id.itemModeloSuperApi)
+        cardModeloSuperApi = findViewById(id.cardModeloSuperApi)
+        txtModeloSuperApi = findViewById(id.txtModeloSuperApi)
+
+        itemAnoSuperApi = findViewById(id.itemAnoSuperApi)
+        cardAnoSuperApi = findViewById(id.cardAnoSuperApi)
+        txtAnoSuperApi = findViewById(id.txtAnoSuperApi)
+
+        itemMarcaSuperApi = findViewById(id.itemMarcaSuperApi)
+        cardMarcaSuperApi = findViewById(id.cardMarcaSuperApi)
+        txtMarcaSuperApi = findViewById(id.txtMarcaSuperApi)
+
+        btnCotizaSuperApi = findViewById(id.btnCotizaSuperApi)
+
+        val myToolbar: Toolbar = findViewById(id.toolbar_superapi)
+        myToolbar.setTitle(string.auto_superapi)
+        myToolbar.setNavigationIcon(drawable.back_purple_superapi)
+        myToolbar.setTitleTextColor(getColor(color.purple1_superapi))
         setSupportActionBar(myToolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         myToolbar.setNavigationOnClickListener { finish() }
-        val btnCotiza: CardView = findViewById(R.id.btnCotiza)
-        btnCotiza.setOnClickListener {
-
+        btnCotizaSuperApi.setOnClickListener {
+            val intent = Intent(this, Listados::class.java)
+            intent.putExtra("marcaSuperApi",txtMarcaSuperApi.text.toString())
+            intent.putExtra("anoSuperApi",txtAnoSuperApi.text.toString())
+            intent.putExtra("modeloSuperApi",txtModeloSuperApi.text.toString())
+            intent.putExtra("versionSuperApi",txtVersionSuperApi.text.toString())
+            intent.putExtra("cpSuperApi",txtCPSuperApi.text.toString())
+            intent.putExtra("tokenSuperApi",tokenSuperApi)
+            startActivity(intent)
         }
-        itemMarca.setOnClickListener {
-            bottomSheetListado(arrayListbrand)
+        itemMarcaSuperApi.setOnClickListener {
+            val intent = Intent(this, Listados::class.java)
+            intent.putExtra("tokenSuperApi",tokenSuperApi)
+            intent.putExtra("tipoSuperApi",0)
+            resultadoLauncher.launch(intent)
         }
-        itemyear.setOnClickListener {
-            bottomSheetListado(arrayListYear)
+        itemAnoSuperApi.setOnClickListener {
+            val intent = Intent(this, Listados::class.java)
+            intent.putExtra("tokenSuperApi",tokenSuperApi)
+            intent.putExtra("tipoSuperApi",1)
+            resultadoLauncher.launch(intent)
         }
-        itemmodel.setOnClickListener {
-            bottomSheetListado(arrayListModel)
+        itemModeloSuperApi.setOnClickListener {
+            val intent = Intent(this, Listados::class.java)
+            intent.putExtra("tokenSuperApi",tokenSuperApi)
+            intent.putExtra("tipoSuperApi",2)
+            resultadoLauncher.launch(intent)
         }
-        itemversion.setOnClickListener {
-            bottomSheetListado(arrayListVersion)
+        itemVersionSuperApi.setOnClickListener {
+            val intent = Intent(this, Listados::class.java)
+            intent.putExtra("tokenSuperApi",tokenSuperApi)
+            intent.putExtra("tipoSuperApi",3)
+            resultadoLauncher.launch(intent)
         }
-        helperConnectSuperApi.login(map,this)
-    }
-
-    fun bottomSheetListado(array: ArrayList<String>) {
-        println("------bottomSheetListado---"+array.size)
-
-        val bottomSheetListado = BottomSheetDialog(this)
-        bottomSheetListado.setOnShowListener {
-            val window = bottomSheetListado.window
-            if (window != null) {
-                window.setLayout(
-                    WindowManager.LayoutParams.MATCH_PARENT,
-                    WindowManager.LayoutParams.MATCH_PARENT
-                )
-            }
-        }
-        bottomSheetListado.setContentView(R.layout.sheet_listado_superapi)
-        bottomSheetListado.setCanceledOnTouchOutside(false)
-        val toolbarSheet = bottomSheetListado.findViewById<Toolbar>(R.id.toolbarSheet)
-        val txtSheet = bottomSheetListado.findViewById<EditText>(R.id.txtSheet)
-        val imgBorrar = bottomSheetListado.findViewById<ImageView>(R.id.imgBorrar)
-        val recyclerSheet = bottomSheetListado.findViewById<RecyclerView>(R.id.recyclerSheet)
-        toolbarSheet!!.setTitle(R.string.seleccionaUnaMarca_superapi)
-        toolbarSheet.setNavigationIcon(R.drawable.back_purple_superapi)
-        toolbarSheet.setTitleTextColor(getColor(R.color.purple1_superapi))
-        toolbarSheet.setBackgroundColor(getColor(R.color.white1_superapi))
-        setSupportActionBar(toolbarSheet)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        toolbarSheet.setNavigationOnClickListener { bottomSheetListado.dismiss() }
-        recyclerSheet!!.layoutManager = LinearLayoutManager(this)
-        recyclerSheet.hasFixedSize()
-        val adapter = AdapterBusqueda_superapi(array,this,bottomSheetListado)
-        recyclerSheet.adapter = adapter
-        /*if(listEmergencia[0].nombre!="---") {
-            recyclerEmergenciaEdit.adapter= AdapterEditarEmergencia(this,listEmergencia)
-        }*/
-        imgBorrar?.setOnClickListener {
-            txtSheet?.text?.clear()
-        }
-
-        txtSheet?.addTextChangedListener(object: TextWatcher{
+        txtCPSuperApi.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                val textoIngresado = s.toString()
-                val listafiltrada = array.filter {
-                    it.contains(textoIngresado, ignoreCase = true)
-                } // Filtra los elementos según el texto ingresado }
-                adapter.actualizarLista(ArrayList(listafiltrada))
+                if(s!!.length<5){
+                    btnCotizaSuperApi.visibility= View.GONE
+                    cardCPSuperApi.backgroundTintList = ContextCompat.getColorStateList(baseContext, color.grey1_superapi)
+                } else{
+                    btnCotizaSuperApi.visibility=View.VISIBLE
+                    cardCPSuperApi.backgroundTintList = ContextCompat.getColorStateList(baseContext, color.purple1_superapi)
+                }
             }
         })
-
-        bottomSheetListado.show()
     }
 
+    private val resultadoLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val data = result.data
+            when (data?.getIntExtra("tipoSuperApi",-1)) {
+                0 -> {
+                    if(data.getStringExtra("campoSuperApi") !=""){
+                        txtMarcaSuperApi.text = data.getStringExtra("campoSuperApi")
+                        cardMarcaSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.purple1_superapi)
+                        itemAnoSuperApi.visibility = View.VISIBLE
+                    }
+                }
+                1 -> {
+                    if(data.getStringExtra("campoSuperApi") !=""){
+                        txtAnoSuperApi.text = data.getStringExtra("campoSuperApi")
+                        cardAnoSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.purple1_superapi)
+                        itemModeloSuperApi.visibility = View.VISIBLE
+                    }
+                }
+                2 -> {
+                    if(data.getStringExtra("campoSuperApi") !=""){
+                        txtModeloSuperApi.text = data.getStringExtra("campoSuperApi")
+                        cardModeloSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.purple1_superapi)
+                        itemVersionSuperApi.visibility = View.VISIBLE
+                    }
+                }
+                3 -> {
+                    if(data.getStringExtra("campoSuperApi") !=""){
+                        txtVersionSuperApi.text = data.getStringExtra("campoSuperApi")
+                        cardVersionSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.purple1_superapi)
+                        itemCPSuperApi.visibility = View.VISIBLE
+                    }
+                }
+                else -> {
+                    // Acción por defecto
+                }
+            }
+        }
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+    }
 }

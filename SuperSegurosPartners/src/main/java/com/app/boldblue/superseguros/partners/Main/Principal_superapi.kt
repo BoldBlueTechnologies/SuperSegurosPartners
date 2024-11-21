@@ -23,25 +23,25 @@ class Principal_superapi : AppCompatActivity() {
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_superapi)
-        val myToolbar: Toolbar = findViewById(R.id.toolbarMain)
+        val myToolbar: Toolbar = findViewById(R.id.toolbarMain_superapi)
         myToolbar.setTitle(R.string.auto_superapi)
         myToolbar.setNavigationIcon(R.drawable.back_superapi)
         myToolbar.setTitleTextColor(getColor(R.color.white1_superapi))
         setSupportActionBar(myToolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         myToolbar.setNavigationOnClickListener { finish() }
-        val btnCotiza: CardView = findViewById(R.id.btnCotiza)
+        val btnCotiza: CardView = findViewById(R.id.btnCotiza_superapi)
         btnCotiza.setOnClickListener {
             val intent = Intent(this, Formulario_uno_superapi::class.java)
             startActivity(intent)
         }
-        val btnConoce: CardView = findViewById(R.id.btnConoce)
+        val btnConoce: CardView = findViewById(R.id.btnConoce_superapi)
         btnConoce.setOnClickListener {
             val intent = Intent(this, Formulario_uno_superapi::class.java)
             startActivity(intent)
         }
-        var mTablayout : TabLayout = findViewById(R.id.tab_layout)
-        var mViewPager : ViewPager = findViewById(R.id.view_pager)
+        var mTablayout : TabLayout = findViewById(R.id.tab_layout_superapi)
+        var mViewPager : ViewPager = findViewById(R.id.view_pager_superapi)
         val mAdapter = MyFragmentPager(supportFragmentManager, resources.getStringArray(R.array.tiposCoberturas_superapi))
         mViewPager.adapter=mAdapter
         mTablayout.setupWithViewPager(mViewPager)

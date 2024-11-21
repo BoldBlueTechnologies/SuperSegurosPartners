@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarMain"
+        android:id="@+id/toolbarMain_superapi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue3_superapi"
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"/>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/btnCotiza"
+                    android:id="@+id/btnCotiza_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/view_pager"
+                    android:id="@+id/view_pager_superapi"
                     android:layout_width="match_parent"
                     android:layout_height="425dp"
                     android:layout_marginTop="45dp"
@@ -151,7 +151,7 @@
                 </androidx.viewpager.widget.ViewPager>
 
                 <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tab_layout"
+                    android:id="@+id/tab_layout_superapi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white1_superapi"
@@ -168,7 +168,7 @@
                 android:background="@color/white1_superapi"
                 android:padding="16dp">
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/btnConoce"
+                    android:id="@+id/btnConoce_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

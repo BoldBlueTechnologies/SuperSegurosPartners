@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ThemeSuperApiPrincipal" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/blue3_superapi</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="ThemeSuperApiFormulario" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/purple1_superapi</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

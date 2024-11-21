@@ -26,6 +26,7 @@
     <string name="asistenciaEnEU_superapi">Asistencia en Estados Unidos</string>
     <string name="cotizaTuSeguroDeAuto_superapi">Cotiza tu seguro de auto en menos de 1 minuto</string>
     <string name="seleccionaElAnoMarcaModelo_superapi">Selecciona el año, marca y modelo de tu auto</string>
+    <string name="seleccionaUnaAseguradora_superapi">Selecciona una aseguradora</string>
     <string name="marca_superapi">Marca</string>
     <string name="seleccionaLaMarcaDeTuAuto_superapi">Selecciona la Marca de tu auto</string>
     <string name="seleccionaElAnoDeTuAuto_superapi">Selecciona el Año de tu auto</string>
