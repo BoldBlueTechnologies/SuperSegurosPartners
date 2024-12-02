@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ReportFragment.Companion.reportFragment
+import com.app.boldblue.superseguros.partners.R
 import com.app.boldblue.superseguros.partners.R.*
 import com.app.boldblue.superseguros.partners.Services.HelperConnectSuperApi
 
@@ -39,6 +41,10 @@ class Formulario_uno_superapi : AppCompatActivity() {
     private lateinit var itemMarcaSuperApi : LinearLayout
     private lateinit var cardMarcaSuperApi : CardView
     private lateinit var txtMarcaSuperApi : TextView
+
+    private lateinit var itemTipoSuperApi : LinearLayout
+    private lateinit var cardTipoSuperApi : CardView
+    private lateinit var txtTipoSuperApi : TextView
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -70,6 +76,10 @@ class Formulario_uno_superapi : AppCompatActivity() {
         cardMarcaSuperApi = findViewById(id.cardMarcaSuperApi)
         txtMarcaSuperApi = findViewById(id.txtMarcaSuperApi)
 
+        itemTipoSuperApi = findViewById(id.itemTipoSuperApi)
+        cardTipoSuperApi = findViewById(id.cardTipoSuperApi)
+        txtTipoSuperApi = findViewById(id.txtTipoSuperApi)
+
         btnCotizaSuperApi = findViewById(id.btnCotizaSuperApi)
 
         val myToolbar: Toolbar = findViewById(id.toolbar_superapi)
@@ -80,14 +90,14 @@ class Formulario_uno_superapi : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         myToolbar.setNavigationOnClickListener { finish() }
         btnCotizaSuperApi.setOnClickListener {
-            val intent = Intent(this, Listados::class.java)
+            val intent = Intent(this, Formulario_dos_superapi::class.java)
             intent.putExtra("marcaSuperApi",txtMarcaSuperApi.text.toString())
             intent.putExtra("anoSuperApi",txtAnoSuperApi.text.toString())
             intent.putExtra("modeloSuperApi",txtModeloSuperApi.text.toString())
             intent.putExtra("versionSuperApi",txtVersionSuperApi.text.toString())
             intent.putExtra("cpSuperApi",txtCPSuperApi.text.toString())
             intent.putExtra("tokenSuperApi",tokenSuperApi)
-            startActivity(intent)
+            resultadoLauncher.launch(intent)
         }
         itemMarcaSuperApi.setOnClickListener {
             val intent = Intent(this, Listados::class.java)
@@ -101,16 +111,22 @@ class Formulario_uno_superapi : AppCompatActivity() {
             intent.putExtra("tipoSuperApi",1)
             resultadoLauncher.launch(intent)
         }
-        itemModeloSuperApi.setOnClickListener {
+        itemMarcaSuperApi.setOnClickListener {
             val intent = Intent(this, Listados::class.java)
             intent.putExtra("tokenSuperApi",tokenSuperApi)
             intent.putExtra("tipoSuperApi",2)
             resultadoLauncher.launch(intent)
         }
-        itemVersionSuperApi.setOnClickListener {
+        itemModeloSuperApi.setOnClickListener {
             val intent = Intent(this, Listados::class.java)
             intent.putExtra("tokenSuperApi",tokenSuperApi)
             intent.putExtra("tipoSuperApi",3)
+            resultadoLauncher.launch(intent)
+        }
+        itemVersionSuperApi.setOnClickListener {
+            val intent = Intent(this, Listados::class.java)
+            intent.putExtra("tokenSuperApi",tokenSuperApi)
+            intent.putExtra("tipoSuperApi",4)
             resultadoLauncher.launch(intent)
         }
         txtCPSuperApi.addTextChangedListener(object: TextWatcher {
@@ -136,8 +152,8 @@ class Formulario_uno_superapi : AppCompatActivity() {
             when (data?.getIntExtra("tipoSuperApi",-1)) {
                 0 -> {
                     if(data.getStringExtra("campoSuperApi") !=""){
-                        txtMarcaSuperApi.text = data.getStringExtra("campoSuperApi")
-                        cardMarcaSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.purple1_superapi)
+                        txtTipoSuperApi.text = data.getStringExtra("campoSuperApi")
+                        cardTipoSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.purple1_superapi)
                         itemAnoSuperApi.visibility = View.VISIBLE
                     }
                 }
@@ -145,22 +161,46 @@ class Formulario_uno_superapi : AppCompatActivity() {
                     if(data.getStringExtra("campoSuperApi") !=""){
                         txtAnoSuperApi.text = data.getStringExtra("campoSuperApi")
                         cardAnoSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.purple1_superapi)
-                        itemModeloSuperApi.visibility = View.VISIBLE
+                        itemMarcaSuperApi.visibility = View.VISIBLE
                     }
                 }
                 2 -> {
+                    if(data.getStringExtra("campoSuperApi") !=""){
+                        txtMarcaSuperApi.text = data.getStringExtra("campoSuperApi")
+                        cardMarcaSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.purple1_superapi)
+                        itemModeloSuperApi.visibility = View.VISIBLE
+                    }
+                }
+                3 -> {
                     if(data.getStringExtra("campoSuperApi") !=""){
                         txtModeloSuperApi.text = data.getStringExtra("campoSuperApi")
                         cardModeloSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.purple1_superapi)
                         itemVersionSuperApi.visibility = View.VISIBLE
                     }
                 }
-                3 -> {
+                4 -> {
                     if(data.getStringExtra("campoSuperApi") !=""){
                         txtVersionSuperApi.text = data.getStringExtra("campoSuperApi")
                         cardVersionSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.purple1_superapi)
                         itemCPSuperApi.visibility = View.VISIBLE
                     }
+                }
+
+                28 -> {
+                    itemAnoSuperApi.visibility = View.GONE
+                    itemModeloSuperApi.visibility = View.GONE
+                    itemVersionSuperApi.visibility = View.GONE
+                    itemCPSuperApi.visibility = View.GONE
+                    txtMarcaSuperApi.text = resources.getString(string.seleccionaLaMarcaDeTuAuto_superapi)
+                    txtAnoSuperApi.text = resources.getString(string.seleccionaElAnoDeTuAuto_superapi)
+                    txtModeloSuperApi.text = resources.getString(string.seleccionaElModeloDeTuAuto_superapi)
+                    txtVersionSuperApi.text = resources.getString(string.seleccionaLaVersionDeTuAuto_superapi)
+                    txtCPSuperApi.text = ""
+                    cardMarcaSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.grey1_superapi)
+                    cardAnoSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.grey1_superapi)
+                    cardModeloSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.grey1_superapi)
+                    cardVersionSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.grey1_superapi)
+                    cardCPSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.grey1_superapi)
                 }
                 else -> {
                     // Acción por defecto

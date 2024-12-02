@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/blue5_superapi"
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
@@ -12,334 +11,47 @@
         android:layout_height="wrap_content"
         android:background="@color/blue5_superapi"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        android:elevation="5dp"/>
+        android:elevation="5dp"
+        android:theme="?attr/actionBarTheme" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:gravity="center"
             android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/logo_color_color_superapi"
-                android:layout_marginBottom="8dp"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/auto_superapi"
                 android:fontFamily="@font/poppins_semibold"
                 android:textSize="15sp"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/purple1_superapi"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cotizaTuSeguroDeAuto_superapi"
-                android:fontFamily="@font/poppins_semibold"
-                android:textSize="17sp"
                 android:gravity="center"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/black1_superapi"/>
+                android:textColor="@color/purple1_superapi"
+                android:text="@string/creaUnaCuenta_superapi"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/seleccionaElAnoMarcaModelo_superapi"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="15sp"
                 android:gravity="center"
                 android:layout_marginBottom="8dp"
-                android:textColor="@color/black1_superapi"/>
+                android:textColor="@color/black1_superapi"
+                android:text="@string/asiVincularemosTuPoliza_superapi"/>
             <LinearLayout
-                android:id="@+id/itemTipoSuperApi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tipoDeAuto_superapi"
+                    android:text="@string/nombres_superapi"
                     android:fontFamily="@font/poppins_semibold"
                     android:textSize="13sp"
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardTipoSuperApi"
-                    android:layout_margin="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="4dp"
-                    android:backgroundTint="@color/grey1_superapi">
-                    <LinearLayout
-                        android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:id="@+id/txtTipoSuperApi"
-                            android:layout_weight="1"
-                            android:layout_marginStart="12dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/autoOPickup_superapi"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="15sp"
-                            android:textColor="@color/grey2_superapi"/>
-                        <LinearLayout
-                            android:background="@color/white1_superapi"
-                            android:layout_width="45dp"
-                            android:backgroundTint="@color/purple1_superapi"
-                            android:layout_height="45dp"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:rotation="270"
-                                android:src="@drawable/back_superapi"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-            <LinearLayout
-                android:visibility="gone"
-                android:id="@+id/itemAnoSuperApi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ano_superapi"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textSize="13sp"
-                    android:gravity="center"
-                    android:textColor="@color/black1_superapi"/>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardAnoSuperApi"
-                    android:layout_margin="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="4dp"
-                    android:backgroundTint="@color/grey1_superapi">
-                    <LinearLayout
-                        android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:id="@+id/txtAnoSuperApi"
-                            android:layout_weight="1"
-                            android:layout_marginStart="12dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/seleccionaElAnoDeTuAuto_superapi"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="15sp"
-                            android:textColor="@color/grey2_superapi"/>
-                        <LinearLayout
-                            android:background="@color/white1_superapi"
-                            android:layout_width="45dp"
-                            android:backgroundTint="@color/purple1_superapi"
-                            android:layout_height="45dp"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:rotation="270"
-                                android:src="@drawable/back_superapi"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:visibility="gone"
-                android:id="@+id/itemMarcaSuperApi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/marca_superapi"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textSize="13sp"
-                    android:gravity="center"
-                    android:textColor="@color/black1_superapi"/>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardMarcaSuperApi"
-                    android:layout_margin="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="4dp"
-                    android:backgroundTint="@color/grey1_superapi">
-                    <LinearLayout
-                        android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:id="@+id/txtMarcaSuperApi"
-                            android:layout_weight="1"
-                            android:layout_marginStart="12dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/seleccionaLaMarcaDeTuAuto_superapi"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="15sp"
-                            android:textColor="@color/grey2_superapi"/>
-                        <LinearLayout
-                            android:background="@color/white1_superapi"
-                            android:layout_width="45dp"
-                            android:backgroundTint="@color/purple1_superapi"
-                            android:layout_height="45dp"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:rotation="270"
-                                android:src="@drawable/back_superapi"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/itemModeloSuperApi"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/modelo_superapi"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textSize="13sp"
-                    android:gravity="center"
-                    android:textColor="@color/black1_superapi"/>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardModeloSuperApi"
-                    android:layout_margin="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="4dp"
-                    android:backgroundTint="@color/grey1_superapi">
-                    <LinearLayout
-                        android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:id="@+id/txtModeloSuperApi"
-                            android:layout_weight="1"
-                            android:layout_marginStart="12dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/seleccionaElModeloDeTuAuto_superapi"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="15sp"
-                            android:textColor="@color/grey2_superapi"/>
-                        <LinearLayout
-                            android:background="@color/white1_superapi"
-                            android:layout_width="45dp"
-                            android:backgroundTint="@color/purple1_superapi"
-                            android:layout_height="45dp"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:rotation="270"
-                                android:src="@drawable/back_superapi"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-            <LinearLayout
-                android:visibility="gone"
-                android:id="@+id/itemVersionSuperApi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/version_superapi"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textSize="13sp"
-                    android:gravity="center"
-                    android:textColor="@color/black1_superapi"/>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardVersionSuperApi"
-                    android:layout_margin="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="4dp"
-                    android:backgroundTint="@color/grey1_superapi">
-                    <LinearLayout
-                        android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:id="@+id/txtVersionSuperApi"
-                            android:layout_weight="1"
-                            android:layout_marginStart="12dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/seleccionaLaVersionDeTuAuto_superapi"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="15sp"
-                            android:textColor="@color/grey2_superapi"/>
-                        <LinearLayout
-                            android:background="@color/white1_superapi"
-                            android:layout_width="45dp"
-                            android:backgroundTint="@color/purple1_superapi"
-                            android:layout_height="45dp"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:rotation="270"
-                                android:src="@drawable/back_superapi"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/itemCPSuperApi"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/codigoPostal_superapi"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textSize="13sp"
-                    android:gravity="center"
-                    android:textColor="@color/black1_superapi"/>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardCPSuperApi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -353,40 +65,346 @@
                         android:gravity="center"
                         android:orientation="horizontal">
                         <EditText
-                            android:id="@+id/txtCPSuperApi"
-                            android:layout_weight="1"
-                            android:layout_marginStart="12dp"
                             android:background="@color/transparent_superapi"
+                            android:id="@+id/txtNombreSuperApi"
+                            android:layout_marginStart="12dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/escribeTuCP_superapi"
-                            android:textColorHint="@color/grey1_superapi"
+                            android:hint="@string/nombressigno_superapi"
                             android:fontFamily="@font/poppins_semibold"
                             android:textSize="15sp"
+                            android:textColorHint="@color/grey2_superapi"
                             android:textColor="@color/grey2_superapi"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apellidoPaterno_superapi"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="13sp"
+                    android:gravity="center"
+                    android:textColor="@color/black1_superapi"/>
+                <androidx.cardview.widget.CardView
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="4dp"
+                    android:backgroundTint="@color/grey1_superapi">
+                    <LinearLayout
+                        android:layout_margin="2dp"
+                        android:background="@color/white1_superapi"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <EditText
+                            android:background="@color/transparent_superapi"
+                            android:id="@+id/txtApellidoPaternoSuperApi"
+                            android:layout_marginStart="12dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/apellidoPaternoSigno_superapi"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="15sp"
+                            android:textColorHint="@color/grey2_superapi"
+                            android:textColor="@color/grey2_superapi"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apellidoMaterno_superapi"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="13sp"
+                    android:gravity="center"
+                    android:textColor="@color/black1_superapi"/>
+                <androidx.cardview.widget.CardView
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="4dp"
+                    android:backgroundTint="@color/grey1_superapi">
+                    <LinearLayout
+                        android:layout_margin="2dp"
+                        android:background="@color/white1_superapi"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <EditText
+                            android:background="@color/transparent_superapi"
+                            android:id="@+id/txtApellidoMaternoSuperApi"
+                            android:layout_marginStart="12dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/apellidoMaternoSigno_superapi"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="15sp"
+                            android:textColorHint="@color/grey2_superapi"
+                            android:textColor="@color/grey2_superapi"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/correoElectronico_superapi"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="13sp"
+                    android:gravity="center"
+                    android:textColor="@color/black1_superapi"/>
+                <androidx.cardview.widget.CardView
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="4dp"
+                    android:backgroundTint="@color/grey1_superapi">
+                    <LinearLayout
+                        android:layout_margin="2dp"
+                        android:background="@color/white1_superapi"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <EditText
+                            android:inputType="textEmailAddress"
+                            android:background="@color/transparent_superapi"
+                            android:id="@+id/txtCorreoElectronicoSuperApi"
+                            android:layout_marginStart="12dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/correoElectronicosigno_superapi"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="15sp"
+                            android:textColorHint="@color/grey2_superapi"
+                            android:textColor="@color/grey2_superapi"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contrasena_superapi"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="13sp"
+                    android:gravity="center"
+                    android:textColor="@color/black1_superapi"/>
+                <androidx.cardview.widget.CardView
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="4dp"
+                    android:backgroundTint="@color/grey1_superapi">
+                    <LinearLayout
+                        android:layout_margin="2dp"
+                        android:background="@color/white1_superapi"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <EditText
+                            android:inputType="textPassword"
+                            android:background="@color/transparent_superapi"
+                            android:id="@+id/txtContrasenaSuperApi"
+                            android:layout_marginStart="12dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/contrasenasigno_superapi"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="15sp"
+                            android:textColorHint="@color/grey2_superapi"
+                            android:textColor="@color/grey2_superapi"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirmarContrasena_superapi"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="13sp"
+                    android:gravity="center"
+                    android:textColor="@color/black1_superapi"/>
+                <androidx.cardview.widget.CardView
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="4dp"
+                    android:backgroundTint="@color/grey1_superapi">
+                    <LinearLayout
+                        android:layout_margin="2dp"
+                        android:background="@color/white1_superapi"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <EditText
+                            android:inputType="textPassword"
+                            android:background="@color/transparent_superapi"
+                            android:id="@+id/txtConfirmarContrasenaSuperApi"
+                            android:layout_marginStart="12dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/confirmarContrasenasigno_superapi"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="15sp"
+                            android:textColorHint="@color/grey2_superapi"
+                            android:textColor="@color/grey2_superapi"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_weight="0.75"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lada_superapi"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:textColor="@color/black1_superapi"/>
+                    <androidx.cardview.widget.CardView
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="4dp"
+                        android:backgroundTint="@color/grey1_superapi">
+                        <LinearLayout
+                            android:layout_margin="2dp"
+                            android:padding="8dp"
+                            android:background="@color/white1_superapi"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:orientation="horizontal">
+                            <EditText
+                                android:gravity="center"
+                                android:background="@color/transparent_superapi"
+                                android:id="@+id/txtLadaSuperApi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/mas52_superapi"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="15sp"
+                                android:textColorHint="@color/grey2_superapi"
+                                android:textColor="@color/grey2_superapi"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight=".25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/telefono_superapi"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:textColor="@color/black1_superapi"/>
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="4dp"
+                        android:backgroundTint="@color/grey1_superapi">
+                        <LinearLayout
+                            android:layout_margin="2dp"
+                            android:background="@color/white1_superapi"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+                            <EditText
+                                android:background="@color/transparent_superapi"
+                                android:id="@+id/txtTelefonoSuperApi"
+                                android:layout_marginStart="12dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/telefonosigno_superapi"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="15sp"
+                                android:textColorHint="@color/grey2_superapi"
+                                android:textColor="@color/grey2_superapi"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/heLedioYAceptoLos_superapi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginStart="8dp"
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_height="wrap_content"
+                    android:text="@string/avisoDePrivacidad_superapi"
+                    android:textColor="@color/blue4_superapi"/>
+            </LinearLayout>
+
             <androidx.cardview.widget.CardView
                 android:layout_margin="8dp"
-                android:visibility="gone"
-                android:id="@+id/btnCotizaSuperApi"
+                android:id="@+id/btnCrearCuentaSuperApi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
+
                 <TextView
-                    android:background="@color/purple1_superapi"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="@color/white1_superapi"
-                    android:text="@string/cotizarSeguro_superapi"
+                    android:background="@color/purple1_superapi"
                     android:fontFamily="@font/poppins_semibold"
-                    android:textSize="17sp"/>
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/crearCuenta_superapi"
+                    android:textColor="@color/white1_superapi"
+                    android:textSize="17sp" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>
-
     </ScrollView>
 </LinearLayout>

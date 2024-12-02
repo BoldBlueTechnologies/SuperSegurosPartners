@@ -22,7 +22,7 @@ class Listados : AppCompatActivity() {
     private lateinit var imgBorrar : ImageView
     private lateinit var recyclerSheet : RecyclerView
     lateinit var adapter : AdapterBusqueda_superapi
-    private var tipoSuperApi = -1
+    var tipoSuperApi = -1
     private var tokenSuperApi = ""
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -41,15 +41,18 @@ class Listados : AppCompatActivity() {
         recyclerSheet = findViewById(R.id.recyclerSheet_superapi)
         when (tipoSuperApi) {
             0 -> {
-                toolbarSheet.setTitle(R.string.seleccionaUnaMarca_superapi)
+                toolbarSheet.setTitle(R.string.seleccionaUnTipoDeAuto_superapi)
             }
             1 -> {
                 toolbarSheet.setTitle(R.string.seleccionaUnAno_superapi)
             }
             2 -> {
-                toolbarSheet.setTitle(R.string.seleccionaUnModelo_superapi)
+                toolbarSheet.setTitle(R.string.seleccionaUnaMarca_superapi)
             }
             3 -> {
+                toolbarSheet.setTitle(R.string.seleccionaUnModelo_superapi)
+            }
+            4 -> {
                 toolbarSheet.setTitle(R.string.seleccionaUnaVersion_superapi)
             }
             else -> {

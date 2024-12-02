@@ -12,13 +12,13 @@ import com.app.boldblue.superseguros.partners.R
 import com.app.boldblue.superseguros.partners.SeguroAuto.Listados
 
 class AdapterBusqueda_superapi(arrayList:ArrayList<String>, activity: Listados): RecyclerView.Adapter<AdapterBusqueda_superapi.ARViewHolder>() {
+
     var arrayList = arrayList
     var activity = activity
     private var context: Context? = null
 
     class ARViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textbusqueda = itemView.findViewById<TextView>(R.id.textBusqueda_superapi)
-        var linebusqueda = itemView.findViewById<View>(R.id.linebusqueda_superapi)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ARViewHolder {
@@ -36,7 +36,7 @@ class AdapterBusqueda_superapi(arrayList:ArrayList<String>, activity: Listados):
         holder.textbusqueda.text = arrayList[position]
         holder.textbusqueda.setOnClickListener {
             val resultadoIntent = Intent()
-            resultadoIntent.putExtra("tipoSuperApi", activity.tipo)
+            resultadoIntent.putExtra("tipoSuperApi", activity.tipoSuperApi)
             resultadoIntent.putExtra("campoSuperApi", holder.textbusqueda.text.toString())
             activity.setResult(RESULT_OK, resultadoIntent) // Enviar resultado
             activity.finish()
@@ -45,6 +45,6 @@ class AdapterBusqueda_superapi(arrayList:ArrayList<String>, activity: Listados):
 
     fun actualizarLista(nuevaLista: ArrayList<String>) {
         arrayList = nuevaLista
-        notifyDataSetChanged() // Notifica al RecyclerView que los datos han cambiado
+        notifyDataSetChanged()
     }
 }

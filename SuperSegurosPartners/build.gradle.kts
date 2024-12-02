@@ -23,6 +23,7 @@ android {
     buildTypes {
         release {
             buildConfigField("String", "apipartnersSuper", "\"${apiProperties["apipartnersSuper"]}\"")
+            buildConfigField("String", "photosSuper", "\"${apiProperties["photosSuper"]}\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -31,6 +32,8 @@ android {
         }
         debug {
             buildConfigField("String", "apipartnersSuper", "\"${apiProperties["apipartnersSuper"]}\"")
+            buildConfigField("String", "photosSuper", "\"${apiProperties["photosSuper"]}\"")
+
             isMinifyEnabled = false
         }
     }
@@ -47,6 +50,7 @@ android {
 }
 
 dependencies {
+    implementation (libs.picasso)
     implementation (libs.converter.gson)
     implementation (libs.retrofit)
     implementation (libs.converter.scalars)

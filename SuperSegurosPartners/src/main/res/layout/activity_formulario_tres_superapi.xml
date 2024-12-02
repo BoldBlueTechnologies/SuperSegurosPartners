@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/blue5_superapi"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_superapi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue5_superapi"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        android:elevation="5dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_color_color_superapi"
+            android:layout_marginBottom="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/seleccionaUnaCobertura_superapi"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="15sp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/purple1_superapi"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout_superapi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue5_superapi"
+                app:tabSelectedTextColor="@color/purple1_superapi"
+                app:tabIndicatorColor="@color/purple1_superapi"
+                app:tabTextColor="@color/purple1_superapi"
+                app:tabMode="fixed"
+                app:tabGravity="center" />
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager_superapi"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:foregroundGravity="center">
+            </androidx.viewpager.widget.ViewPager>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

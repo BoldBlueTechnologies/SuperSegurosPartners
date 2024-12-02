@@ -1,8 +1,13 @@
 package com.app.boldblue.superseguros.partners.Services
 
+import android.view.View
+import com.app.boldblue.superseguros.partners.Adapters.AdapterAseguradoras_superapi
 import com.app.boldblue.superseguros.partners.BuildConfig
 import com.app.boldblue.superseguros.partners.Main.Principal_superapi
 import com.app.boldblue.superseguros.partners.Methods.methods_interface_superapi
+import com.app.boldblue.superseguros.partners.Methods.models_aseguradoras_superapi
+import com.app.boldblue.superseguros.partners.R
+import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_dos_superapi
 import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_uno_superapi
 import com.app.boldblue.superseguros.partners.SeguroAuto.Listados
 import okhttp3.OkHttpClient
@@ -55,17 +60,64 @@ class HelperConnectSuperApi {
                         }
                     }
                 }catch (e: JSONException){
-                    println("JSONExceptiondeviceregister---------$e")
+                    println("JSONExceptionlogin---------$e")
                 }
             }
             override fun onFailure(call: Call<String>, t: Throwable) {
-                println("onFailuredeviceregister---------$t")
+                println("onFailurelogin---------$t")
             }
         })
     }
 
     fun pickerBrand(token: String, activity: Listados){
-        println("-------picker map----"+token)
+        if(activity.tipoSuperApi==0){
+            for(vr in 0 until activity.resources.getString(R.string.tipoDeAuto_superapi).length){
+                activity.arrayAuto.add(activity.resources.getString(R.string.tipoDeAuto_superapi)[vr].toString())
+            }
+            activity.adapter.actualizarLista(ArrayList( activity.arrayAuto))
+        }else{
+            val retrofit: Retrofit = Retrofit.Builder()
+                .client(getokHttpclientPrincipalTime())
+                .baseUrl(BuildConfig.apipartnersSuper)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+            val api: methods_interface_superapi = retrofit.create(methods_interface_superapi::class.java)
+            val call: Call<String> = api.picker(token = "Bearer "+token)
+            call.enqueue(object : Callback<String> {
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    println("picker---------${response.code()}")
+                    try {
+                        when (response.code()) {
+                            200 -> {
+                                val jsonBody = JSONObject(response.body().toString())
+                                val jsonData = JSONObject(jsonBody.getString("data"))
+                                val picker1 = jsonData.getJSONArray("PickerCatalogoAlcoholTiempoIngiriendo")
+                                for(i in 0 until picker1.length()){
+                                    activity.arrayAuto.add(picker1[i].toString())
+                                }
+                                activity.adapter.actualizarLista(ArrayList( activity.arrayAuto))
+
+                            }
+                            500 -> {
+                            }
+                            else -> {
+                            }
+                        }
+                    }catch (e: JSONException){
+                        println("JSONExceptionpicker---------$e")
+                    }
+                }
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    println("onFailurepicker---------$t")
+                }
+            })
+        }
+
+    }
+
+    fun pharmaweeklyPromotion(token: String, activity: Formulario_dos_superapi){
         val retrofit: Retrofit = Retrofit.Builder()
             .client(getokHttpclientPrincipalTime())
             .baseUrl(BuildConfig.apipartnersSuper)
@@ -74,22 +126,27 @@ class HelperConnectSuperApi {
             .build()
 
         val api: methods_interface_superapi = retrofit.create(methods_interface_superapi::class.java)
-        val call: Call<String> = api.picker(token = "Bearer "+token)
+        val call: Call<String> = api.pharmaweeklyPromotion(token = "Bearer "+token)
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
-                println("picker---------${response.code()}")
+                println("pharmaweeklyPromotion---------${response.code()}")
                 try {
                     when (response.code()) {
                         200 -> {
-                            println("picker---------${response.body().toString()}")
-                            val jsonBody = JSONObject(response.body().toString())
-                            val jsonData = JSONObject(jsonBody.getString("data"))
-                            val picker1 = jsonData.getJSONArray("PickerCatalogoAlcoholTiempoIngiriendo")
-                            for(i in 0 until picker1.length()){
-                                activity.arrayAuto.add(picker1[i].toString())
-                            }
-                            activity.adapter.actualizarLista(ArrayList( activity.arrayAuto))
-
+                            var arrayAseguradoras = ArrayList<models_aseguradoras_superapi>()
+                            println("pharmaweeklyPromotion---------${response.body().toString()}")
+                            val jsonData = JSONObject(response.body().toString())
+                            if(jsonData.getJSONObject("data").getJSONArray("medicamentos").length()>0){
+                                for(v in 0 until jsonData.getJSONObject("data").getJSONArray("medicamentos").length()){
+                                    arrayAseguradoras.add(models_aseguradoras_superapi(
+                                        jsonData.getJSONObject("data").getJSONArray("medicamentos").getJSONObject(v).getInt("id"),
+                                        jsonData.getJSONObject("data").getJSONArray("medicamentos").getJSONObject(v).getString("imagen_medicamento"),
+                                        jsonData.getJSONObject("data").getJSONArray("medicamentos").getJSONObject(v).getDouble("precio_venta_final")
+                                    ))
+                                }
+                                activity.recyclerAseguradoras_superapi.adapter = AdapterAseguradoras_superapi(arrayAseguradoras,activity)
+                            }else
+                                activity.cardClean_superapi.visibility=View.VISIBLE
                         }
                         500 -> {
                         }
@@ -97,11 +154,11 @@ class HelperConnectSuperApi {
                         }
                     }
                 }catch (e: JSONException){
-                    println("JSONExceptiondeviceregister---------$e")
+                    println("JSONExceptionmodulesmyModules---------$e")
                 }
             }
             override fun onFailure(call: Call<String>, t: Throwable) {
-                println("onFailuredeviceregister---------$t")
+                println("onFailuremodulesmyModules---------$t")
             }
         })
     }

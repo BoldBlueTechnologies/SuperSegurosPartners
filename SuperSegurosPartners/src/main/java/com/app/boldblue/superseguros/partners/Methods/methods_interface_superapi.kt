@@ -14,6 +14,11 @@ interface methods_interface_superapi {
     @FormUrlEncoded
     @POST("login")
     fun login(@Field("email") email: String, @Field("password") password: String): Call<String>
+
     @GET("medical-records/pickers")
     fun picker(@Header("Authorization") token: String): Call<String>
+
+    @GET("pharma/weeklyPromotion")
+    fun pharmaweeklyPromotion (@Header("Authorization") token: String): Call<String>
+
 }

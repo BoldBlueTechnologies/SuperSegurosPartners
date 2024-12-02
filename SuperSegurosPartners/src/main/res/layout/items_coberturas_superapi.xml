@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="5dp"
+    app:cardCornerRadius="8dp"
+    android:backgroundTint="@color/white1_superapi"
+    android:layout_margin="5dp">
+    <LinearLayout
+        android:gravity="center"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/black1_superapi"
+            android:textSize="13sp"
+            android:text="@string/danosAlBehiculoPorTerceroSinSeguro_superapi"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/black1_superapi"
+            android:textSize="13sp"
+            android:text="@string/preciovacio_superapi"/>
+        <ImageView
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:rotation="270"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_purple_superapi"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

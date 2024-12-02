@@ -8,15 +8,39 @@
             android:theme="@style/ThemeSuperApiPrincipal"
             android:exported="true">
         </activity>
-        <activity android:name=".SeguroAuto.Formulario_uno_superapi"
-            android:theme="@style/ThemeSuperApiFormulario"
-            android:exported="true">
-        </activity>
         <activity android:name=".SeguroAuto.Listados"
             android:theme="@style/ThemeSuperApiFormulario"
             android:exported="true">
         </activity>
+        <activity android:name=".SeguroAuto.Formulario_uno_superapi"
+            android:theme="@style/ThemeSuperApiFormulario"
+            android:exported="true">
+        </activity>
         <activity android:name=".SeguroAuto.Formulario_dos_superapi"
+            android:theme="@style/ThemeSuperApiFormulario"
+            android:exported="true">
+        </activity>
+        <activity android:name=".SeguroAuto.Formulario_tres_superapi"
+            android:theme="@style/ThemeSuperApiFormulario"
+            android:exported="true">
+        </activity>
+        <activity android:name=".SeguroAuto.Formulario_cuatro_superapi"
+            android:theme="@style/ThemeSuperApiFormulario"
+            android:exported="true">
+        </activity>
+        <activity android:name=".SeguroAuto.Formulario_cinco_superapi"
+            android:theme="@style/ThemeSuperApiFormulario"
+            android:exported="true">
+        </activity>
+        <activity android:name=".SeguroAuto.Formulario_seis_superapi"
+            android:theme="@style/ThemeSuperApiFormulario"
+            android:exported="true">
+        </activity>
+        <activity android:name=".SeguroAuto.Formulario_siete_superapi"
+            android:theme="@style/ThemeSuperApiFormulario"
+            android:exported="true">
+        </activity>
+        <activity android:name=".SeguroAuto.Formulario_ocho_superapi"
             android:theme="@style/ThemeSuperApiFormulario"
             android:exported="true">
         </activity>
