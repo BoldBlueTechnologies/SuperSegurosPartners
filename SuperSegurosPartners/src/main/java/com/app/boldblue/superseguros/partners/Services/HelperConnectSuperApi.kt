@@ -98,7 +98,6 @@ class HelperConnectSuperApi {
                                     activity.arrayAuto.add(picker1[i].toString())
                                 }
                                 activity.adapter.actualizarLista(ArrayList( activity.arrayAuto))
-
                             }
                             500 -> {
                             }

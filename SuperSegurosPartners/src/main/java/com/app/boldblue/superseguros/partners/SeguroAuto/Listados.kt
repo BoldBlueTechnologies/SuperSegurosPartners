@@ -1,6 +1,5 @@
 package com.app.boldblue.superseguros.partners.SeguroAuto
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -33,7 +32,6 @@ class Listados : AppCompatActivity() {
 
         tokenSuperApi= intent.getStringExtra("tokenSuperApi").toString()
         tipoSuperApi = intent.getIntExtra("tipoSuperApi",-1)
-        helperConnectSuperApi.pickerBrand(tokenSuperApi,this)
 
         toolbarSheet = findViewById(R.id.toolbarSheet_superapi)
         txtSheet = findViewById(R.id.txtSheet_superapi)
@@ -43,11 +41,11 @@ class Listados : AppCompatActivity() {
             0 -> {
                 toolbarSheet.setTitle(R.string.seleccionaUnTipoDeAuto_superapi)
             }
-            1 -> {
-                toolbarSheet.setTitle(R.string.seleccionaUnAno_superapi)
+            1-> {
+                toolbarSheet.setTitle(R.string.seleccionaUnaMarca_superapi)
             }
             2 -> {
-                toolbarSheet.setTitle(R.string.seleccionaUnaMarca_superapi)
+                toolbarSheet.setTitle(R.string.seleccionaUnAno_superapi)
             }
             3 -> {
                 toolbarSheet.setTitle(R.string.seleccionaUnModelo_superapi)
@@ -87,6 +85,7 @@ class Listados : AppCompatActivity() {
                 adapter.actualizarLista(ArrayList(listafiltrada))
             }
         })
+        helperConnectSuperApi.pickerBrand(tokenSuperApi,this)
 
     }
 }

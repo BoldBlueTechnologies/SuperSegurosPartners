@@ -12,8 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ReportFragment.Companion.reportFragment
-import com.app.boldblue.superseguros.partners.R
 import com.app.boldblue.superseguros.partners.R.*
 import com.app.boldblue.superseguros.partners.Services.HelperConnectSuperApi
 
@@ -99,7 +97,7 @@ class Formulario_uno_superapi : AppCompatActivity() {
             intent.putExtra("tokenSuperApi",tokenSuperApi)
             resultadoLauncher.launch(intent)
         }
-        itemMarcaSuperApi.setOnClickListener {
+        itemTipoSuperApi.setOnClickListener {
             val intent = Intent(this, Listados::class.java)
             intent.putExtra("tokenSuperApi",tokenSuperApi)
             intent.putExtra("tipoSuperApi",0)
