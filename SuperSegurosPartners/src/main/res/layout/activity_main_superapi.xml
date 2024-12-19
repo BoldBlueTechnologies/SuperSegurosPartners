@@ -141,14 +141,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <androidx.viewpager.widget.ViewPager
+                <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/view_pager_superapi"
                     android:layout_width="match_parent"
                     android:layout_height="425dp"
                     android:layout_marginTop="45dp"
                     android:background="@color/white1_superapi"
                     android:foregroundGravity="center">
-                </androidx.viewpager.widget.ViewPager>
+                </androidx.viewpager2.widget.ViewPager2>
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tab_layout_superapi"

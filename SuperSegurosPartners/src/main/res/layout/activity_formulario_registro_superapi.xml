@@ -52,6 +52,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardNombre_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -91,6 +92,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardApellidoPaterno_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -130,6 +132,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardApellidoMaterno_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -169,6 +172,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardCorreoElectronico_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -210,6 +214,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardContrasena_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -250,6 +255,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardContrasenaConfirmar_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -337,6 +343,7 @@
                         android:gravity="center"
                         android:textColor="@color/black1_superapi"/>
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/cardTelefono_superapi"
                         android:layout_margin="8dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -371,6 +378,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/checkTerminos_superapi"
                     android:textSize="14sp"
                     android:fontFamily="@font/poppins_regular"
                     android:text="@string/heLedioYAceptoLos_superapi"

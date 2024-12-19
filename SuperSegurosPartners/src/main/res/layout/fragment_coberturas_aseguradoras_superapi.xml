@@ -18,259 +18,301 @@
             android:layout_marginBottom="8dp"
             android:textColor="@color/black1_superapi"
             android:text="@string/formaDePago_superapi"/>
-        <RadioGroup
-            android:layout_marginBottom="8dp"
+        <androidx.cardview.widget.CardView
+            android:layout_margin="4dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <androidx.cardview.widget.CardView
-                android:layout_margin="4dp"
+            android:layout_height="wrap_content"
+            app:cardElevation="4dp"
+            android:backgroundTint="@color/white1_superapi"
+            app:cardCornerRadius="4dp">
+            <LinearLayout
+                android:padding="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="4dp"
-                android:backgroundTint="@color/white1_superapi"
-                app:cardCornerRadius="4dp">
+                android:orientation="horizontal">
+                <RadioButton
+                    android:checked="true"
+                    android:buttonTint="@color/purple1_superapi"
+                    android:id="@+id/radioButtonAnual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <LinearLayout
-                    android:padding="8dp"
+                    android:layout_weight="0.6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <RadioButton
-                        android:layout_marginEnd="16dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <LinearLayout
-                        android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="14sp"
-                            android:textColor="@color/black1_superapi"
-                            android:text="@string/anualmente_superapi"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="14sp"
-                            android:textColor="@color/black1_superapi"
-                            android:text="@string/unpago_superapi"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/txtPrecioAnual_superapi"
-                            android:gravity="end"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="14sp"
-                            android:textColor="@color/purple1_superapi"
-                            android:text="@string/preciovacio_superapi"/>
-                        <TextView
-                            android:id="@+id/txtDescuentoAnual_superapi"
-                            android:gravity="end"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="14sp"
-                            android:textColor="@color/green2_superapi"
-                            android:text="@string/preciovacio_superapi"/>
-                    </LinearLayout>
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/anualmente_superapi"/>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_margin="4dp"
+                <LinearLayout
+                    android:layout_weight="0.4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/txtPrecioAnual_superapi"
+                        android:gravity="end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="14sp"
+                        android:textColor="@color/purple1_superapi"
+                        android:text="@string/preciovacio_superapi"/>
+                    <TextView
+                        android:id="@+id/txtDescuentoAnual_superapi"
+                        android:gravity="end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="14sp"
+                        android:textColor="@color/green2_superapi"
+                        android:text="@string/preciovacio_superapi"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="4dp"
+            android:backgroundTint="@color/white1_superapi"
+            app:cardCornerRadius="4dp">
+            <LinearLayout
+                android:padding="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="4dp"
-                android:backgroundTint="@color/white1_superapi"
-                app:cardCornerRadius="4dp">
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/radioButtonTrimestral"
+                    android:buttonTint="@color/purple1_superapi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <LinearLayout
-                    android:padding="8dp"
+                    android:layout_weight="0.4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <RadioButton
-                        android:layout_marginEnd="16dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <LinearLayout
-                        android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="14sp"
-                            android:textColor="@color/black1_superapi"
-                            android:text="@string/trimestralmente_superapi"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="14sp"
-                            android:textColor="@color/black1_superapi"
-                            android:text="@string/cuatropagos_superapi"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/trimestralmente_superapi"/>
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/txtPrecioTrimestral_superapi"
-                            android:gravity="end"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="14sp"
-                            android:textColor="@color/purple1_superapi"
-                            android:text="@string/preciovacio_superapi"/>
-                        <TextView
-                            android:id="@+id/txtDescuentoTrimestral_superapi"
-                            android:gravity="end"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="14sp"
-                            android:textColor="@color/black1_superapi"
-                            android:text="@string/preciovacio_superapi"/>
-                    </LinearLayout>
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/primerpago_superapi"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/pagosubsecuente_superapi"/>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_margin="4dp"
+                <LinearLayout
+                    android:layout_weight="0.6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/txtPrecioTrimestral_superapi"
+                        android:gravity="end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="14sp"
+                        android:textColor="@color/purple1_superapi"
+                        android:text="@string/preciovacio_superapi"/>
+                    <TextView
+                        android:id="@+id/txtPrimerPagoTrimestral_superapi"
+                        android:gravity="end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/preciovacio_superapi"/>
+                    <TextView
+                        android:id="@+id/txtSubsecuentePagoTrimestral_superapi"
+                        android:gravity="end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/preciovacio_superapi"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="4dp"
+            android:backgroundTint="@color/white1_superapi"
+            app:cardCornerRadius="4dp">
+            <LinearLayout
+                android:padding="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="4dp"
-                android:backgroundTint="@color/white1_superapi"
-                app:cardCornerRadius="4dp">
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/radioButtonSemestral"
+                    android:buttonTint="@color/purple1_superapi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <LinearLayout
-                    android:padding="8dp"
+                    android:layout_weight="0.4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <RadioButton
-                        android:layout_marginEnd="16dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <LinearLayout
-                        android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="14sp"
-                            android:textColor="@color/black1_superapi"
-                            android:text="@string/semestralmente_superapi"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="14sp"
-                            android:textColor="@color/black1_superapi"
-                            android:text="@string/dospagos_superapi"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/semestralmente_superapi"/>
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/txtPrecioSemestral_superapi"
-                            android:gravity="end"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="14sp"
-                            android:textColor="@color/purple1_superapi"
-                            android:text="@string/preciovacio_superapi"/>
-                        <TextView
-                            android:id="@+id/txtDescuentoSemestral_superapi"
-                            android:gravity="end"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="14sp"
-                            android:textColor="@color/black1_superapi"
-                            android:text="@string/preciovacio_superapi"/>
-                    </LinearLayout>
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/primerpago_superapi"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/pagosubsecuente_superapi"/>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_margin="4dp"
+                <LinearLayout
+                    android:layout_weight="0.6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/txtPrecioSemestral_superapi"
+                        android:gravity="end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="14sp"
+                        android:textColor="@color/purple1_superapi"
+                        android:text="@string/preciovacio_superapi"/>
+                    <TextView
+                        android:id="@+id/txtPrimerPagoSemestral_superapi"
+                        android:gravity="end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/preciovacio_superapi"/>
+                    <TextView
+                        android:id="@+id/txtSubsecuentesSemestral_superapi"
+                        android:gravity="end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/preciovacio_superapi"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="4dp"
+            android:backgroundTint="@color/white1_superapi"
+            app:cardCornerRadius="4dp">
+            <LinearLayout
+                android:padding="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="4dp"
-                android:backgroundTint="@color/white1_superapi"
-                app:cardCornerRadius="4dp">
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/radioButtonMensual"
+                    android:buttonTint="@color/purple1_superapi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <LinearLayout
-                    android:padding="8dp"
+                    android:layout_weight="0.4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <RadioButton
-                        android:layout_marginEnd="16dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <LinearLayout
-                        android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="14sp"
-                            android:textColor="@color/black1_superapi"
-                            android:text="@string/mensualmente_superapi"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="14sp"
-                            android:textColor="@color/black1_superapi"
-                            android:text="@string/docepagos_superapi"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/mensualmente_superapi"/>
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/txtPrecioMensual_superapi"
-                            android:gravity="end"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="14sp"
-                            android:textColor="@color/purple1_superapi"
-                            android:text="@string/preciovacio_superapi"/>
-                        <TextView
-                            android:id="@+id/txtDescuentoMensual_superapi"
-                            android:gravity="end"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="14sp"
-                            android:textColor="@color/black1_superapi"
-                            android:text="@string/preciovacio_superapi"/>
-                    </LinearLayout>
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/primerpago_superapi"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/oncePagosSubsecuentes_superapi"/>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </RadioGroup>
+                <LinearLayout
+                    android:layout_weight="0.6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/txtPrecioMensual_superapi"
+                        android:gravity="end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="14sp"
+                        android:textColor="@color/purple1_superapi"
+                        android:text="@string/preciovacio_superapi"/>
+                    <TextView
+                        android:id="@+id/txtPrimerPagoMensual_superapi"
+                        android:gravity="end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/preciovacio_superapi"/>
+                    <TextView
+                        android:id="@+id/txtSubsecuentesMensual_superapi"
+                        android:gravity="end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black1_superapi"
+                        android:text="@string/preciovacio_superapi"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -391,6 +433,7 @@
                             android:textColor="@color/black1_superapi"
                             android:text="@string/version_superapi"/>
                         <TextView
+                            android:id="@+id/txtVersion_superapi"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_regular"
@@ -431,7 +474,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:textSize="22sp"
                         android:textColor="@color/white1_superapi"
-                        android:text="@string/semestralmente_superapi"/>
+                        android:text="@string/vacio_superapi"/>
                     <TextView
                         android:gravity="center"
                         android:layout_width="match_parent"

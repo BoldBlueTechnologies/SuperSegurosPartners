@@ -3,19 +3,37 @@ package com.app.boldblue.superseguros.partners.SeguroAuto
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager.widget.ViewPager
-import com.app.boldblue.superseguros.partners.Main.coberturas.fragment_coberturas
+import androidx.viewpager2.widget.ViewPager2
+import com.app.boldblue.superseguros.partners.Methods.models_data_policy_superapi
 import com.app.boldblue.superseguros.partners.R
+import com.app.boldblue.superseguros.partners.Services.HelperConnectSuperApi
 import com.google.android.material.tabs.TabLayout
+import java.util.HashMap
 
 class Formulario_tres_superapi : AppCompatActivity() {
+
+    lateinit var modelsDataPolicySuperapi: models_data_policy_superapi
+    lateinit var mTablayout : TabLayout
+    lateinit var mViewPager : ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_formulario_tres_superapi)
+
+        val helperConnectSuperApi = HelperConnectSuperApi()
+        modelsDataPolicySuperapi = models_data_policy_superapi()
+        modelsDataPolicySuperapi.vehicleType= intent.getStringExtra("vehicleType").toString()
+        modelsDataPolicySuperapi.description= intent.getStringExtra("description").toString()
+        modelsDataPolicySuperapi.model= intent.getStringExtra("model").toString()
+        modelsDataPolicySuperapi.nameBrand= intent.getStringExtra("nameBrand").toString()
+        modelsDataPolicySuperapi.brand= intent.getStringExtra("brand").toString()
+        modelsDataPolicySuperapi.nameSubBrand= intent.getStringExtra("nameSubBrand").toString()
+        modelsDataPolicySuperapi.subBrand= intent.getStringExtra("subBrand").toString()
+        modelsDataPolicySuperapi.internalKey= intent.getStringExtra("internalKey").toString()
+        modelsDataPolicySuperapi.autoDescription= intent.getStringExtra("autoDescription").toString()
+        modelsDataPolicySuperapi.insurance= intent.getStringExtra("insurance").toString()
+        modelsDataPolicySuperapi.ZIPCode= intent.getStringExtra("ZIPCode").toString()
+
         val myToolbar: Toolbar = findViewById(R.id.toolbar_superapi)
         myToolbar.setTitle(R.string.auto_superapi)
         myToolbar.setNavigationIcon(R.drawable.back_purple_superapi)
@@ -23,41 +41,18 @@ class Formulario_tres_superapi : AppCompatActivity() {
         setSupportActionBar(myToolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         myToolbar.setNavigationOnClickListener { finish()}
-        var mTablayout : TabLayout = findViewById(R.id.tab_layout_superapi)
-        var mViewPager : ViewPager = findViewById(R.id.view_pager_superapi)
-        val mAdapter = MyFragmentPager(supportFragmentManager, resources.getStringArray(R.array.tiposCoberturas_superapi))
-        mViewPager.adapter=mAdapter
-        mTablayout.setupWithViewPager(mViewPager)
-    }
+        mViewPager = findViewById(R.id.view_pager_superapi)
+        mTablayout = findViewById(R.id.tab_layout_superapi)
+        val map: HashMap<String, Any> = HashMap()
+        map["vehicleType"]= modelsDataPolicySuperapi.vehicleType
+        map["model"]= modelsDataPolicySuperapi.model
+        map["brand"]= modelsDataPolicySuperapi.brand
+        map["subBrand"]= modelsDataPolicySuperapi.subBrand
+        map["internalKey"]= modelsDataPolicySuperapi.internalKey
+        map["insurance"]= modelsDataPolicySuperapi.insurance
+        map["zipCode"]= modelsDataPolicySuperapi.ZIPCode
 
-    class MyFragmentPager(fm: FragmentManager?, private val mTabTitles: Array<String>) : FragmentPagerAdapter(fm!!) {
-        override fun getItem(position: Int): Fragment {
-            return when (position) {
-                0 -> {
-                    fragment_coberturas()
-                }
-                1 -> {
-                    fragment_coberturas()
-                }
-                2 -> {
-                    fragment_coberturas()
-                }
-                3 -> {
-                    fragment_coberturas()
-                }
-                else -> {
-                    fragment_coberturas()
-                }
-            }
-        }
-
-        override fun getCount(): Int {
-            return mTabTitles.size
-        }
-
-        override fun getPageTitle(position: Int): CharSequence {
-            return mTabTitles[position]
-        }
+        helperConnectSuperApi.getGeneralQuotation(this,map)
     }
 
 }

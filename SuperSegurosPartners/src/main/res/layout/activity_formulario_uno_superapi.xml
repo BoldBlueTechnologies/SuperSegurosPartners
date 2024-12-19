@@ -73,11 +73,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardElevation="4dp"
+                    app:cardCornerRadius="5dp"
                     android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
                         android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
-                        android:layout_width="match_parent"
+                        android:background="@color/white1_superapi"                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal">
@@ -299,6 +299,8 @@
                         android:gravity="center"
                         android:orientation="horizontal">
                         <TextView
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
                             android:id="@+id/txtVersionSuperApi"
                             android:layout_weight="1"
                             android:layout_marginStart="12dp"
@@ -312,14 +314,14 @@
                             android:background="@color/white1_superapi"
                             android:layout_width="45dp"
                             android:backgroundTint="@color/purple1_superapi"
-                            android:layout_height="45dp"
+                            android:layout_height="match_parent"
                             android:gravity="center"
                             android:orientation="horizontal">
                             <ImageView
                                 android:rotation="270"
                                 android:src="@drawable/back_superapi"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="match_parent"/>
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -355,6 +357,7 @@
                         <EditText
                             android:id="@+id/txtCPSuperApi"
                             android:layout_weight="1"
+                            android:maxLength="5"
                             android:layout_marginStart="12dp"
                             android:background="@color/transparent_superapi"
                             android:layout_width="match_parent"
@@ -363,6 +366,7 @@
                             android:textColorHint="@color/grey1_superapi"
                             android:fontFamily="@font/poppins_semibold"
                             android:textSize="15sp"
+                            android:inputType="number"
                             android:textColor="@color/grey2_superapi"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

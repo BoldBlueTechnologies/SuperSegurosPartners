@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity.RESULT_OK
 import androidx.recyclerview.widget.RecyclerView
+import com.app.boldblue.superseguros.partners.Methods.models_list_superapi
 import com.app.boldblue.superseguros.partners.R
 import com.app.boldblue.superseguros.partners.SeguroAuto.Listados
 
-class AdapterBusqueda_superapi(arrayList:ArrayList<String>, activity: Listados): RecyclerView.Adapter<AdapterBusqueda_superapi.ARViewHolder>() {
+class AdapterBusqueda_superapi(arrayList:ArrayList<models_list_superapi>, activity: Listados): RecyclerView.Adapter<AdapterBusqueda_superapi.ARViewHolder>() {
 
     var arrayList = arrayList
     var activity = activity
@@ -33,17 +34,18 @@ class AdapterBusqueda_superapi(arrayList:ArrayList<String>, activity: Listados):
     }
 
     override fun onBindViewHolder(holder: ARViewHolder, position: Int) {
-        holder.textbusqueda.text = arrayList[position]
+        holder.textbusqueda.text = arrayList[position].Descripcion
         holder.textbusqueda.setOnClickListener {
             val resultadoIntent = Intent()
-            resultadoIntent.putExtra("tipoSuperApi", activity.tipoSuperApi)
-            resultadoIntent.putExtra("campoSuperApi", holder.textbusqueda.text.toString())
+            resultadoIntent.putExtra("idSuperApi", arrayList[position].id)
+            resultadoIntent.putExtra("descripcionSuperApi", arrayList[position].Descripcion)
+            resultadoIntent.putExtra("tipoSuperApi",activity.tipoSuperApi)
             activity.setResult(RESULT_OK, resultadoIntent) // Enviar resultado
             activity.finish()
         }
     }
 
-    fun actualizarLista(nuevaLista: ArrayList<String>) {
+    fun actualizarLista(nuevaLista: ArrayList<models_list_superapi>) {
         arrayList = nuevaLista
         notifyDataSetChanged()
     }

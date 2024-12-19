@@ -3,10 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/blue5_superapi"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
+        android:background="@color/blue5_superapi"
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
@@ -21,6 +23,7 @@
             android:layout_margin="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue5_superapi"
             app:cardCornerRadius="8dp"
             android:elevation="8dp">
             <LinearLayout
@@ -43,7 +46,8 @@
                     android:background="@color/transparent_superapi"
                     android:fontFamily="@font/poppins_regular"
                     android:hint="@string/busqueda_superapi"
-                    android:textColor="@color/grey1_superapi"
+                    android:textColorHint="@color/black1_superapi"
+                    android:textColor="@color/black1_superapi"
                     android:textSize="13sp" />
                 <ImageView
                     android:id="@+id/imgBorrar_superapi"

@@ -10,13 +10,14 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.app.boldblue.superseguros.partners.BuildConfig
-import com.app.boldblue.superseguros.partners.Methods.models_aseguradoras_superapi
+import com.app.boldblue.superseguros.partners.Methods.models_list_insurance_superapi
+import com.app.boldblue.superseguros.partners.Methods.models_list_superapi
 import com.app.boldblue.superseguros.partners.R
 import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_dos_superapi
 import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_tres_superapi
 import com.squareup.picasso.Picasso
 
-class AdapterAseguradoras_superapi (arrayList:ArrayList<models_aseguradoras_superapi>, activity: Formulario_dos_superapi): RecyclerView.Adapter<AdapterAseguradoras_superapi.ARViewHolder>() {
+class AdapterAseguradoras_superapi (arrayList:ArrayList<models_list_insurance_superapi>, activity: Formulario_dos_superapi): RecyclerView.Adapter<AdapterAseguradoras_superapi.ARViewHolder>() {
     var arrayList = arrayList
     var activity = activity
     private var context: Context? = null
@@ -38,14 +39,25 @@ class AdapterAseguradoras_superapi (arrayList:ArrayList<models_aseguradoras_supe
         return arrayList.size
     }
 
-    override fun onBindViewHolder(holder: ARViewHolder, position: Int) {
-        holder.txtPrecio_superapi.text = "$${arrayList[position].precioAseguradoras_superapi} MXN"
+    override fun onBindViewHolder(holder: ARViewHolder, vr: Int) {
+        holder.txtPrecio_superapi.text = "$${arrayList[vr].monto} MXN"
         Picasso.get()
-        .load(BuildConfig.photosSuper+arrayList[position].imgAseguradoras_superapi) // URL de la imagen
+        .load(BuildConfig.photosSuper+arrayList[vr].img)
         .into(holder.imgAseguradoras_superapi)
         holder.cardAseguradoras_superapi.setOnClickListener {
+            activity.modelsDataPolicySuperapi.insurance = arrayList[vr].aseguradora
             val intent = Intent(activity, Formulario_tres_superapi::class.java)
-            intent.putExtra("idAseguradora",arrayList[position].idAseguradoras_superapi)
+            intent.putExtra("vehicleType",activity.modelsDataPolicySuperapi.vehicleType)
+            intent.putExtra("description",activity.modelsDataPolicySuperapi.description)
+            intent.putExtra("model",activity.modelsDataPolicySuperapi.model)
+            intent.putExtra("nameBrand",activity.modelsDataPolicySuperapi.nameBrand)
+            intent.putExtra("brand",activity.modelsDataPolicySuperapi.brand)
+            intent.putExtra("nameSubBrand",activity.modelsDataPolicySuperapi.nameSubBrand)
+            intent.putExtra("subBrand",activity.modelsDataPolicySuperapi.subBrand)
+            intent.putExtra("internalKey",activity.modelsDataPolicySuperapi.internalKey)
+            intent.putExtra("autoDescription",activity.modelsDataPolicySuperapi.autoDescription)
+            intent.putExtra("insurance",activity.modelsDataPolicySuperapi.insurance)
+            intent.putExtra("ZIPCode",activity.modelsDataPolicySuperapi.ZIPCode)
             activity.startActivity(intent)
         }
     }

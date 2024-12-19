@@ -4,6 +4,7 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-parcelize")
 }
 
 val ApiPropertiesFile = rootProject.file("apikey.properties")
@@ -24,6 +25,7 @@ android {
         release {
             buildConfigField("String", "apipartnersSuper", "\"${apiProperties["apipartnersSuper"]}\"")
             buildConfigField("String", "photosSuper", "\"${apiProperties["photosSuper"]}\"")
+            buildConfigField("String", "tokenSuper", "\"${apiProperties["tokenSuper"]}\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -31,8 +33,9 @@ android {
             )
         }
         debug {
-            buildConfigField("String", "apipartnersSuper", "\"${apiProperties["apipartnersSuper"]}\"")
-            buildConfigField("String", "photosSuper", "\"${apiProperties["photosSuper"]}\"")
+            buildConfigField("String", "apipartnersSuper", "\"${apiProperties["apipartnersSuperDev"]}\"")
+            buildConfigField("String", "photosSuper", "\"${apiProperties["photosSuperDev"]}\"")
+            buildConfigField("String", "tokenSuper", "\"${apiProperties["tokenSuperDev"]}\"")
 
             isMinifyEnabled = false
         }

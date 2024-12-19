@@ -7,34 +7,35 @@ import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.app.boldblue.superseguros.partners.Adapters.AdapterAseguradoras_superapi
-import com.app.boldblue.superseguros.partners.Adapters.AdapterBusqueda_superapi
-import com.app.boldblue.superseguros.partners.Methods.models_aseguradoras_superapi
+import com.app.boldblue.superseguros.partners.Methods.models_data_policy_superapi
+import com.app.boldblue.superseguros.partners.Methods.models_list_insurance_superapi
 import com.app.boldblue.superseguros.partners.R
 import com.app.boldblue.superseguros.partners.Services.HelperConnectSuperApi
+import java.util.HashMap
 
 class Formulario_dos_superapi : AppCompatActivity() {
 
-    private var marcaSuperApi = ""
-    private var anoSuperApi = ""
-    private var modeloSuperApi = ""
-    private var versionSuperApi = ""
-    private var cpSuperApi = ""
-    private var tokenSuperApi = ""
     lateinit var recyclerAseguradoras_superapi : RecyclerView
     lateinit var cardClean_superapi : CardView
     private lateinit var cardNuevoAuto_superapi : CardView
+    var arrayInsurance = ArrayList<models_list_insurance_superapi>()
+    lateinit var modelsDataPolicySuperapi: models_data_policy_superapi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_formulario_dos_superapi)
-        tokenSuperApi= intent.getStringExtra("tokenSuperApi").toString()
-        marcaSuperApi= intent.getStringExtra("marcaSuperApi").toString()
-        anoSuperApi= intent.getStringExtra("anoSuperApi").toString()
-        modeloSuperApi= intent.getStringExtra("modeloSuperApi").toString()
-        versionSuperApi= intent.getStringExtra("versionSuperApi").toString()
-        cpSuperApi= intent.getStringExtra("cpSuperApi").toString()
         val helperConnectSuperApi = HelperConnectSuperApi()
+        modelsDataPolicySuperapi = models_data_policy_superapi()
+        modelsDataPolicySuperapi.vehicleType= intent.getStringExtra("vehicleType").toString()
+        modelsDataPolicySuperapi.description= intent.getStringExtra("description").toString()
+        modelsDataPolicySuperapi.model= intent.getStringExtra("model").toString()
+        modelsDataPolicySuperapi.nameBrand= intent.getStringExtra("nameBrand").toString()
+        modelsDataPolicySuperapi.brand= intent.getStringExtra("brand").toString()
+        modelsDataPolicySuperapi.nameSubBrand= intent.getStringExtra("nameSubBrand").toString()
+        modelsDataPolicySuperapi.subBrand= intent.getStringExtra("subBrand").toString()
+        modelsDataPolicySuperapi.internalKey= intent.getStringExtra("internalKey").toString()
+        modelsDataPolicySuperapi.autoDescription= intent.getStringExtra("autoDescription").toString()
+        modelsDataPolicySuperapi.ZIPCode= intent.getStringExtra("ZIPCode").toString()
         val myToolbar: Toolbar = findViewById(R.id.toolbar_superapi)
         recyclerAseguradoras_superapi = findViewById(R.id.recyclerAseguradoras_superapi)
         cardClean_superapi = findViewById(R.id.cardClean_superapi)
@@ -47,13 +48,19 @@ class Formulario_dos_superapi : AppCompatActivity() {
         myToolbar.setNavigationOnClickListener { finish() }
         recyclerAseguradoras_superapi.layoutManager = LinearLayoutManager(this)
         recyclerAseguradoras_superapi.hasFixedSize()
-        helperConnectSuperApi.pharmaweeklyPromotion(tokenSuperApi,this)
         cardNuevoAuto_superapi.setOnClickListener {
             val resultadoIntent = Intent()
             resultadoIntent.putExtra("tipoSuperApi",28)
-            setResult(RESULT_OK, resultadoIntent) // Enviar resultado
+            setResult(RESULT_OK, resultadoIntent)
             finish()
         }
+        val map: HashMap<String, Any> = HashMap()
+        map["vehicleType"]= modelsDataPolicySuperapi.vehicleType
+        map["model"]= modelsDataPolicySuperapi.model
+        map["brand"]= modelsDataPolicySuperapi.brand
+        map["subBrand"]= modelsDataPolicySuperapi.subBrand
+        map["internalKey"]= modelsDataPolicySuperapi.internalKey
+        map["zipCode"]= modelsDataPolicySuperapi.ZIPCode
+        helperConnectSuperApi.getBasicQuotation(this,map)
     }
-
 }

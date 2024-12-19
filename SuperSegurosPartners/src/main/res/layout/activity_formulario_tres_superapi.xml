@@ -47,12 +47,12 @@
                 app:tabTextColor="@color/purple1_superapi"
                 app:tabMode="fixed"
                 app:tabGravity="center" />
-            <androidx.viewpager.widget.ViewPager
+            <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager_superapi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:foregroundGravity="center">
-            </androidx.viewpager.widget.ViewPager>
+            </androidx.viewpager2.widget.ViewPager2>
 
 
         </LinearLayout>
