@@ -32,7 +32,7 @@ Ejemplo:
 android:layout_width="match_parent"<br>
 android:layout_height="wrap_content"/><br>
 
-([https://example.com/imagen.jpg](https://dev-super-storage.s3.us-east-1.amazonaws.com/autos/boton_super_seguros.jpg))
+(https://dev-super-storage.s3.us-east-1.amazonaws.com/autos/boton_super_seguros.jpg)
 
 
 # 3. Requerimiento
