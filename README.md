@@ -7,7 +7,8 @@ Este repositorio contiene todo lo necesario para integrar el SDK en tu proyecto 
 
 Paso 1. Agrega el repositorio JitPack a tu archivo de compilación:
 
-```allprojects {
+```
+allprojects {
   repositories {
     maven { url 'https://jitpack.io' }
   }
