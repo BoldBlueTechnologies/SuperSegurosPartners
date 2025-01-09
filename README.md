@@ -7,17 +7,17 @@ Este repositorio contiene todo lo necesario para integrar el SDK en tu proyecto 
 
 Paso 1. Agrega el repositorio JitPack a tu archivo de compilación:
 
-allprojects {
-  repositories {
-    ...
-    maven { url 'https://jitpack.io' }
-  }
+allprojects {<br>
+  repositories {<br>
+    ...<br>
+    maven { url 'https://jitpack.io' }<br>
+  }<br>
 }
 
 Paso 2. Agrega la dependencia
 
-dependencies {
-  implementation 'com.github.BoldBlueTechnologies:SuperSegurosPartners:${version}'
+dependencies {<br>
+  implementation 'com.github.BoldBlueTechnologies:SuperSegurosPartners:${version}'<br>
 }
 
 # 2. Uso
