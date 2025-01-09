@@ -28,9 +28,9 @@ Integración por XML
 
 Ejemplo:
 
-<com.app.boldblue.superseguros.partners.SuperButton_superapi
-android:layout_width="match_parent"
-android:layout_height="wrap_content"/>
+<com.app.boldblue.superseguros.partners.SuperButton_superapi<br>
+android:layout_width="match_parent"<br>
+android:layout_height="wrap_content"/><br>
 
 # 3. Requerimiento
    
