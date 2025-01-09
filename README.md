@@ -32,6 +32,7 @@ Ejemplo:
 android:layout_width="match_parent"
 android:layout_height="wrap_content"/>
 ```
+![SuperButton_superapi](https://github.com/BoldBlueTechnologies/SuperSegurosPartners/blob/main/boton_super_seguros.jpg)
 
 # 3. Requerimiento
    
