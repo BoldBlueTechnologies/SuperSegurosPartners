@@ -28,9 +28,11 @@ Integración por XML
 
 Ejemplo:
 ```
-<com.app.boldblue.superseguros.partners.SuperButton_superapi
+<
+com.app.boldblue.superseguros.partners.SuperButton_superapi
 android:layout_width="match_parent"
-android:layout_height="wrap_content"/>
+android:layout_height="wrap_content"
+/>
 ```
 ![SuperButton_superapi](https://github.com/BoldBlueTechnologies/SuperSegurosPartners/blob/main/boton_super_seguros.jpg)
 
