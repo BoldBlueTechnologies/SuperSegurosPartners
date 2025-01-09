@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    id("maven-publish")
 }
 
 val ApiPropertiesFile = rootProject.file("apikey.properties")
