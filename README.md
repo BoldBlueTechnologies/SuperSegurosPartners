@@ -7,6 +7,13 @@ Este repositorio contiene todo lo necesario para integrar el SDK en tu proyecto 
 
 Paso 1. Agrega el repositorio JitPack a tu archivo de compilación:
 
+android {
+    compileOptions {
+        sourceCompatibility '1.8'
+        targetCompatibility '1.8'
+    }
+}
+
 allprojects {
   repositories {
     ...
