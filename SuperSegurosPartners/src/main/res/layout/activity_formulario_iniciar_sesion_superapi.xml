@@ -74,6 +74,7 @@
                             android:hint="@string/correoElectronicosigno_superapi"
                             android:fontFamily="@font/poppins_semibold"
                             android:textSize="15sp"
+                            android:inputType="textEmailAddress"
                             android:textColorHint="@color/grey2_superapi"
                             android:textColor="@color/grey2_superapi"/>
                     </LinearLayout>

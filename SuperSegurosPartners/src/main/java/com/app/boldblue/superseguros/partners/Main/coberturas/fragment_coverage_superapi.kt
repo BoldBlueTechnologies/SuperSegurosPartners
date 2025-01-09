@@ -21,6 +21,9 @@ class fragment_coverage_superapi (fragmentActivity: FragmentActivity, private va
             2 -> {
                 tabFragment[2]
             }
+            3 -> {
+                tabFragment[3]
+            }
             else -> {
                 tabFragment[0]
             }

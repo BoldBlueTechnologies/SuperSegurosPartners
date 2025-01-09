@@ -92,12 +92,36 @@
     <string name="nombressigno_superapi">Nombre (s)*</string>
     <string name="telefono_superapi">Teléfono</string>
     <string name="agregaUnaContrasena_superapi">Agrega una contraseña</string>
+    <string name="laContrasenaDebeTenerAlMenos8Caracteres_superapi">La contraseña debe tener al menos 8 caracteres</string>
     <string name="lasContrasenasNoCoinciden_superapi">Las contraseñas no coinciden</string>
     <string name="agregaUnTelefono_superapi">Agrega un teléfono</string>
+    <string name="aceptaElAvisoDePrivacidad_superapi">Acepta el aviso de privacidad</string>
 
     <string name="vinculaTuPoliza_superapi">Vincula tu póliza</string>
     <string name="accedeConTuCorrreoOSiTienes_superapi">Accede con tu correo o si tienes una cuenta en Midoconline ingrésala para vincularte.</string>
 
+    <string name="pagoDeTuPoliza_superapi">Pago de tu póliza</string>
+    <string name="estasAUnPasoDeObtenerTuSeguroPor_superapi">Estás a un paso de obtener tu seguro por:</string>
+    <string name="realizaElPagoDeTuSeguroAseguraTuAuto_superapi">Realiza el pago de tu seguro. Asegura tu auto hoy y garantiza tu tranquilidad para mañana.</string>
+    <string name="resumenDeCompra_superapi">Resumen de compra</string>
+    <string name="tuContrasenaDebeContenerComoMinimo_superapi">Tu contraseña debe contener como mínimo:</string>
+    <string name="pago_superapi">Pago:</string>
+    <string name="auto_superapi2">Auto:</string>
+    <string name="aseguradora_superapi">Aseguradora:</string>
+    <string name="agregaTuTarjeta_superapi">Agrega tu tarjeta</string>
+    <string name="nombreEnLaTarjeta_superapi">Nombre en la tarjeta</string>
+    <string name="nombreComoApareceEnLaTarjeta_superapi">Nombre como aparece en la tarjeta</string>
+    <string name="numeroDeTarjeta_superapi">Número de tarjeta</string>
+    <string name="ceros_superapi">0000 0000 0000 0000</string>
+    <string name="expiracion_superapi">Expiración</string>
+    <string name="MMAA_superapi">MM/AA</string>
+    <string name="codigoDeSeguridad_superapi">Código de seguridad</string>
+    <string name="cvv_superapi">CVV</string>
+    <string name="consultaElReciboDePagoQueEnviamosATuCorreo_superapi">Consulta el recibo de pago que enviamos a tu correo electrónico para ver los métodos de pago disponibles.</string>
+    <string name="pagoEncriptadoYSeguro_superapi">Pago encriptado y seguro.</string>
+    <string name="requieroFactura_superapi">Requiero factura</string>
+    <string name="alPagarAceptasLos_superapi">Al pagar aceptas los </string>
+    <string name="terminosYCondiciones_superapi">Términos y condiciones</string>
 
     <string name="loSentimos_superapi">😞 ¡Lo sentimos! 😞</string>
     <string name="noContamosConUnaCobertura_superapi">No contamos con una cobertura para tu auto. Registraremos tu solicitud y te avisaremos cuando tengamos una cobertura disponible.</string>
@@ -177,6 +201,7 @@
         <item>Pickup</item>
     </string-array>
     <string-array name="tiposCoberturas_superapi">
+        <item>Prestigio</item>
         <item>Amplia</item>
         <item>Limitada</item>
         <item>Básica</item>

@@ -112,7 +112,7 @@ class Formulario_siete_superapi : AppCompatActivity() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                if(s!!.length<2){
+                if(s!!.length<1){
                     cardNumExterior_superapi.backgroundTintList = ContextCompat.getColorStateList(baseContext, R.color.grey1_superapi)
                     txtNumeroExteriorSuperApi.setTextColor(ContextCompat.getColor(baseContext, R.color.grey2_superapi))
                 } else{
@@ -126,7 +126,7 @@ class Formulario_siete_superapi : AppCompatActivity() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                if(s!!.length<2){
+                if(s!!.length<1){
                     cardNumInterior_superapi.backgroundTintList = ContextCompat.getColorStateList(baseContext, R.color.grey1_superapi)
                     txtNumeroInteriorSuperApi.setTextColor(ContextCompat.getColor(baseContext, R.color.grey2_superapi))
                 } else{

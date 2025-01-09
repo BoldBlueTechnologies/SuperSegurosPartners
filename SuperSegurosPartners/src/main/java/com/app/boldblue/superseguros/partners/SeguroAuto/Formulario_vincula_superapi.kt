@@ -66,6 +66,7 @@ class Formulario_vincula_superapi  : AppCompatActivity() {
         modelsDataPolicySuperapi.maternalSurname = intent.getStringExtra("maternalSurname").toString()
         modelsDataPolicySuperapi.bornDate = intent.getStringExtra("bornDate").toString()
 
+        modelsDataPolicySuperapi.id_Address = intent.getStringExtra("id_Address").toString()
         modelsDataPolicySuperapi.street = intent.getStringExtra("street").toString()
         modelsDataPolicySuperapi.apartmentNumber = intent.getStringExtra("apartmentNumber").toString()
         modelsDataPolicySuperapi.streetNumber = intent.getStringExtra("streetNumber").toString()
@@ -88,7 +89,7 @@ class Formulario_vincula_superapi  : AppCompatActivity() {
         btnContinuarSuperApi.setOnClickListener {
             if (txtCorreoSuperApi.text.isNotEmpty()) {
                 val map: HashMap<String, Any> = HashMap()
-                map["email"] = txtCorreoSuperApi.text.toString()
+                map["email"] = txtCorreoSuperApi.text.toString().trim()
                 helperConnectSuperApi.verifyEmail(this, map)
             } else
                 Toast.makeText(this, R.string.agregaUnCorreoElectrónico_superapi, Toast.LENGTH_LONG).show()

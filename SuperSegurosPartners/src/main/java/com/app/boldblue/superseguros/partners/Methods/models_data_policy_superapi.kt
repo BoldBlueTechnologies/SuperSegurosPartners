@@ -31,6 +31,8 @@ class models_data_policy_superapi () {
     var bornDate: String=""
     var idDriver: String=""
 
+    var id_Address: String=""
+
     var street: String=""
     var streetNumber: String=""
     var apartmentNumber: String=""

@@ -115,7 +115,7 @@ class Formulario_cinco_superapi : AppCompatActivity() {
         btnContinuarSuperApi.setOnClickListener {
             if(txtMatriculaSuperApi.text.isNotEmpty()){
                 if(txtVINSuperApi.text.isNotEmpty()){
-                    if(txtVINSuperApi.length()>17){
+                    if(txtVINSuperApi.length()>=17){
                         if(txtNumeroMotorSuperApi.text.isNotEmpty()){
                             val map: HashMap<String, Any> = HashMap()
                             map["licensePlate"]= txtMatriculaSuperApi.text.toString()

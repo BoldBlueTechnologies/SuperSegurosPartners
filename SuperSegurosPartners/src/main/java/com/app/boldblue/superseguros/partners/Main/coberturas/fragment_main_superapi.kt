@@ -13,12 +13,15 @@ class fragment_main_superapi (fragmentActivity: FragmentActivity, private val mT
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> {
-                fragment_amplia_superapi()
+                fragment_plus_superapi()
             }
             1 -> {
-                fragment_limitada_superapi()
+                fragment_amplia_superapi()
             }
             2 -> {
+                fragment_limitada_superapi()
+            }
+            3 -> {
                 fragment_basica_superapi()
             }
             else -> {

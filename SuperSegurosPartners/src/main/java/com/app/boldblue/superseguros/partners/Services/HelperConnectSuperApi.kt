@@ -350,6 +350,8 @@ class HelperConnectSuperApi {
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 println("getGeneralQuotation---------${response.code()}")
+                println("getGeneralQuotation---------${response.code()}")
+
                 try {
                     when (response.code()) {
                         200 -> {
@@ -404,9 +406,9 @@ class HelperConnectSuperApi {
                                 tabFragment[vr] = fragment
                             }
                             activity.mViewPager.adapter= fragment_coverage_superapi(activity, listTitles,tabFragment)
-                            TabLayoutMediator(activity.mTablayout, activity.mViewPager) { tab, position ->
-                                tab.text = listTitles[position]
-                            }.attach()
+                            TabLayoutMediator(activity.mTablayout, activity.mViewPager) { tab, position -> tab.text = listTitles[position] }.attach()
+
+
                         }
                         500 -> {
 
@@ -584,7 +586,7 @@ class HelperConnectSuperApi {
                 try {
                     when (response.code()) {
                         200 -> {
-                            println("dataDriver---------${response.body().toString()}")
+                            println("dataAddress---------${response.body().toString()}")
                             val jsonBody = JSONObject(response.body().toString())
                             val jsonData = JSONObject(jsonBody.getString("data"))
                             val intent = Intent(activity, Formulario_vincula_superapi::class.java)
@@ -616,9 +618,10 @@ class HelperConnectSuperApi {
                             intent.putExtra("paternalSurname",activity.modelsDataPolicySuperapi.paternalSurname)
                             intent.putExtra("maternalSurname",activity.modelsDataPolicySuperapi.maternalSurname)
                             intent.putExtra("bornDate",activity.modelsDataPolicySuperapi.bornDate)
-                            intent.putExtra("idDriver",jsonData.getString("id_driver"))
-
+                            intent.putExtra("idDriver",activity.modelsDataPolicySuperapi.idDriver)
                             intent.putExtra("street",activity.modelsDataPolicySuperapi.street)
+
+                            intent.putExtra("id_Address",activity.modelsDataPolicySuperapi.id_Address)
                             intent.putExtra("streetNumber",activity.modelsDataPolicySuperapi.streetNumber)
                             intent.putExtra("apartmentNumber",activity.modelsDataPolicySuperapi.apartmentNumber)
                             intent.putExtra("state",activity.modelsDataPolicySuperapi.state)
@@ -703,7 +706,7 @@ class HelperConnectSuperApi {
                                 intent.putExtra("state",activity.modelsDataPolicySuperapi.state)
                                 intent.putExtra("city",activity.modelsDataPolicySuperapi.city)
                                 intent.putExtra("neighborhood",activity.modelsDataPolicySuperapi.neighborhood)
-                                intent.putExtra("email",activity.modelsDataPolicySuperapi.email)
+                                intent.putExtra("email",map["email"].toString())
                                 activity.startActivity(intent)
                             }else{
                                 val intent = Intent(activity, Formulario_registro_superapi::class.java)
@@ -743,7 +746,7 @@ class HelperConnectSuperApi {
                                 intent.putExtra("state",activity.modelsDataPolicySuperapi.state)
                                 intent.putExtra("city",activity.modelsDataPolicySuperapi.city)
                                 intent.putExtra("neighborhood",activity.modelsDataPolicySuperapi.neighborhood)
-                                intent.putExtra("email",activity.modelsDataPolicySuperapi.email)
+                                intent.putExtra("email",map["email"].toString())
                                 activity.startActivity(intent)
                             }
 
@@ -786,8 +789,8 @@ class HelperConnectSuperApi {
                         200 -> {
                             println("associateUser---------${response.body().toString()}")
                             val jsonBody = JSONObject(response.body().toString())
-                            val jsonData = JSONObject(jsonBody.getString("data"))
-                            val intent = Intent(activity, Formulario_vincula_superapi::class.java)
+                            //val jsonData = JSONObject(jsonBody.getString("data"))
+                            val intent = Intent(activity, Formulario_pago_poliza_superapi::class.java)
                             intent.putExtra("vehicleType",activity.modelsDataPolicySuperapi.vehicleType)
                             intent.putExtra("description",activity.modelsDataPolicySuperapi.description)
                             intent.putExtra("model",activity.modelsDataPolicySuperapi.model)
@@ -816,7 +819,8 @@ class HelperConnectSuperApi {
                             intent.putExtra("paternalSurname",activity.modelsDataPolicySuperapi.paternalSurname)
                             intent.putExtra("maternalSurname",activity.modelsDataPolicySuperapi.maternalSurname)
                             intent.putExtra("bornDate",activity.modelsDataPolicySuperapi.bornDate)
-                            intent.putExtra("idDriver",jsonData.getString("id_driver"))
+                            intent.putExtra("idDriver",activity.modelsDataPolicySuperapi.idDriver)
+                            intent.putExtra("id_Address",activity.modelsDataPolicySuperapi.id_Address)
 
                             intent.putExtra("street",activity.modelsDataPolicySuperapi.street)
                             intent.putExtra("streetNumber",activity.modelsDataPolicySuperapi.streetNumber)
@@ -868,7 +872,7 @@ class HelperConnectSuperApi {
                         200 -> {
                             println("registerUser---------${response.body().toString()}")
                             val jsonBody = JSONObject(response.body().toString())
-                            val jsonData = JSONObject(jsonBody.getString("data"))
+                            //val jsonData = JSONObject(jsonBody.getString("data"))
                             val intent = Intent(activity, Formulario_pago_poliza_superapi::class.java)
                             intent.putExtra("vehicleType",activity.modelsDataPolicySuperapi.vehicleType)
                             intent.putExtra("description",activity.modelsDataPolicySuperapi.description)
@@ -898,7 +902,8 @@ class HelperConnectSuperApi {
                             intent.putExtra("paternalSurname",map["paternalSurname"].toString())
                             intent.putExtra("maternalSurname",map["maternalSurname"].toString())
                             intent.putExtra("bornDate",activity.modelsDataPolicySuperapi.bornDate)
-                            intent.putExtra("idDriver",jsonData.getString("id_driver"))
+                            intent.putExtra("idDriver",activity.modelsDataPolicySuperapi.idDriver)
+                            intent.putExtra("id_Address",activity.modelsDataPolicySuperapi.id_Address)
 
                             intent.putExtra("street",activity.modelsDataPolicySuperapi.street)
                             intent.putExtra("streetNumber",activity.modelsDataPolicySuperapi.streetNumber)

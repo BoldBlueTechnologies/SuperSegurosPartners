@@ -213,6 +213,7 @@
                     android:textSize="13sp"
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardContrasena_superapi"
                     android:layout_margin="8dp"
@@ -316,16 +317,16 @@
                             android:layout_height="45dp"
                             android:orientation="horizontal">
                             <EditText
+                                android:enabled="false"
                                 android:gravity="center"
                                 android:background="@color/transparent_superapi"
                                 android:id="@+id/txtLadaSuperApi"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/mas52_superapi"
+                                android:text="@string/mas52_superapi"
                                 android:fontFamily="@font/poppins_semibold"
                                 android:textSize="15sp"
-                                android:textColorHint="@color/grey2_superapi"
-                                android:textColor="@color/grey2_superapi"/>
+                                android:textColor="@color/black1_superapi"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
@@ -360,6 +361,7 @@
                                 android:background="@color/transparent_superapi"
                                 android:id="@+id/txtTelefonoSuperApi"
                                 android:layout_marginStart="12dp"
+                                android:inputType="number"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/telefonosigno_superapi"
