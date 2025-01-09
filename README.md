@@ -1,3 +1,5 @@
+![](https://github.com/BoldBlueTechnologies/SuperSegurosPartners/blob/main/super-sdk-splash.png)
+
 # SuperSegurosPartners
 
 SuperSegurosPartners es un SDK que muestra una interfaz para que tus usuarios puedan cotizar y contratar un Seguro de Auto de manera sencilla y rápida.
