@@ -7,19 +7,18 @@ Este repositorio contiene todo lo necesario para integrar el SDK en tu proyecto 
 
 Paso 1. Agrega el repositorio JitPack a tu archivo de compilación:
 
-```allprojects {<br>
-  repositories {<br>
-    ...<br>
-    maven { url 'https://jitpack.io' }<br>
-  }<br>
+```allprojects {
+  repositories {
+    maven { url 'https://jitpack.io' }
+  }
 }
 ```
 Paso 2. Agrega la dependencia
-
-dependencies {<br>
-  implementation 'com.github.BoldBlueTechnologies:SuperSegurosPartners:${version}'<br>
+```
+dependencies {
+  implementation 'com.github.BoldBlueTechnologies:SuperSegurosPartners:${version}'
 }
-
+```
 # 2. Uso
 
 El SDK ofrece un botón personalizado (SuperButton_superapi) que mostrará la interfaz de cotización y contratación. 
