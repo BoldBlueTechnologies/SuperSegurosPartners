@@ -7,13 +7,6 @@ Este repositorio contiene todo lo necesario para integrar el SDK en tu proyecto 
 
 Paso 1. Agrega el repositorio JitPack a tu archivo de compilación:
 
-android {
-    compileOptions {
-        sourceCompatibility '1.8'
-        targetCompatibility '1.8'
-    }
-}
-
 allprojects {
   repositories {
     ...
@@ -28,6 +21,7 @@ dependencies {
 }
 
 # 2. Uso
+
 El SDK ofrece un botón personalizado (SuperButton_superapi) que mostrará la interfaz de cotización y contratación. 
 
 Integración por XML
@@ -35,9 +29,8 @@ Integración por XML
 Ejemplo:
 
 <com.app.boldblue.superseguros.partners.SuperButton_superapi
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
+android:layout_width="match_parent"
+android:layout_height="wrap_content"/>
 
 # 3. Requerimiento
    
