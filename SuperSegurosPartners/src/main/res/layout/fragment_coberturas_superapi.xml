@@ -6,7 +6,7 @@
     android:paddingTop="8dp"
     android:layout_height="wrap_content">
     <LinearLayout
-        android:id="@+id/itemCoberturas"
+        android:id="@+id/itemCoberturas_superapi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -29,7 +29,7 @@
             android:textColor="@color/blue1_superapi"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/itemDanosParcial"
+        android:id="@+id/itemDanosParcial_superapi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -52,7 +52,7 @@
             android:textColor="@color/blue1_superapi"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/itemDanosTotal"
+        android:id="@+id/itemDanosTotal_superapi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -75,7 +75,7 @@
             android:textColor="@color/blue1_superapi"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/itemRobo"
+        android:id="@+id/itemRobo_superapi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

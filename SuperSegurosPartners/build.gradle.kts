@@ -1,11 +1,19 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-parcelize")
 }
+
+val ApiPropertiesFile = rootProject.file("apikey.properties")
+val apiProperties = Properties()
+apiProperties.load(FileInputStream(ApiPropertiesFile))
 
 android {
     namespace = "com.app.boldblue.superseguros.partners"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
@@ -15,11 +23,21 @@ android {
 
     buildTypes {
         release {
+            buildConfigField("String", "apipartnersSuper", "\"${apiProperties["apipartnersSuper"]}\"")
+            buildConfigField("String", "photosSuper", "\"${apiProperties["photosSuper"]}\"")
+            buildConfigField("String", "tokenSuper", "\"${apiProperties["tokenSuper"]}\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        debug {
+            buildConfigField("String", "apipartnersSuper", "\"${apiProperties["apipartnersSuperDev"]}\"")
+            buildConfigField("String", "photosSuper", "\"${apiProperties["photosSuperDev"]}\"")
+            buildConfigField("String", "tokenSuper", "\"${apiProperties["tokenSuperDev"]}\"")
+
+            isMinifyEnabled = false
         }
     }
     compileOptions {
@@ -29,9 +47,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        buildConfig = true
+    }
 }
 
 dependencies {
+    implementation (libs.picasso)
     implementation (libs.converter.gson)
     implementation (libs.retrofit)
     implementation (libs.converter.scalars)

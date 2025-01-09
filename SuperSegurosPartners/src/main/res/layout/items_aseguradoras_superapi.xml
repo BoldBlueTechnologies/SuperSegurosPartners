@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/cardAseguradoras_superapi"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="5dp"
+    android:backgroundTint="@color/white1_superapi"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="8dp">
+    <LinearLayout
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_weight="0.65"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_margin="8dp"
+                android:id="@+id/imgAseguradoras_superapi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="0.35"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/desde_superapi"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black1_superapi"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/txtPrecio_superapi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/vacio_superapi"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/purple1_superapi"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

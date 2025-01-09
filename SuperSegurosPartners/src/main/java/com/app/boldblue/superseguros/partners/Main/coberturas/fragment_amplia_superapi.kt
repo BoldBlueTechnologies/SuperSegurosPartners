@@ -15,7 +15,7 @@ class fragment_amplia_superapi : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_coberturas_superapi, container, false)
-        val itemCobertura : LinearLayout = view.findViewById(R.id.itemCoberturas)
+        val itemCobertura : LinearLayout = view.findViewById(R.id.itemCoberturas_superapi)
         itemCobertura.visibility= View.GONE
         return view
     }

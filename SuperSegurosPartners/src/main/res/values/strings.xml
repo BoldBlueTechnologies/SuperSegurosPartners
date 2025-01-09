@@ -3,6 +3,7 @@
     <string name="cotizaTu_superapi">Cotiza tu</string>
     <string name="seguro_superapi">seguro</string>
     <string name="aqui_superapi">aquí</string>
+    <string name="cargando_superapi">Cargando</string>
     <string name="laProteccionQue_superapi">La protección que tu auto y tú, se merecen.</string>
     <string name="conCoberturasQue_superapi">Con coberturas que se adaptan a ti, disfruta cada viaje con la tranquilidad de estar siempre protegido.</string>
     <string name="tuSeguroDesde_superapi">Tu seguro desde $184 mxn al mes</string>
@@ -13,7 +14,119 @@
     <string name="coberturas_superapi">Coberturas</string>.
     <string name="conoceADetalleLasCoberturas_superapi">Conoce a detalle las coberturas</string>
     <string name="auto_superapi">Auto</string>
-    <string name="vacio_superapi"></string>
+    <string name="vacio_superapi"> </string>
+    <string name="preciovacio_superapi">$0.00 MXN</string>
+    <string name="siLoQuiero_superapi">Sí, lo quiero</string>
+    <string name="estasAPocosPasosDeObtenerTuSeguro_apisuper">Estás a pocos pasos de obtener tu seguro</string>
+    <string name="faltaPoco_superapi">Falta poco</string>
+    <string name="ahoraQueSigue_superapi">¿Ahora qué sigue?</string>
+    <string name="llenaLosDatosDelConductorAutoyCobertura_superapi">Llena los datos del conductor, auto y cobertura.</string>
+    <string name="pagayAsiDeFacilTienesTuSeguroDeAuto_superapi">Paga y así de fácil tienes tu seguro de auto</string>
+    <string name="leeAquiLosTerminosYCondicionesDelSeguro_superapi">Lee aquí los Términos y condiciones del seguro</string>
+    <string name="continuar_superapi">Continuar</string>
+    <string name="paraContratarTuSeguroNoPedimosDocumentosDePropiedad_superapi">Para contratar tu seguro, no pedimos documentos de propiedad, ni contrato de alquiler</string>
+    <string name="datosSobreElVehiculo_superapi">Datos sobre el vehículo</string>
+    <string name="matricula_superapi">Matrícula</string>
+    <string name="ingresaTuPlaca_superapi">Ingresa tu placa</string>
+    <string name="NDSDVehiculo_superapi">No. de serie (VIN) del vehículo</string>
+    <string name="NDSCaracteres_superiapi">No. de serie (17 caracteres)</string>
+    <string name="NumeroDeMotor_superapi">No. de motor</string>
+    <string name="IngresaElNumeroDeTuMotor_superapi">Ingresa el número de tu motor</string>
+    <string name="TipoDeUsoDelVehiculo_superapi">Tipo de uso del vehículo</string>
+    <string name="usoDelVehiculo_superapi">Uso del vehículo</string>
+    <string name="conductor_superapi">Conductor</string>
+    <string name="necesitamosLaInformacionDelConductor_superapi">Necesitamos la información del conductor</string>
+    <string name="nombres_superapi">Nombre(s)</string>
+    <string name="agregaUnNombre_superapi">Agrega un nombre</string>
+    <string name="agregaUnApellidoPaterno_superapi">Agrega un apellido paterno</string>
+    <string name="agregaUnApellidoMaterno_superapi">Agrega un apellido materno</string>
+    <string name="agregaUnaFechaDeNacimiento_superapi">Agrega una fecha de nacimiento</string>
+
+    <string name="agregaUnaCalle_superapi">Agrega una calle</string>
+    <string name="agregaUnNumeroExterior_superapi">Agrega un número exterior</string>
+    <string name="agregaUnaColonia_superapi">Agrega una colonia</string>
+    <string name="agregaUnEstado_superapi">Agrega un estado</string>
+    <string name="agregaUnMunicipio_superapi">Agrega un municipio/delegación</string>
+    <string name="agregaUnCodigoPostal_superapi">Agrega un Código postal</string>
+    <string name="agregaUnCorreoElectrónico_superapi">Agrega un correo electrónico</string>
+
+    <string name="apellidoPaterno_superapi">Apellido paterno</string>
+    <string name="apellidoPaternoSigno_superapi">Apellido paterno*</string>
+    <string name="apellidoMaterno_superapi">Apellido materno</string>
+    <string name="apellidoMaternoSigno_superapi">Apellido materno*</string>
+    <string name="fechaDeNacimiento_superapi">Fecha de nacimiento</string>
+    <string name="correoElectronico_superapi">Correo electrónico</string>
+    <string name="correoElectronicosigno_superapi">Correo electrónico*</string>
+    <string name="contrasena_superapi">Contraseña</string>
+    <string name="contrasenasigno_superapi">Contraseña*</string>
+    <string name="confirmarContrasena_superapi">Confirmar contraseña</string>
+    <string name="confirmarContrasenasigno_superapi">Confirmar contraseña*</string>
+    <string name="telefonosigno_superapi">Teléfono*</string>
+    <string name="mas52_superapi">+52</string>
+    <string name="heLedioYAceptoLos_superapi">He leído y acepto los</string>
+    <string name="avisoDePrivacidad_superapi">Aviso de privacidad</string>
+    <string name="crearCuenta_superapi">Crear cuenta</string>
+    <string name="dma_superapi">DD/MM/AAAA</string>
+
+    <string name="encontramosUnaCuenta_superapi">Encontramos una cuenta</string>
+    <string name="ingresaTuContrasena_superapi">Ingresa tu Contraseña</string>
+    <string name="vincular_superapi">Vincular</string>
+
+    <string name="direccion_superapi">Dirección</string>
+    <string name="direccinDelAsegurado_superapi">Dirección del asegurado</string>
+    <string name="calle_superapi">Calle</string>
+    <string name="ingresaCalle_superapi">Ingresa calle</string>
+    <string name="numeroExterior_superapi">Número exterior</string>
+    <string name="numeroInterior_superapi">Número interior</string>
+    <string name="ingresaNumeroExterior_superapi">Ingresa exterior</string>
+    <string name="ingresaNumeroInterior_superapi">Ingresa interior</string>
+    <string name="colonia_superapi">Colonia</string>
+    <string name="ingresaColonia_superapi">Ingresa colonia</string>
+    <string name="estado_superapi">Estado</string>
+    <string name="ingresaEstado_superapi">Ingresa estado</string>
+    <string name="nunicipio_superapi">Municipio/Delegación</string>
+    <string name="ingresaMunicipio_superapi">Ingresa Municipio/Delegación</string>
+    <string name="ingresaCodigoPostal_superapi">Código postal</string>
+    <string name="creaUnaCuenta_superapi">Crea una cuenta</string>
+    <string name="asiVincularemosTuPoliza_superapi">Así vincularemos tu póliza a tu cuenta</string>
+    <string name="nombressigno_superapi">Nombre (s)*</string>
+    <string name="telefono_superapi">Teléfono</string>
+    <string name="agregaUnaContrasena_superapi">Agrega una contraseña</string>
+    <string name="laContrasenaDebeTenerAlMenos8Caracteres_superapi">La contraseña debe tener al menos 8 caracteres</string>
+    <string name="lasContrasenasNoCoinciden_superapi">Las contraseñas no coinciden</string>
+    <string name="agregaUnTelefono_superapi">Agrega un teléfono</string>
+    <string name="aceptaElAvisoDePrivacidad_superapi">Acepta el aviso de privacidad</string>
+
+    <string name="vinculaTuPoliza_superapi">Vincula tu póliza</string>
+    <string name="accedeConTuCorrreoOSiTienes_superapi">Accede con tu correo o si tienes una cuenta en Midoconline ingrésala para vincularte.</string>
+
+    <string name="pagoDeTuPoliza_superapi">Pago de tu póliza</string>
+    <string name="estasAUnPasoDeObtenerTuSeguroPor_superapi">Estás a un paso de obtener tu seguro por:</string>
+    <string name="realizaElPagoDeTuSeguroAseguraTuAuto_superapi">Realiza el pago de tu seguro. Asegura tu auto hoy y garantiza tu tranquilidad para mañana.</string>
+    <string name="resumenDeCompra_superapi">Resumen de compra</string>
+    <string name="tuContrasenaDebeContenerComoMinimo_superapi">Tu contraseña debe contener como mínimo:</string>
+    <string name="pago_superapi">Pago:</string>
+    <string name="auto_superapi2">Auto:</string>
+    <string name="aseguradora_superapi">Aseguradora:</string>
+    <string name="agregaTuTarjeta_superapi">Agrega tu tarjeta</string>
+    <string name="nombreEnLaTarjeta_superapi">Nombre en la tarjeta</string>
+    <string name="nombreComoApareceEnLaTarjeta_superapi">Nombre como aparece en la tarjeta</string>
+    <string name="numeroDeTarjeta_superapi">Número de tarjeta</string>
+    <string name="ceros_superapi">0000 0000 0000 0000</string>
+    <string name="expiracion_superapi">Expiración</string>
+    <string name="MMAA_superapi">MM/AA</string>
+    <string name="codigoDeSeguridad_superapi">Código de seguridad</string>
+    <string name="cvv_superapi">CVV</string>
+    <string name="consultaElReciboDePagoQueEnviamosATuCorreo_superapi">Consulta el recibo de pago que enviamos a tu correo electrónico para ver los métodos de pago disponibles.</string>
+    <string name="pagoEncriptadoYSeguro_superapi">Pago encriptado y seguro.</string>
+    <string name="requieroFactura_superapi">Requiero factura</string>
+    <string name="alPagarAceptasLos_superapi">Al pagar aceptas los </string>
+    <string name="terminosYCondiciones_superapi">Términos y condiciones</string>
+
+    <string name="loSentimos_superapi">😞 ¡Lo sentimos! 😞</string>
+    <string name="noContamosConUnaCobertura_superapi">No contamos con una cobertura para tu auto. Registraremos tu solicitud y te avisaremos cuando tengamos una cobertura disponible.</string>
+    <string name="cotizarUnNuevoAuto_superapi">Cotizar un nuevo auto</string>
+
     <string name="coberturasPersonalizadas_superapi">Coberturas personalizadas</string>
     <string name="danosMaterialesPorPerdidaParcial_superapi">Daños materiales por pérdida parcial</string>
     <string name="danosMaterialesPorPerdidaTotal_superapi">Daños Materiales Pérdida Total</string>
@@ -26,7 +139,13 @@
     <string name="asistenciaEnEU_superapi">Asistencia en Estados Unidos</string>
     <string name="cotizaTuSeguroDeAuto_superapi">Cotiza tu seguro de auto en menos de 1 minuto</string>
     <string name="seleccionaElAnoMarcaModelo_superapi">Selecciona el año, marca y modelo de tu auto</string>
+    <string name="seleccionaUnaAseguradora_superapi">Selecciona una aseguradora</string>
+    <string name="tipoDeAuto_superapi">Tipo de auto</string>
+    <string name="autoOPickup_superapi">Auto o Pickup</string>
+    <string name="seleccionaUnTipoDeAuto_superapi">Selecciona un tipo de auto</string>
     <string name="marca_superapi">Marca</string>
+    <string name="obteniendoCoberturas_superapi">Obteniendo coberturas</string>
+    <string name="lada_superapi">Lada</string>
     <string name="seleccionaLaMarcaDeTuAuto_superapi">Selecciona la Marca de tu auto</string>
     <string name="seleccionaElAnoDeTuAuto_superapi">Selecciona el Año de tu auto</string>
     <string name="seleccionaElModeloDeTuAuto_superapi">Selecciona el Modelo de tu auto</string>
@@ -54,20 +173,35 @@
     <string name="semestralmente_superapi">Semestralmente</string>
     <string name="mensualmente_superapi">Mensualmente</string>
     <string name="unpago_superapi">1 pago</string>
+
+
+    <string name="ingresaTuNoDeSerie_superapi">Ingresa tu No. de serie</string>
+    <string name="ingresaElNumeroDeTuMotor_superapi">Ingresa el número de tu motor</string>
+    <string name="elNoDeSerieDebeTener17Caracteres_superapi">El No. de serie debe tener al menos 17 caracteres</string>
+
+    <string name="primerpago_superapi">Primer pago</string>
+    <string name="pagosubsecuente_superapi">Pago subsecuente</string>
+    <string name="tresPagosSubsecuentes_superapi">3 Pagos subsecuentes</string>
+    <string name="oncePagosSubsecuentes_superapi">11 Pagos subsecuentes</string>
+
+
     <string name="cuatropagos_superapi">4 pagos</string>
     <string name="dospagos_superapi">2 pagos</string>
     <string name="docepagos_superapi">12 pagos</string>
     <string name="alano_superapi">al año</string>
     <string name="masbarato_superapi">% más barato</string>
-    <string name="seguroRespaldoYOperadoPor_superapi">*Seguro respaldado y operado por:</string>
+    <string name="seguroRespaldoYOperadoPor_superapi">*Seguro respaldado y operado por:\nGeneral de Seguros S.A. de C.V.</string>
     <string name="generalDeSeguros_superapi">General de Seguros S.A. de C.V.</string>
     <string name="editaTusCoberturas_superapi">Edita tus coberturas</string>
     <string name="cubreHasta_superapi">Cubre hasta</string>
     <string name="danosAlBehiculoPorTerceroSinSeguro_superapi">Daños al Vehículo por Tercero sin Seguro</string>
     <string name="muerteAccidental_superapi">Muerte Accidental</string>
-
+    <string-array name="tiposAuto_superapi">
+        <item>Auto</item>
+        <item>Pickup</item>
+    </string-array>
     <string-array name="tiposCoberturas_superapi">
-        <item>Plus</item>
+        <item>Prestigio</item>
         <item>Amplia</item>
         <item>Limitada</item>
         <item>Básica</item>

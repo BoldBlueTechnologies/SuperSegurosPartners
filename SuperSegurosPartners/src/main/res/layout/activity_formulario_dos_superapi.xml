@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/blue5_superapi"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_superapi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue5_superapi"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        android:elevation="5dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_color_color_superapi"
+            android:layout_marginBottom="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tuPlanPersonalizado_superapi"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="15sp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/purple1_superapi"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/seleccionaUnaAseguradora_superapi"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black1_superapi"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerAseguradoras_superapi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <androidx.cardview.widget.CardView
+            android:visibility="gone"
+            android:id="@+id/cardClean_superapi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            android:layout_margin="6dp"
+            app:cardCornerRadius="8dp">
+            <LinearLayout
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/black1_superapi"
+                    android:text="@string/loSentimos_superapi"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:textColor="@color/blue1_superapi"
+                    android:text="@string/noContamosConUnaCobertura_superapi"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardNuevoAuto_superapi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="5dp"
+                    android:layout_margin="6dp"
+                    android:backgroundTint="@color/purple1_superapi"
+                    app:cardCornerRadius="8dp">
+                    <LinearLayout
+                        android:padding="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="15sp"
+                            android:gravity="center"
+                            android:textColor="@color/white1_superapi"
+                            android:text="@string/cotizarUnNuevoAuto_superapi"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</LinearLayout>

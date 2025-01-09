@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ThemeSuperApiPrincipal" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/blue3_superapi</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="ThemeSuperApiFormulario" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/purple1_superapi</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="ThemeErrorEditText" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textColor">@color/red1_superapi</item>
+        <item name="android:background">@color/white1_superapi</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:splitMotionEvents">false</item>
+    </style>
+</resources>

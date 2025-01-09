@@ -15,11 +15,11 @@ class fragment_limitada_superapi : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_coberturas_superapi, container, false)
-        val itemCobertura : LinearLayout = view.findViewById(R.id.itemCoberturas)
+        val itemCobertura : LinearLayout = view.findViewById(R.id.itemCoberturas_superapi)
         itemCobertura.visibility= View.GONE
-        val itemDanosParcial : LinearLayout = view.findViewById(R.id.itemDanosParcial)
+        val itemDanosParcial : LinearLayout = view.findViewById(R.id.itemDanosParcial_superapi)
         itemDanosParcial.visibility= View.GONE
-        val itemDanosTotal : LinearLayout = view.findViewById(R.id.itemDanosTotal)
+        val itemDanosTotal : LinearLayout = view.findViewById(R.id.itemDanosTotal_superapi)
         itemDanosTotal.visibility= View.GONE
         return view
     }
