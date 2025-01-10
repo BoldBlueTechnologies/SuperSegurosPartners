@@ -23,7 +23,6 @@ class Formulario_pago_poliza_superapi : AppCompatActivity() {
         setSupportActionBar(myToolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         myToolbar.setNavigationOnClickListener { finish()}
-        val helperConnectSuperApi = HelperConnectSuperApi()
         btnContinuarSuperApi = findViewById(R.id.btnContinuarSuperApi)
         modelsDataPolicySuperapi = models_data_policy_superapi()
         modelsDataPolicySuperapi.vehicleType = intent.getStringExtra("vehicleType").toString()

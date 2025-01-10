@@ -588,7 +588,7 @@ class HelperConnectSuperApi {
                         200 -> {
                             println("dataAddress---------${response.body().toString()}")
                             val jsonBody = JSONObject(response.body().toString())
-                            val jsonData = JSONObject(jsonBody.getString("data"))
+                            //val jsonData = JSONObject(jsonBody.getString("data"))
                             val intent = Intent(activity, Formulario_vincula_superapi::class.java)
                             intent.putExtra("vehicleType",activity.modelsDataPolicySuperapi.vehicleType)
                             intent.putExtra("description",activity.modelsDataPolicySuperapi.description)
@@ -788,7 +788,7 @@ class HelperConnectSuperApi {
                     when (response.code()) {
                         200 -> {
                             println("associateUser---------${response.body().toString()}")
-                            val jsonBody = JSONObject(response.body().toString())
+                            //val jsonBody = JSONObject(response.body().toString())
                             //val jsonData = JSONObject(jsonBody.getString("data"))
                             val intent = Intent(activity, Formulario_pago_poliza_superapi::class.java)
                             intent.putExtra("vehicleType",activity.modelsDataPolicySuperapi.vehicleType)
@@ -871,7 +871,7 @@ class HelperConnectSuperApi {
                     when (response.code()) {
                         200 -> {
                             println("registerUser---------${response.body().toString()}")
-                            val jsonBody = JSONObject(response.body().toString())
+                            //val jsonBody = JSONObject(response.body().toString())
                             //val jsonData = JSONObject(jsonBody.getString("data"))
                             val intent = Intent(activity, Formulario_pago_poliza_superapi::class.java)
                             intent.putExtra("vehicleType",activity.modelsDataPolicySuperapi.vehicleType)

@@ -3,22 +3,21 @@ import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)    
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.maven.publish)
     id("kotlin-parcelize")
 }
 
-afterEvaluate {
-    publishing{
-        publications {
-            register<MavenPublication>("release"){
-                groupId = "com.github.com.BoldBlueTechnologies"
-                artifactId = "SuperSegurosPartners"
-                version = "0.1.4"
-                from(components["release"])
-            }
+publishing{
+    publications {
+        register<MavenPublication>("jitpack"){
+            groupId = "com.github.com.BoldBlueTechnologies"
+            artifactId = "SuperSegurosPartners"
+            version = "0.1.7"
+            artifact("$buildDir/outputs/aar/SuperSegurosPartners-release.aar")
         }
     }
+}
 
 val ApiPropertiesFile = rootProject.file("apikey.properties")
 val apiProperties = Properties()
@@ -39,7 +38,7 @@ android {
             buildConfigField("String", "apipartnersSuper", "\"${apiProperties["apipartnersSuper"]}\"")
             buildConfigField("String", "photosSuper", "\"${apiProperties["photosSuper"]}\"")
             buildConfigField("String", "tokenSuper", "\"${apiProperties["tokenSuper"]}\"")
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -64,19 +63,6 @@ android {
         buildConfig = true
     }
 }
-publishing{
-        publications {
-            create<MavenPublication>("release"){
-                groupId = "com.github.com.BoldBlueTechnologies"
-                artifactId = "SuperSegurosPartners"
-                version = "0.1.1"
-                afterEvaluate {
-                    from(components["release"])
-                }
-            }
-        }
-}
-
 
 dependencies {
     implementation (libs.picasso)
