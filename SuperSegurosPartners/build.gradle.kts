@@ -4,8 +4,21 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.maven.publish)
     id("kotlin-parcelize")
-    id("maven-publish")
+}
+
+afterEvaluate {
+    publishing{
+        publications {
+            register<MavenPublication>("release"){
+                groupId = "com.github.com.BoldBlueTechnologies"
+                artifactId = "SuperSegurosPartners"
+                version = "0.1.4"
+                from(components["release"])
+            }
+        }
+    }
 }
 
 val ApiPropertiesFile = rootProject.file("apikey.properties")
