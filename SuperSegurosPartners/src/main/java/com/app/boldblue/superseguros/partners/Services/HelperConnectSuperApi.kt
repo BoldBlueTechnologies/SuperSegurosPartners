@@ -587,7 +587,7 @@ class HelperConnectSuperApi {
                     when (response.code()) {
                         200 -> {
                             println("dataAddress---------${response.body().toString()}")
-                            val jsonBody = JSONObject(response.body().toString())
+                            //val jsonBody = JSONObject(response.body().toString())
                             //val jsonData = JSONObject(jsonBody.getString("data"))
                             val intent = Intent(activity, Formulario_vincula_superapi::class.java)
                             intent.putExtra("vehicleType",activity.modelsDataPolicySuperapi.vehicleType)

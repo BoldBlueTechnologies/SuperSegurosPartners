@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Súper Seguros SDK"
+rootProject.name = "Super Seguros SDK"
 include(":app")
 include(":sdkSuperSeguros")
 include(":SuperSegurosPartners")

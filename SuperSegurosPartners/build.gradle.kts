@@ -1,3 +1,4 @@
+import org.gradle.api.JavaVersion.VERSION_11
 import java.io.FileInputStream
 import java.util.Properties
 
@@ -11,10 +12,12 @@ plugins {
 publishing{
     publications {
         register<MavenPublication>("jitpack"){
-            groupId = "com.github.com.BoldBlueTechnologies"
+            groupId = "com.github.BoldBlueTechnologies"
             artifactId = "SuperSegurosPartners"
-            version = "0.1.7"
-            artifact("$buildDir/outputs/aar/SuperSegurosPartners-release.aar")
+            version = "0.1.0"
+            artifact(tasks.register("myTask") {
+                outputs.file(layout.buildDirectory.file("outputs/aar/SuperSegurosPartners-release.aar"))
+            })
         }
     }
 }
@@ -53,11 +56,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = VERSION_11
+        targetCompatibility = VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures{
         buildConfig = true
