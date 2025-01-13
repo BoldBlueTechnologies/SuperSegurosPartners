@@ -14,7 +14,7 @@ publishing{
         register<MavenPublication>("jitpack"){
             groupId = "com.github.BoldBlueTechnologies"
             artifactId = "SuperSegurosPartners"
-            version = "0.1.0"
+            version = "0.1.10"
             artifact(tasks.register("myTask") {
                 outputs.file(layout.buildDirectory.file("outputs/aar/SuperSegurosPartners-release.aar"))
             })
