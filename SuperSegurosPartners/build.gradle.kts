@@ -14,7 +14,7 @@ publishing{
         register<MavenPublication>("jitpack"){
             groupId = "com.github.BoldBlueTechnologies"
             artifactId = "SuperSegurosPartners"
-            version = "0.1.11"
+            version = "0.1.12"
             artifact(layout.buildDirectory.file("outputs/aar/SuperSegurosPartners-release.aar"))
         }
     }
@@ -23,9 +23,9 @@ tasks.named("publishJitpackPublicationToMavenLocal").configure {
     dependsOn("bundleReleaseAar")
 }
 
-val ApiPropertiesFile = rootProject.file("apikey.properties")
+val apiPropertiesFile = rootProject.file("apikey.properties")
 val apiProperties = Properties()
-apiProperties.load(FileInputStream(ApiPropertiesFile))
+apiProperties.load(FileInputStream(apiPropertiesFile))
 
 android {
     namespace = "com.app.boldblue.superseguros.partners"

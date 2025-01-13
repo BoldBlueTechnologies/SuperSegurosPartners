@@ -1,3 +1,5 @@
+jdk:
+  - openjdk8
 build:
   modules:
     - SuperSegurosPartners
