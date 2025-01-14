@@ -10,7 +10,7 @@ plugins {
 
 val ApiPropertiesFile = rootProject.file("apikey.properties")
 val apiProperties = Properties()
-apiProperties.load(FileInputStream(apiPropertiesFile))
+apiProperties.load(FileInputStream(ApiPropertiesFile))
 
 android {
     namespace = "com.app.boldblue.superseguros.partners"
