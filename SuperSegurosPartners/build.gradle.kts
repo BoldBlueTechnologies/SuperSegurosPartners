@@ -1,25 +1,11 @@
-import org.gradle.api.JavaVersion.VERSION_11
+import org.gradle.api.JavaVersion.VERSION_1_8
 import java.io.FileInputStream
 import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.maven.publish)
     id("kotlin-parcelize")
-}
-
-publishing{
-    publications {
-        register<MavenPublication>("jitpack"){
-            groupId = "com.github.BoldBlueTechnologies"
-            artifactId = "SuperSegurosPartners"
-            version = "0.1.0"
-            artifact(tasks.register("myTask") {
-                outputs.file(layout.buildDirectory.file("outputs/aar/SuperSegurosPartners-release.aar"))
-            })
-        }
-    }
 }
 
 val ApiPropertiesFile = rootProject.file("apikey.properties")
@@ -56,11 +42,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = VERSION_11
-        targetCompatibility = VERSION_11
+        sourceCompatibility = VERSION_1_8
+        targetCompatibility = VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
     buildFeatures{
         buildConfig = true
