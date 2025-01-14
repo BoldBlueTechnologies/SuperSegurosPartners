@@ -1,5 +1,7 @@
-jdk:
-  - openjdk8
-build:
-  modules:
-    - SuperSegurosPartners
+install:
+    - FILE="-Dfile=SuperSegurosPartners-release.aar"
+    - mvn install:install-file $FILE -DgroupId=com.app.boldblue.superseguros.partners -DartifactId=SuperSegurosPartners -Dversion=0.2.0 -Dpackaging=aar -DgeneratePom=true
+
+  build:
+    script:
+      - ./gradlew build
