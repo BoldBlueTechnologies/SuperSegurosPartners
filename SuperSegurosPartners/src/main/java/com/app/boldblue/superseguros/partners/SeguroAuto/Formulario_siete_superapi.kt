@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
@@ -21,14 +23,14 @@ class Formulario_siete_superapi : AppCompatActivity() {
     private lateinit var txtNumeroExteriorSuperApi : TextView
     private lateinit var txtNumeroInteriorSuperApi : TextView
     private lateinit var txtColoniaSuperApi : TextView
-    private lateinit var txtEstadoSuperApi : TextView
-    private lateinit var txtMunicipioSuperApi : TextView
+    lateinit var txtEstadoSuperApi : TextView
+    lateinit var txtMunicipioSuperApi : TextView
     private lateinit var txtCodigoPostalSuperApi : TextView
     private lateinit var btnContinuarSuperApi : CardView
     private lateinit var cardCalle_superapi : CardView
     private lateinit var cardNumExterior_superapi : CardView
     private lateinit var cardNumInterior_superapi : CardView
-    private lateinit var cardColonia_superapi : CardView
+    private lateinit var cardColoniaSuperApi : CardView
     private lateinit var cardEstado_superapi : CardView
     private lateinit var cardMunicipio_superapi : CardView
     private lateinit var cardCodigoPostal_superapi : CardView
@@ -57,6 +59,9 @@ class Formulario_siete_superapi : AppCompatActivity() {
         modelsDataPolicySuperapi.firstReceipt = intent.getStringExtra("firstReceipt").toString()
         modelsDataPolicySuperapi.subsequents = intent.getStringExtra("subsequents").toString()
         modelsDataPolicySuperapi.ZIPCode = intent.getStringExtra("ZIPCode").toString()
+        modelsDataPolicySuperapi.carQuoteId = intent.getStringExtra("carQuoteId").toString()
+        modelsDataPolicySuperapi.coverageId = intent.getStringExtra("coverageId").toString()
+        modelsDataPolicySuperapi.coverage = intent.getStringExtra("coverage").toString()
 
         modelsDataPolicySuperapi.licensePlate = intent.getStringExtra("licensePlate").toString()
         modelsDataPolicySuperapi.VIN = intent.getStringExtra("VIN").toString()
@@ -69,6 +74,11 @@ class Formulario_siete_superapi : AppCompatActivity() {
         modelsDataPolicySuperapi.paternalSurname = intent.getStringExtra("paternalSurname").toString()
         modelsDataPolicySuperapi.maternalSurname = intent.getStringExtra("maternalSurname").toString()
         modelsDataPolicySuperapi.bornDate = intent.getStringExtra("bornDate").toString()
+        modelsDataPolicySuperapi.gender = intent.getStringExtra("gender").toString()
+        modelsDataPolicySuperapi.genderID = intent.getStringExtra("genderID").toString()
+        modelsDataPolicySuperapi.rfc = intent.getStringExtra("rfc").toString()
+        modelsDataPolicySuperapi.maritalStatus = intent.getStringExtra("maritalStatus").toString()
+        modelsDataPolicySuperapi.maritalStatusID = intent.getStringExtra("maritalStatusID").toString()
 
         val myToolbar: Toolbar = findViewById(R.id.toolbar_superapi)
         myToolbar.setTitle(R.string.auto_superapi)
@@ -80,7 +90,7 @@ class Formulario_siete_superapi : AppCompatActivity() {
         cardCalle_superapi = findViewById(R.id.cardCalle_superapi)
         cardNumExterior_superapi = findViewById(R.id.cardNumExterior_superapi)
         cardNumInterior_superapi = findViewById(R.id.cardNumInterior_superapi)
-        cardColonia_superapi = findViewById(R.id.cardColonia_superapi)
+        cardColoniaSuperApi = findViewById(R.id.cardColoniaSuperApi)
         cardEstado_superapi = findViewById(R.id.cardEstado_superapi)
         cardMunicipio_superapi = findViewById(R.id.cardMunicipio_superapi)
         cardCodigoPostal_superapi = findViewById(R.id.cardCodigoPostal_superapi)
@@ -141,10 +151,10 @@ class Formulario_siete_superapi : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(s: Editable?) {
                 if(s!!.length<2){
-                    cardColonia_superapi.backgroundTintList = ContextCompat.getColorStateList(baseContext, R.color.grey1_superapi)
+                    cardColoniaSuperApi.backgroundTintList = ContextCompat.getColorStateList(baseContext, R.color.grey1_superapi)
                     txtColoniaSuperApi.setTextColor(ContextCompat.getColor(baseContext, R.color.grey2_superapi))
                 } else{
-                    cardColonia_superapi.backgroundTintList = ContextCompat.getColorStateList(baseContext, R.color.purple1_superapi)
+                    cardColoniaSuperApi.backgroundTintList = ContextCompat.getColorStateList(baseContext, R.color.purple1_superapi)
                     txtColoniaSuperApi.setTextColor(ContextCompat.getColor(baseContext, R.color.black1_superapi))
                 }
             }
@@ -175,6 +185,12 @@ class Formulario_siete_superapi : AppCompatActivity() {
                 }
             }
         })
+        cardColoniaSuperApi.setOnClickListener {
+            val intent = Intent(this, Listados::class.java)
+            intent.putExtra("tipoSuperApi",7)
+            intent.putExtra("postalCode",modelsDataPolicySuperapi.ZIPCode)
+            resultadoLauncher.launch(intent)
+        }
         txtCodigoPostalSuperApi.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -207,6 +223,7 @@ class Formulario_siete_superapi : AppCompatActivity() {
                                     map["city"] = txtMunicipioSuperApi.text.toString()
                                     map["neighborhood"] = txtColoniaSuperApi.text.toString()
                                     map["ZIPCode"] = txtCodigoPostalSuperApi.text.toString()
+                                    map["idAddress"] = modelsDataPolicySuperapi.id_Address
                                     helperConnectSuperApi.dataAddress(this, map)
                                 } else
                                     Toast.makeText(this, R.string.agregaUnCodigoPostal_superapi, Toast.LENGTH_LONG).show()
@@ -221,6 +238,29 @@ class Formulario_siete_superapi : AppCompatActivity() {
             } else
                 Toast.makeText(this, R.string.agregaUnaCalle_superapi, Toast.LENGTH_LONG).show()
         }
+        val map: HashMap<String, Any> = HashMap()
+        map["postalCode"] = modelsDataPolicySuperapi.ZIPCode
+        helperConnectSuperApi.addressValidation(this,map)
+    }
 
+    private val resultadoLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val data = result.data
+            when (data?.getIntExtra("tipoSuperApi",-1)) {
+                7 -> {
+                    if(data.getStringExtra("descripcionSuperApi") !=""){
+                        modelsDataPolicySuperapi.neighborhood = data.getStringExtra("descripcionSuperApi")!!
+                        println("-----${modelsDataPolicySuperapi.neighborhood}")
+                        txtColoniaSuperApi.text = data.getStringExtra("descripcionSuperApi")
+                        txtColoniaSuperApi.setTextColor(ContextCompat.getColor(this, R.color.black1_superapi))
+                        cardColoniaSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, R.color.purple1_superapi)
+                    }
+                }
+                else -> {
+                }
+            }
+        }
     }
 }

@@ -36,6 +36,9 @@ class Formulario_cuatro_superapi: AppCompatActivity() {
         modelsDataPolicySuperapi.autoDescription= intent.getStringExtra("autoDescription").toString()
         modelsDataPolicySuperapi.insurance= intent.getStringExtra("insurance").toString()
         modelsDataPolicySuperapi.ZIPCode= intent.getStringExtra("ZIPCode").toString()
+        modelsDataPolicySuperapi.carQuoteId= intent.getStringExtra("carQuoteId").toString()
+        modelsDataPolicySuperapi.coverageId= intent.getStringExtra("coverageId").toString()
+        modelsDataPolicySuperapi.coverage= intent.getStringExtra("coverage").toString()
 
         modelsDataPolicySuperapi.paymentForm= intent.getStringExtra("paymentForm").toString()
         modelsDataPolicySuperapi.applicableCoverages= intent.getStringExtra("applicableCoverages").toString()
@@ -59,6 +62,9 @@ class Formulario_cuatro_superapi: AppCompatActivity() {
             intent.putExtra("autoDescription",modelsDataPolicySuperapi.autoDescription)
             intent.putExtra("insurance",modelsDataPolicySuperapi.insurance)
             intent.putExtra("ZIPCode",modelsDataPolicySuperapi.ZIPCode)
+            intent.putExtra("coverageId",modelsDataPolicySuperapi.coverageId)
+            intent.putExtra("coverage",modelsDataPolicySuperapi.coverage)
+            intent.putExtra("carQuoteId",modelsDataPolicySuperapi.carQuoteId)
 
             intent.putExtra("paymentForm", modelsDataPolicySuperapi.paymentForm)
             intent.putExtra("applicableCoverages",modelsDataPolicySuperapi.applicableCoverages)

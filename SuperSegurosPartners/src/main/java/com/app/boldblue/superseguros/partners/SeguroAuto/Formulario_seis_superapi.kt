@@ -5,8 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
@@ -26,9 +28,16 @@ class Formulario_seis_superapi: AppCompatActivity() {
     private lateinit var cardNombre_superapi : CardView
     private lateinit var cardApellidoPaterno_superapi : CardView
     private lateinit var cardApellidoMaterno_superapi : CardView
+    private lateinit var cardRfc_superapi : CardView
+
     private lateinit var txtFechaNacimientoSuperApi : TextView
     private lateinit var btnContinuarSuperApi : CardView
     lateinit var modelsDataPolicySuperapi : models_data_policy_superapi
+    private lateinit var cardGeneroSuperApi : CardView
+    private lateinit var txtGeneroSuperApi : TextView
+    private lateinit var cardEstadoCivilSuperApi : CardView
+    private lateinit var txtEstadoCivilSuperApi : TextView
+    private lateinit var txtRfcSuperApi : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +50,14 @@ class Formulario_seis_superapi: AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         myToolbar.setNavigationOnClickListener { finish()}
         val helperConnectSuperApi = HelperConnectSuperApi()
+
+        cardGeneroSuperApi = findViewById(R.id.cardGeneroSuperApi)
+        txtGeneroSuperApi = findViewById(R.id.txtGeneroSuperApi)
+        cardEstadoCivilSuperApi = findViewById(R.id.cardEstadoCivilSuperApi)
+        txtEstadoCivilSuperApi = findViewById(R.id.txtEstadoCivilSuperApi)
+        txtRfcSuperApi = findViewById(R.id.txtRfcSuperApi)
+
+        cardRfc_superapi = findViewById(R.id.cardRfc_superapi)
         cardNombre_superapi = findViewById(R.id.cardNombre_superapi)
         cardApellidoPaterno_superapi = findViewById(R.id.cardApellidoPaterno_superapi)
         cardApellidoMaterno_superapi = findViewById(R.id.cardApellidoMaterno_superapi)
@@ -56,6 +73,9 @@ class Formulario_seis_superapi: AppCompatActivity() {
         modelsDataPolicySuperapi.autoDescription= intent.getStringExtra("autoDescription").toString()
         modelsDataPolicySuperapi.insurance= intent.getStringExtra("insurance").toString()
         modelsDataPolicySuperapi.ZIPCode= intent.getStringExtra("ZIPCode").toString()
+        modelsDataPolicySuperapi.carQuoteId= intent.getStringExtra("carQuoteId").toString()
+        modelsDataPolicySuperapi.coverageId= intent.getStringExtra("coverageId").toString()
+        modelsDataPolicySuperapi.coverage= intent.getStringExtra("coverage").toString()
 
         modelsDataPolicySuperapi.paymentForm= intent.getStringExtra("paymentForm").toString()
         modelsDataPolicySuperapi.applicableCoverages= intent.getStringExtra("applicableCoverages").toString()
@@ -84,7 +104,41 @@ class Formulario_seis_superapi: AppCompatActivity() {
             val datePickerDialog = DatePickerDialog(
                 this,
                 { _, selectedYear, selectedMonth, selectedDay ->
-                    val selectedDate = "$selectedYear-${selectedMonth + 1}-$selectedDay"
+                    var mes: String
+                    var dia: String
+
+                    when (selectedMonth + 1) {
+                        0 -> mes = "00"
+                        1 -> mes = "01"
+                        2 -> mes = "02"
+                        3 -> mes = "03"
+                        4 -> mes = "04"
+                        5 -> mes = "05"
+                        6 -> mes = "06"
+                        7 -> mes = "07"
+                        8 -> mes = "08"
+                        9 -> mes = "09"
+                        else -> {
+                            mes ="${selectedMonth +1}"
+                        }
+                    }
+                    when (selectedDay) {
+                        0 -> dia = "00"
+                        1 -> dia = "01"
+                        2 -> dia = "02"
+                        3 -> dia = "03"
+                        4 -> dia = "04"
+                        5 -> dia = "05"
+                        6 -> dia = "06"
+                        7 -> dia = "07"
+                        8 -> dia = "08"
+                        9 -> dia = "09"
+                        else -> {
+                            dia ="${selectedDay}"
+                        }
+                    }
+                    val selectedDate = "$selectedYear-${mes}-$dia"
+
                     txtFechaNacimientoSuperApi.text = selectedDate
                 },
                 year,
@@ -149,19 +203,57 @@ class Formulario_seis_superapi: AppCompatActivity() {
                 }
             }
         })
+        txtRfcSuperApi.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if(s!!.length<2){
+                    cardRfc_superapi.backgroundTintList = ContextCompat.getColorStateList(baseContext, R.color.grey1_superapi)
+                    txtRfcSuperApi.setTextColor(ContextCompat.getColor(baseContext, R.color.grey2_superapi))
+                } else{
+                    cardRfc_superapi.backgroundTintList = ContextCompat.getColorStateList(baseContext, R.color.purple1_superapi)
+                    txtRfcSuperApi.setTextColor(ContextCompat.getColor(baseContext, R.color.black1_superapi))
+                }
+            }
+        })
+
+        cardGeneroSuperApi.setOnClickListener {
+            val intent = Intent(this, Listados::class.java)
+            intent.putExtra("tipoSuperApi",6)
+            resultadoLauncher.launch(intent)
+        }
+        cardEstadoCivilSuperApi.setOnClickListener {
+            val intent = Intent(this, Listados::class.java)
+            intent.putExtra("tipoSuperApi",5)
+            resultadoLauncher.launch(intent)
+        }
 
         btnContinuarSuperApi.setOnClickListener {
             if(txtNombreSuperApi.text.isNotEmpty()){
                 if(txtApellidoPaternoSuperApi.text.isNotEmpty()){
                     if(txtApellidoMaternoSuperApi.text.isNotEmpty()){
                         if(txtFechaNacimientoSuperApi.text.isNotEmpty()){
-                            val map: HashMap<String, Any> = HashMap()
-                            map["id_car"]= modelsDataPolicySuperapi.idCar
-                            map["name"]= txtNombreSuperApi.text.toString()
-                            map["paternalSurname"]= txtApellidoPaternoSuperApi.text.toString()
-                            map["maternalSurname"]= txtApellidoMaternoSuperApi.text.toString()
-                            map["bornDate"]= txtFechaNacimientoSuperApi.text.toString()
-                            helperConnectSuperApi.dataDriver(this,map)
+                            if(txtEstadoCivilSuperApi.text.isNotEmpty()){
+                                if(txtGeneroSuperApi.text.isNotEmpty()){
+                                    if(txtRfcSuperApi.text.isNotEmpty()){
+                                        val map: HashMap<String, Any> = HashMap()
+                                        map["id_car"]= modelsDataPolicySuperapi.idCar
+                                        map["name"]= txtNombreSuperApi.text.toString()
+                                        map["paternalSurname"]= txtApellidoPaternoSuperApi.text.toString()
+                                        map["maternalSurname"]= txtApellidoMaternoSuperApi.text.toString()
+                                        map["bornDate"]= txtFechaNacimientoSuperApi.text.toString()
+                                        map["gender"]= txtGeneroSuperApi.text.toString()
+                                        map["maritalStatus"]= txtEstadoCivilSuperApi.text.toString()
+                                        map["rfc"]= txtRfcSuperApi.text.toString()
+                                        map["idDriver"]= modelsDataPolicySuperapi.idDriver
+
+                                        helperConnectSuperApi.dataDriver(this,map)
+                                    }else
+                                        Toast.makeText(this,R.string.agregaUnRFC_superapi, Toast.LENGTH_LONG).show()
+                                }else
+                                    Toast.makeText(this,R.string.agregaUnGenero_superapi, Toast.LENGTH_LONG).show()
+                            }else
+                                Toast.makeText(this,R.string.agregaUnEstadoCivil_superapi, Toast.LENGTH_LONG).show()
                         }else
                             Toast.makeText(this,R.string.agregaUnaFechaDeNacimiento_superapi, Toast.LENGTH_LONG).show()
                     }else
@@ -172,4 +264,42 @@ class Formulario_seis_superapi: AppCompatActivity() {
                 Toast.makeText(this,R.string.agregaUnNombre_superapi, Toast.LENGTH_LONG).show()
         }
     }
+
+    private val resultadoLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val data = result.data
+            when (data?.getIntExtra("tipoSuperApi",-1)) {
+                5 -> {
+                    if(data.getStringExtra("descripcionSuperApi") !=""){
+                        txtRfcSuperApi.requestFocus()
+                        modelsDataPolicySuperapi.maritalStatusID =data.getStringExtra("idSuperApi")!!
+                        modelsDataPolicySuperapi.maritalStatus = data.getStringExtra("descripcionSuperApi")!!
+                        println("-----${modelsDataPolicySuperapi.maritalStatusID}")
+                        println("-----${modelsDataPolicySuperapi.maritalStatus}")
+                        txtEstadoCivilSuperApi.text = data.getStringExtra("descripcionSuperApi")
+                        txtEstadoCivilSuperApi.setTextColor(ContextCompat.getColor(this, R.color.black1_superapi))
+                        cardEstadoCivilSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, R.color.purple1_superapi)
+                    }
+                }
+                6 -> {
+                    if(data.getStringExtra("descripcionSuperApi") !=""){
+                        txtRfcSuperApi.requestFocus()
+                        modelsDataPolicySuperapi.genderID =data.getStringExtra("idSuperApi")!!
+                        modelsDataPolicySuperapi.gender = data.getStringExtra("descripcionSuperApi")!!
+                        println("-----${modelsDataPolicySuperapi.genderID}")
+                        println("-----${modelsDataPolicySuperapi.gender}")
+                        txtGeneroSuperApi.text = data.getStringExtra("descripcionSuperApi")
+                        txtGeneroSuperApi.setTextColor(ContextCompat.getColor(this, R.color.black1_superapi))
+                        cardGeneroSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, R.color.purple1_superapi)
+                    }
+                }
+                else -> {
+                    // Acción por defecto
+                }
+            }
+        }
+    }
+
 }

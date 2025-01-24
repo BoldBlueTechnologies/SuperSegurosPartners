@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
@@ -53,6 +54,9 @@ class Formulario_vincula_superapi  : AppCompatActivity() {
         modelsDataPolicySuperapi.firstReceipt = intent.getStringExtra("firstReceipt").toString()
         modelsDataPolicySuperapi.subsequents = intent.getStringExtra("subsequents").toString()
         modelsDataPolicySuperapi.ZIPCode = intent.getStringExtra("ZIPCode").toString()
+        modelsDataPolicySuperapi.coverageId = intent.getStringExtra("coverageId").toString()
+        modelsDataPolicySuperapi.carQuoteId = intent.getStringExtra("carQuoteId").toString()
+        modelsDataPolicySuperapi.coverage = intent.getStringExtra("coverage").toString()
 
         modelsDataPolicySuperapi.licensePlate = intent.getStringExtra("licensePlate").toString()
         modelsDataPolicySuperapi.VIN = intent.getStringExtra("VIN").toString()
@@ -65,6 +69,11 @@ class Formulario_vincula_superapi  : AppCompatActivity() {
         modelsDataPolicySuperapi.paternalSurname = intent.getStringExtra("paternalSurname").toString()
         modelsDataPolicySuperapi.maternalSurname = intent.getStringExtra("maternalSurname").toString()
         modelsDataPolicySuperapi.bornDate = intent.getStringExtra("bornDate").toString()
+        modelsDataPolicySuperapi.gender = intent.getStringExtra("gender").toString()
+        modelsDataPolicySuperapi.maritalStatus = intent.getStringExtra("maritalStatus").toString()
+        modelsDataPolicySuperapi.genderID = intent.getStringExtra("genderID").toString()
+        modelsDataPolicySuperapi.maritalStatusID = intent.getStringExtra("maritalStatusID").toString()
+        modelsDataPolicySuperapi.rfc = intent.getStringExtra("rfc").toString()
 
         modelsDataPolicySuperapi.id_Address = intent.getStringExtra("id_Address").toString()
         modelsDataPolicySuperapi.street = intent.getStringExtra("street").toString()

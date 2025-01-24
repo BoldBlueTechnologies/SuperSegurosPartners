@@ -50,6 +50,7 @@
                     android:textColor="@color/black1_superapi"
                     android:textSize="13sp" />
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/imgBorrar_superapi"
                     android:layout_width="wrap_content"
                     android:src="@drawable/close_icon_superapi"

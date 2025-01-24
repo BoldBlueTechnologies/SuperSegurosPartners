@@ -54,5 +54,13 @@
             android:theme="@style/ThemeSuperApiFormulario"
             android:exported="true">
         </activity>
+        <activity android:name=".SeguroAuto.Formulario_bienvenida_superapi"
+            android:theme="@style/ThemeSuperApiFormulario"
+            android:exported="true">
+        </activity>
+        <activity android:name=".SeguroAuto.Formulario_principal_superapi"
+            android:theme="@style/ThemeSuperApiFormulario"
+            android:exported="true">
+        </activity>
     </application>
 </manifest>

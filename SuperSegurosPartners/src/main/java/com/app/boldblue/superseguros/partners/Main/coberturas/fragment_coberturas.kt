@@ -1,20 +1,60 @@
 package com.app.boldblue.superseguros.partners.Main.coberturas
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.app.boldblue.superseguros.partners.Adapters.AdapterBeneficios_superapi
+import com.app.boldblue.superseguros.partners.BuildConfig
+import com.app.boldblue.superseguros.partners.Methods.models_beneficios_superapi
 import com.app.boldblue.superseguros.partners.R
-import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_cuatro_superapi
+import com.app.boldblue.superseguros.partners.Services.HelperConnectSuperApi
+import com.squareup.picasso.Picasso
+import org.json.JSONArray
+import org.json.JSONException
+import java.util.ArrayList
+import java.util.HashMap
 
 class fragment_coberturas : Fragment() {
+
+    var vehicleType = ""
+    var description = ""
+    var model = ""
+    var nameBrand = ""
+    var brand = ""
+    var nameSubBrand =""
+    var subBrand =""
+    var internalKey = ""
+    var autoDescription = ""
+    var insurance = ""
+    var cotizacion = ""
+    var ZIPCode =""
+    var carQuoteId = ""
+
+    var listFormaPago: Array<String>? = null
+    var listNumeroCotizacion: Array<String>? = null
+    var listCostoTotal: Array<String>? = null
+    var listPrimerRecibo: Array<String>? = null
+    var listSubSecuentes: Array<String>? = null
+
+    var paymentForm = ""
+    var applicableCoverages = ""
+    var quoteNumber = ""
+    var totalCost = ""
+    var firstReceipt =""
+    var subsequents = ""
+    var imgAseguradoras = ""
+
+    private var listCoberturasAplicables = ArrayList<models_beneficios_superapi>()
+
     @SuppressLint("SetTextI18n", "DefaultLocale")
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,6 +63,7 @@ class fragment_coberturas : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_coberturas_aseguradoras_superapi, container, false)
         var itemSelect = -1
+        var recyclerBeneficios_super_api = view.findViewById<RecyclerView>(R.id.recyclerBeneficios_super_api)
         var btnCotiza_superapi = view.findViewById<CardView>(R.id.btnCotiza_superapi)
 
         var txtPrecioAnual_superapi = view.findViewById<TextView>(R.id.txtPrecioAnual_superapi)
@@ -52,25 +93,49 @@ class fragment_coberturas : Fragment() {
         var txtPrecio_superapi = view.findViewById<TextView>(R.id.txtPrecio_superapi)
         var txtTipoPago_superapi = view.findViewById<TextView>(R.id.txtTipoPago_superapi)
 
-        val vehicleType = arguments?.getString("vehicleType") ?: "---"
-        val description = arguments?.getString("description") ?: "---"
-        val model = arguments?.getString("model") ?: "---"
-        val nameBrand = arguments?.getString("nameBrand") ?: "---"
-        val brand = arguments?.getString("brand") ?: "---"
-        val nameSubBrand = arguments?.getString("nameSubBrand") ?: "---"
-        val subBrand = arguments?.getString("subBrand") ?: "---"
-        val internalKey = arguments?.getString("internalKey") ?: "---"
-        val autoDescription = arguments?.getString("autoDescription") ?: "---"
-        val insurance = arguments?.getString("insurance") ?: "---"
-        val cotizacion = arguments?.getString("cotizacion") ?: "---"
-        val ZIPCode = arguments?.getString("ZIPCode") ?: "---"
+        var imgAseguradoras_superapi = view.findViewById<ImageView>(R.id.imgAseguradoras_superapi)
 
-        val listFormaPago: Array<String>? = arguments?.getStringArray("listFormaPago")
-        val listCoberturasAplicables: Array<String>? = arguments?.getStringArray("listCoberturasAplicables")
-        val listNumeroCotizacion: Array<String>? = arguments?.getStringArray("listNumeroCotizacion")
-        val listCostoTotal: Array<String>? = arguments?.getStringArray("listCostoTotal")
-        val listPrimerRecibo: Array<String>? = arguments?.getStringArray("listPrimerRecibo")
-        val listSubSecuentes: Array<String>? = arguments?.getStringArray("listSubSecuentes")
+        vehicleType = arguments?.getString("vehicleType") ?: "---"
+        description = arguments?.getString("description") ?: "---"
+        model = arguments?.getString("model") ?: "---"
+        nameBrand = arguments?.getString("nameBrand") ?: "---"
+        brand = arguments?.getString("brand") ?: "---"
+        nameSubBrand = arguments?.getString("nameSubBrand") ?: "---"
+        subBrand = arguments?.getString("subBrand") ?: "---"
+        internalKey = arguments?.getString("internalKey") ?: "---"
+        autoDescription = arguments?.getString("autoDescription") ?: "---"
+        insurance = arguments?.getString("insurance") ?: "---"
+        cotizacion = arguments?.getString("cotizacion") ?: "---"
+        ZIPCode = arguments?.getString("ZIPCode") ?: "---"
+        carQuoteId = arguments?.getString("carQuoteId") ?: "---"
+        imgAseguradoras = arguments?.getString("imgAseguradoras") ?: "---"
+
+        try {
+            var jsonData = JSONArray(arguments?.getString("coberturasAplicables"))
+            for(vr in 0 until jsonData.length()) {
+                println("-------------------${jsonData[vr]}--------$vr")
+                listCoberturasAplicables.add(models_beneficios_superapi(
+                    jsonData.getJSONObject(vr).getString("idCobertura"),
+                    jsonData.getJSONObject(vr).getString("descripcionCobertura"),
+                    jsonData.getJSONObject(vr).getString("montoFormateadoCobertura"),
+                    jsonData.getJSONObject(vr).getString("descripcionLarga")
+                ))
+            }
+        }catch (error : JSONException){
+            println("JSONExceptionlistCoberturasAplicables--------${error}")
+        }
+        Picasso.get()
+            .load((BuildConfig.photosSuper + imgAseguradoras))
+            .into(imgAseguradoras_superapi)
+        listFormaPago= arguments?.getStringArray("listFormaPago")
+        listNumeroCotizacion= arguments?.getStringArray("listNumeroCotizacion")
+        listCostoTotal= arguments?.getStringArray("listCostoTotal")
+        listPrimerRecibo= arguments?.getStringArray("listPrimerRecibo")
+        listSubSecuentes= arguments?.getStringArray("listSubSecuentes")
+
+        recyclerBeneficios_super_api.layoutManager = LinearLayoutManager(requireContext())
+        recyclerBeneficios_super_api.hasFixedSize()
+        recyclerBeneficios_super_api.adapter = AdapterBeneficios_superapi(listCoberturasAplicables,this)
 
         txtMarca_superapi.text= nameBrand
         txtAno_superapi.text= model
@@ -78,9 +143,9 @@ class fragment_coberturas : Fragment() {
         txtVersion_superapi.text=autoDescription
 
         for(vr in listFormaPago!!.indices) {
-            if(listFormaPago[vr]=="Anual"){
+            if(listFormaPago!![vr]=="Anual"){
                 txtPrecio_superapi.text = "$${listCostoTotal!![vr]}"
-                txtTipoPago_superapi.text = listFormaPago[vr]
+                txtTipoPago_superapi.text = listFormaPago!![vr]
                 itemSelect = vr
                 radioButtonTrimestral.isChecked = false
                 radioButtonSemestral.isChecked = false
@@ -90,10 +155,10 @@ class fragment_coberturas : Fragment() {
 
         radioButtonAnual.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                for(vr in listFormaPago.indices) {
-                    if(listFormaPago[vr]=="Anual"){
+                for(vr in listFormaPago!!.indices) {
+                    if(listFormaPago!![vr]=="Anual"){
                         txtPrecio_superapi.text = "$${listCostoTotal!![vr]}"
-                        txtTipoPago_superapi.text = listFormaPago[vr]
+                        txtTipoPago_superapi.text = listFormaPago!![vr]
                         itemSelect = vr
                         radioButtonTrimestral.isChecked = false
                         radioButtonSemestral.isChecked = false
@@ -104,10 +169,10 @@ class fragment_coberturas : Fragment() {
         }
         radioButtonTrimestral.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                for(vr in listFormaPago.indices) {
-                    if(listFormaPago[vr]=="Trimestral"){
+                for(vr in listFormaPago!!.indices) {
+                    if(listFormaPago!![vr]=="Trimestral"){
                         txtPrecio_superapi.text = "$${listCostoTotal!![vr]}"
-                        txtTipoPago_superapi.text = listFormaPago[vr]
+                        txtTipoPago_superapi.text = listFormaPago!![vr]
                         itemSelect = vr
                         radioButtonAnual.isChecked = false
                         radioButtonSemestral.isChecked = false
@@ -118,10 +183,10 @@ class fragment_coberturas : Fragment() {
         }
         radioButtonSemestral.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                for(vr in listFormaPago.indices) {
-                    if(listFormaPago[vr]=="Semestral"){
+                for(vr in listFormaPago!!.indices) {
+                    if(listFormaPago!![vr]=="Semestral"){
                         txtPrecio_superapi.text = "$${listCostoTotal!![vr]}"
-                        txtTipoPago_superapi.text = listFormaPago[vr]
+                        txtTipoPago_superapi.text = listFormaPago!![vr]
                         itemSelect = vr
                         radioButtonAnual.isChecked = false
                         radioButtonTrimestral.isChecked = false
@@ -132,10 +197,10 @@ class fragment_coberturas : Fragment() {
         }
         radioButtonMensual.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                for(vr in listFormaPago.indices) {
-                    if(listFormaPago[vr]=="Mensual"){
+                for(vr in listFormaPago!!.indices) {
+                    if(listFormaPago!![vr]=="Mensual"){
                         txtPrecio_superapi.text = "$${listCostoTotal!![vr]}"
-                        txtTipoPago_superapi.text = listFormaPago[vr]
+                        txtTipoPago_superapi.text = listFormaPago!![vr]
                         itemSelect = vr
                         radioButtonAnual.isChecked = false
                         radioButtonSemestral.isChecked = false
@@ -146,26 +211,27 @@ class fragment_coberturas : Fragment() {
             }
         }
         println("-------------------$cotizacion")
-        for(vr in listFormaPago.indices) {
-            if(listFormaPago[vr]=="Anual"){
+
+        for(vr in listFormaPago!!.indices) {
+            if(listFormaPago!![vr]=="Anual"){
                 txtPrecioAnual_superapi.text = "$${listCostoTotal!![vr]}"
-                for(rv in listFormaPago.indices) {
-                    if(listFormaPago[rv]=="Mensual"){
-                        txtDescuentoAnual_superapi.text = "$${ String.format("%.2f", (listCostoTotal[rv].replace(",","").toDouble()- listCostoTotal[vr].replace(",","").toDouble())).toDouble()} más barato"
+                for(rv in listFormaPago!!.indices) {
+                    if(listFormaPago!![rv]=="Mensual"){
+                        txtDescuentoAnual_superapi.text = "$${ String.format("%.2f", (listCostoTotal!![rv].replace(",","").toDouble()- listCostoTotal!![vr].replace(",","").toDouble())).toDouble()} más barato"
                     }
                 }
             }
-            if(listFormaPago[vr]=="Semestral"){
+            if(listFormaPago!![vr]=="Semestral"){
                 txtPrecioSemestral_superapi.text = "$${listCostoTotal!![vr]}"
                 txtPrimerPagoSemestral_superapi.text = "$${listPrimerRecibo!![vr]}"
                 txtSubsecuentesSemestral_superapi.text = "$${listSubSecuentes!![vr]}"
             }
-            if(listFormaPago[vr]=="Trimestral"){
+            if(listFormaPago!![vr]=="Trimestral"){
                 txtPrecioTrimestral_superapi.text = "$${listCostoTotal!![vr]}"
                 txtPrimerPagoTrimestral_superapi.text = "$${listPrimerRecibo!![vr]}"
                 txtSubsecuentePagoTrimestral_superapi.text = "$${listSubSecuentes!![vr]}"
             }
-            if(listFormaPago[vr]=="Mensual"){
+            if(listFormaPago!![vr]=="Mensual"){
                 txtPrecioMensual_superapi.text = "$${listCostoTotal!![vr]}"
                 txtPrimerPagoMensual_superapi.text = "$${listPrimerRecibo!![vr]}"
                 txtSubsecuentesMensual_superapi.text = "$${listSubSecuentes!![vr]}"
@@ -173,29 +239,25 @@ class fragment_coberturas : Fragment() {
         }
 
         btnCotiza_superapi.setOnClickListener {
-            val intent = Intent(context, Formulario_cuatro_superapi::class.java)
-            intent.putExtra("vehicleType",vehicleType)
-            intent.putExtra("description",description)
-            intent.putExtra("model",model)
-            intent.putExtra("nameBrand",nameBrand)
-            intent.putExtra("brand",brand)
-            intent.putExtra("nameSubBrand",nameSubBrand)
-            intent.putExtra("subBrand",subBrand)
-            intent.putExtra("internalKey",internalKey)
-            intent.putExtra("autoDescription",autoDescription)
-            intent.putExtra("ZIPCode",ZIPCode)
-            intent.putExtra("insurance",insurance)
 
-            intent.putExtra("paymentForm", listFormaPago[itemSelect])
-            intent.putExtra("applicableCoverages",listCoberturasAplicables!![itemSelect])
-            intent.putExtra("quoteNumber",listNumeroCotizacion!![itemSelect])
-            intent.putExtra("totalCost",listCostoTotal!![itemSelect])
-            intent.putExtra("firstReceipt",listPrimerRecibo!![itemSelect])
-            intent.putExtra("subsequents",listSubSecuentes!![itemSelect])
+            paymentForm= listFormaPago!![itemSelect]
+            //applicableCoverages= listCoberturasAplicables!![itemSelect]
+            quoteNumber= listNumeroCotizacion!![itemSelect]
+            totalCost= listCostoTotal!![itemSelect]
+            firstReceipt= listPrimerRecibo!![itemSelect]
+            subsequents= listSubSecuentes!![itemSelect]
 
-            context?.startActivity(intent)
+            val map: HashMap<String, Any> = HashMap()
+            map["carQuoteId"]=carQuoteId
+            map["insurer"]= insurance
+            map["plan"]= listFormaPago!![itemSelect]
+            map["coverage"]= cotizacion
+            HelperConnectSuperApi().saveCoverages(this,map)
+
+
         }
         return view
     }
+
 
 }

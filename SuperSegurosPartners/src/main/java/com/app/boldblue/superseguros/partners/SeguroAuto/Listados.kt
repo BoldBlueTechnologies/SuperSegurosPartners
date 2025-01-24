@@ -2,7 +2,9 @@ package com.app.boldblue.superseguros.partners.SeguroAuto
 
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -51,6 +53,11 @@ class Listados : AppCompatActivity() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(s: Editable?) {
+                if(s!!.isEmpty())
+                    imgBorrar.visibility= View.GONE
+                else
+                    imgBorrar.visibility= View.VISIBLE
+
                 val textoIngresado = s.toString()
                 val listafiltrada = arrayAuto.filter {
                     it.Descripcion.contains(textoIngresado, ignoreCase = true)
@@ -68,6 +75,7 @@ class Listados : AppCompatActivity() {
                 val map: HashMap<String, Any> = HashMap()
                 map["vehicleType"]= intent.getStringExtra("vehicleType")!!
                 helperConnectSuperApi.carModel(this,map)
+                txtSheet.inputType = InputType.TYPE_CLASS_NUMBER
                 toolbarSheet.setTitle(R.string.seleccionaUnAno_superapi)
             }
             2 -> {
@@ -93,6 +101,20 @@ class Listados : AppCompatActivity() {
                 map["subBrand"]= intent.getStringExtra("subBrand")!!
                 helperConnectSuperApi.descriptions(this,map)
                 toolbarSheet.setTitle(R.string.seleccionaUnaVersion_superapi)
+            }
+            5 -> {
+                helperConnectSuperApi.catalogs(this,"maritalStatus")
+                toolbarSheet.setTitle(R.string.seleccioneUnEstadoCivil_superapi)
+            }
+            6 -> {
+                helperConnectSuperApi.catalogs(this,"genders")
+                toolbarSheet.setTitle(R.string.seleccioneUnGenero_superapi)
+            }
+            7 -> {
+                val map: HashMap<String, Any> = HashMap()
+                map["postalCode"]= intent.getStringExtra("postalCode")!!
+                helperConnectSuperApi.addressValidation(this,map)
+                toolbarSheet.setTitle(R.string.seleccioneUnGenero_superapi)
             }
             else -> {
                 // Acción por defecto

@@ -55,6 +55,9 @@ class Formulario_cinco_superapi : AppCompatActivity() {
         modelsDataPolicySuperapi.autoDescription= intent.getStringExtra("autoDescription").toString()
         modelsDataPolicySuperapi.insurance= intent.getStringExtra("insurance").toString()
         modelsDataPolicySuperapi.ZIPCode= intent.getStringExtra("ZIPCode").toString()
+        modelsDataPolicySuperapi.coverageId= intent.getStringExtra("coverageId").toString()
+        modelsDataPolicySuperapi.carQuoteId= intent.getStringExtra("carQuoteId").toString()
+        modelsDataPolicySuperapi.coverage= intent.getStringExtra("coverage").toString()
 
         modelsDataPolicySuperapi.paymentForm= intent.getStringExtra("paymentForm").toString()
         modelsDataPolicySuperapi.applicableCoverages= intent.getStringExtra("applicableCoverages").toString()
@@ -121,6 +124,8 @@ class Formulario_cinco_superapi : AppCompatActivity() {
                             map["licensePlate"]= txtMatriculaSuperApi.text.toString()
                             map["VIN"]= txtVINSuperApi.text.toString()
                             map["engineNumber"]= txtNumeroMotorSuperApi.text.toString()
+                            map["idCoverage"]= modelsDataPolicySuperapi.coverageId
+                            map["idCar"]=modelsDataPolicySuperapi.idCar
                             helperConnectSuperApi.dataCar(this,map)
                         }else
                             Toast.makeText(this,R.string.ingresaElNumeroDeTuMotor_superapi,Toast.LENGTH_LONG).show()

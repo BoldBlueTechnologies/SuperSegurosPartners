@@ -1,5 +1,4 @@
 package com.app.boldblue.superseguros.partners.Methods
-
 class models_data_policy_superapi () {
     var vehicleType :  String=""
     var description : String=""
@@ -12,36 +11,44 @@ class models_data_policy_superapi () {
     var autoDescription: String=""
     var insurance: String=""
     var ZIPCode: String=""
-
     var paymentForm: String=""
     var applicableCoverages: String=""
     var quoteNumber: String=""
     var totalCost: String=""
     var firstReceipt: String=""
     var subsequents: String=""
-
     var idCar: String=""
     var licensePlate: String=""
     var VIN: String=""
     var engineNumber: String=""
-
     var name: String=""
     var paternalSurname: String=""
     var maternalSurname: String=""
     var bornDate: String=""
     var idDriver: String=""
-
+    var genderID: String=""
+    var gender: String=""
+    var maritalStatusID: String=""
+    var maritalStatus: String=""
+    var rfc: String=""
     var id_Address: String=""
-
     var street: String=""
     var streetNumber: String=""
     var apartmentNumber: String=""
     var state: String=""
     var city: String=""
     var neighborhood: String=""
-
     var email: String=""
     var password: String=""
     var phoneNumber: String=""
+    var carQuoteId: String=""
+    var coverageId: String=""
+    var coverage: String=""
+    var userId: String=""
+
+    var policySuper: String=""
+    var receiptSuper: String=""
+    var rcusaSuper: String=""
+    var paid: String=""
 
 }

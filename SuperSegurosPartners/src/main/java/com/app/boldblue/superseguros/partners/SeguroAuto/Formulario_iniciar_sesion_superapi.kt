@@ -58,7 +58,10 @@ class Formulario_iniciar_sesion_superapi : AppCompatActivity() {
         modelsDataPolicySuperapi.firstReceipt = intent.getStringExtra("firstReceipt").toString()
         modelsDataPolicySuperapi.subsequents = intent.getStringExtra("subsequents").toString()
         modelsDataPolicySuperapi.ZIPCode = intent.getStringExtra("ZIPCode").toString()
-
+        modelsDataPolicySuperapi.coverageId = intent.getStringExtra("coverageId").toString()
+        modelsDataPolicySuperapi.carQuoteId = intent.getStringExtra("carQuoteId").toString()
+        modelsDataPolicySuperapi.coverage = intent.getStringExtra("coverage").toString()
+        Toast.makeText(this,resources.getString(R.string.usuarioEncontrado_superapi),Toast.LENGTH_LONG).show()
         modelsDataPolicySuperapi.licensePlate = intent.getStringExtra("licensePlate").toString()
         modelsDataPolicySuperapi.VIN = intent.getStringExtra("VIN").toString()
         modelsDataPolicySuperapi.engineNumber = intent.getStringExtra("engineNumber").toString()
@@ -70,6 +73,11 @@ class Formulario_iniciar_sesion_superapi : AppCompatActivity() {
         modelsDataPolicySuperapi.paternalSurname = intent.getStringExtra("paternalSurname").toString()
         modelsDataPolicySuperapi.maternalSurname = intent.getStringExtra("maternalSurname").toString()
         modelsDataPolicySuperapi.bornDate = intent.getStringExtra("bornDate").toString()
+        modelsDataPolicySuperapi.gender= intent.getStringExtra("gender").toString()
+        modelsDataPolicySuperapi.maritalStatus = intent.getStringExtra("maritalStatus").toString()
+        modelsDataPolicySuperapi.genderID= intent.getStringExtra("genderID").toString()
+        modelsDataPolicySuperapi.maritalStatusID = intent.getStringExtra("maritalStatusID").toString()
+        modelsDataPolicySuperapi.rfc = intent.getStringExtra("rfc").toString()
 
         modelsDataPolicySuperapi.street = intent.getStringExtra("street").toString()
         modelsDataPolicySuperapi.apartmentNumber = intent.getStringExtra("apartmentNumber").toString()

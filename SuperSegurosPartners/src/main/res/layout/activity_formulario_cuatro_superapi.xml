@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue5_superapi"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -52,6 +53,7 @@
                 android:textColor="@color/black1_superapi"
                 android:text="@string/ahoraQueSigue_superapi"/>
             <androidx.cardview.widget.CardView
+                android:backgroundTint="@color/white1_superapi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardElevation="5dp"
@@ -63,6 +65,7 @@
                     android:orientation="vertical"
                     android:padding="16dp">
                     <LinearLayout
+                        android:layout_marginBottom="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"

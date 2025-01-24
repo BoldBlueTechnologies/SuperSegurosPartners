@@ -1,8 +1,10 @@
 package com.app.boldblue.superseguros.partners.Services
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.app.boldblue.superseguros.partners.Adapters.AdapterAseguradoras_superapi
 import com.app.boldblue.superseguros.partners.BuildConfig
@@ -13,7 +15,9 @@ import com.app.boldblue.superseguros.partners.Methods.methods_interface_superapi
 import com.app.boldblue.superseguros.partners.Methods.models_list_insurance_superapi
 import com.app.boldblue.superseguros.partners.Methods.models_list_superapi
 import com.app.boldblue.superseguros.partners.R
+import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_bienvenida_superapi
 import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_cinco_superapi
+import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_cuatro_superapi
 import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_dos_superapi
 import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_iniciar_sesion_superapi
 import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_pago_poliza_superapi
@@ -21,6 +25,7 @@ import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_registro_sup
 import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_seis_superapi
 import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_siete_superapi
 import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_tres_superapi
+import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_uno_superapi
 import com.app.boldblue.superseguros.partners.SeguroAuto.Formulario_vincula_superapi
 import com.app.boldblue.superseguros.partners.SeguroAuto.Listados
 import com.google.android.material.tabs.TabLayoutMediator
@@ -48,7 +53,15 @@ class HelperConnectSuperApi {
             .build()
     }
 
-
+    fun dialogError(mensaje: String, activity: Activity){
+        val builder = AlertDialog.Builder(activity)
+        builder.setTitle("Aviso")
+            .setMessage(mensaje)
+            .setPositiveButton("Aceptar") { _, _ ->
+            }
+            .setCancelable(false)
+        builder.show()
+    }
 
     fun vehicle(activity: Listados){
         val helperDialogs = helper_dialogs_superapi(activity)
@@ -80,7 +93,8 @@ class HelperConnectSuperApi {
                             activity.adapter.actualizarLista(ArrayList( activity.arrayAuto))
                         }
                         500 -> {
-
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
                         }
                         else -> {
                         }
@@ -127,7 +141,8 @@ class HelperConnectSuperApi {
                             activity.adapter.actualizarLista(ArrayList( activity.arrayAuto))
                         }
                         500 -> {
-
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
                         }
                         else -> {
                         }
@@ -174,7 +189,8 @@ class HelperConnectSuperApi {
                             activity.adapter.actualizarLista(ArrayList( activity.arrayAuto))
                         }
                         500 -> {
-
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
                         }
                         else -> {
                         }
@@ -221,7 +237,8 @@ class HelperConnectSuperApi {
                             activity.adapter.actualizarLista(ArrayList( activity.arrayAuto))
                         }
                         500 -> {
-
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
                         }
                         else -> {
                         }
@@ -268,7 +285,8 @@ class HelperConnectSuperApi {
                             activity.adapter.actualizarLista(ArrayList( activity.arrayAuto))
                         }
                         500 -> {
-
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
                         }
                         else -> {
                         }
@@ -285,9 +303,105 @@ class HelperConnectSuperApi {
         })
     }
 
-    fun getBasicQuotation(activity: Formulario_dos_superapi,map: HashMap<String, Any>){
+    fun addressValidation(activity: Listados,map: HashMap<String, Any>){
         val helperDialogs = helper_dialogs_superapi(activity)
         helperDialogs.progressActivate(activity.resources.getString(R.string.cargando_superapi))
+        val retrofit: Retrofit = Retrofit.Builder()
+            .client(getokHttpclientPrincipalTime())
+            .baseUrl(BuildConfig.apipartnersSuper)
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val api: methods_interface_superapi = retrofit.create(methods_interface_superapi::class.java)
+        val call: Call<String> = api.addressValidation(appKey = BuildConfig.tokenSuper,map)
+        call.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                println("addressValidation---------${response.code()}")
+                try {
+                    when (response.code()) {
+                        200 -> {
+                            val jsonBody = JSONObject(response.body().toString())
+                            val jsonData = jsonBody.getJSONObject("data").getJSONArray("colonias")
+                            activity.arrayAuto.clear()
+                            for(vr in 0 until jsonData.length()){
+                                activity.arrayAuto.add(models_list_superapi(
+                                    jsonData.getJSONObject(vr).getString("id"),
+                                    jsonData.getJSONObject(vr).getString("colonia")
+                                ))
+                            }
+                            activity.adapter.actualizarLista(ArrayList( activity.arrayAuto))
+                        }
+                        500 -> {
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
+                        }
+                        else -> {
+                        }
+                    }
+                }catch (e: JSONException){
+                    println("JSONExceptionaddressValidation---------$e")
+                }
+                helperDialogs.progressDesactivate()
+            }
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                println("onFailureaddressValidation---------$t")
+                helperDialogs.progressDesactivate()
+            }
+        })
+    }
+
+    fun catalogs(activity: Listados,opcion :String){
+        val helperDialogs = helper_dialogs_superapi(activity)
+        helperDialogs.progressActivate(activity.resources.getString(R.string.cargando_superapi))
+        val retrofit: Retrofit = Retrofit.Builder()
+            .client(getokHttpclientPrincipalTime())
+            .baseUrl(BuildConfig.apipartnersSuper)
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val api: methods_interface_superapi = retrofit.create(methods_interface_superapi::class.java)
+        val call: Call<String> = api.catalogs(appKey = BuildConfig.tokenSuper)
+        call.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                println("catalogs---------${response.code()}")
+                try {
+                    when (response.code()) {
+                        200 -> {
+                            val jsonBody = JSONObject(response.body().toString())
+                            val jsonData = jsonBody.getJSONObject("data").getJSONArray(opcion)
+                            activity.arrayAuto.clear()
+                            for(vr in 0 until jsonData.length()){
+                                activity.arrayAuto.add(models_list_superapi(
+                                    jsonData.getJSONObject(vr).getString("id"),
+                                    jsonData.getJSONObject(vr).getString("name")
+                                ))
+                            }
+                            activity.adapter.actualizarLista(ArrayList( activity.arrayAuto))
+                        }
+                        500 -> {
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
+                        }
+                        else -> {
+                        }
+                    }
+                }catch (e: JSONException){
+                    println("JSONExceptioncatalogs---------$e")
+                }
+                helperDialogs.progressDesactivate()
+            }
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                println("onFailurecatalogs---------$t")
+                helperDialogs.progressDesactivate()
+            }
+        })
+    }
+
+    fun getBasicQuotation(activity: Formulario_dos_superapi,map: HashMap<String, Any>){
+        val helperDialogs = helper_dialogs_superapi(activity)
+        helperDialogs.progressActivate(activity.resources.getString(R.string.cargandoAseguradoras_superapi))
         val retrofit: Retrofit = Retrofit.Builder()
             .client(getokHttpclientPrincipalTime())
             .baseUrl(BuildConfig.apipartnersSuper)
@@ -335,9 +449,167 @@ class HelperConnectSuperApi {
         })
     }
 
-    fun getGeneralQuotation(activity: Formulario_tres_superapi,map: HashMap<String, Any>){
+    fun addressValidation(activity: Formulario_siete_superapi,map: HashMap<String, Any>){
         val helperDialogs = helper_dialogs_superapi(activity)
         helperDialogs.progressActivate(activity.resources.getString(R.string.cargando_superapi))
+        val retrofit: Retrofit = Retrofit.Builder()
+            .client(getokHttpclientPrincipalTime())
+            .baseUrl(BuildConfig.apipartnersSuper)
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val api: methods_interface_superapi = retrofit.create(methods_interface_superapi::class.java)
+        val call: Call<String> = api.addressValidation(appKey = BuildConfig.tokenSuper,map)
+        call.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                println("addressValidation---------${response.code()}")
+                try {
+                    when (response.code()) {
+                        200 -> {
+                            val jsonBody = JSONObject(response.body().toString())
+                            val jsonData = JSONObject(jsonBody.getString("data"))
+                            activity.txtEstadoSuperApi.text = jsonData.getJSONObject("estado").getString("nombre")
+                            activity.txtMunicipioSuperApi.text = jsonData.getJSONObject("municipio").getString("nombre")
+                        }
+                        500 -> {
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
+                        }
+                        else -> {
+                        }
+                    }
+                }catch (e: JSONException){
+                    println("JSONExceptionaddressValidation---------$e")
+                }
+                helperDialogs.progressDesactivate()
+            }
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                println("onFailureaddressValidation---------$t")
+                helperDialogs.progressDesactivate()
+            }
+        })
+    }
+
+    fun saveQuotation(activity: Formulario_uno_superapi,map: HashMap<String, Any>){
+        val helperDialogs = helper_dialogs_superapi(activity)
+        helperDialogs.progressActivate(activity.resources.getString(R.string.cargando_superapi))
+        val retrofit: Retrofit = Retrofit.Builder()
+            .client(getokHttpclientPrincipalTime())
+            .baseUrl(BuildConfig.apipartnersSuper)
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val api: methods_interface_superapi = retrofit.create(methods_interface_superapi::class.java)
+        val call: Call<String> = api.saveQuotation(appKey = BuildConfig.tokenSuper,map)
+        call.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                println("saveQuotation---------${response.code()}")
+                try {
+                    when (response.code()) {
+                        200 -> {
+                            val jsonBody = JSONObject(response.body().toString())
+                            activity.modelsDataPolicySuperapi.carQuoteId = jsonBody.getJSONObject("data").getString("carQuoteId")
+                            val intent = Intent(activity, Formulario_dos_superapi::class.java)
+                            intent.putExtra("vehicleType", activity.modelsDataPolicySuperapi.vehicleType)
+                            intent.putExtra("description", activity.modelsDataPolicySuperapi.description)
+                            intent.putExtra("model", activity.modelsDataPolicySuperapi.model)
+                            intent.putExtra("nameBrand", activity.modelsDataPolicySuperapi.nameBrand)
+                            intent.putExtra("brand", activity.modelsDataPolicySuperapi.brand)
+                            intent.putExtra("nameSubBrand", activity.modelsDataPolicySuperapi.nameSubBrand)
+                            intent.putExtra("subBrand", activity.modelsDataPolicySuperapi.subBrand)
+                            intent.putExtra("internalKey", activity.modelsDataPolicySuperapi.internalKey)
+                            intent.putExtra("autoDescription", activity.modelsDataPolicySuperapi.autoDescription)
+                            intent.putExtra("ZIPCode", activity.modelsDataPolicySuperapi.ZIPCode)
+                            intent.putExtra("carQuoteId", activity.modelsDataPolicySuperapi.carQuoteId)
+                            activity.resultadoLauncher.launch(intent)
+                        }
+                        500 -> {
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
+                        }
+                        else -> {
+                        }
+                    }
+                }catch (e: JSONException){
+                    println("JSONExceptionsaveQuotation---------$e")
+                }
+                helperDialogs.progressDesactivate()
+            }
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                println("onFailuresaveQuotation---------$t")
+                helperDialogs.progressDesactivate()
+
+            }
+        })
+    }
+
+    fun saveCoverages(activity : fragment_coberturas,map: HashMap<String, Any>){
+        val helperDialogs = activity.context?.let { helper_dialogs_superapi(it) }
+        helperDialogs?.progressActivate(activity.resources.getString(R.string.cargando_superapi))
+        val retrofit: Retrofit = Retrofit.Builder()
+            .client(getokHttpclientPrincipalTime())
+            .baseUrl(BuildConfig.apipartnersSuper)
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val api: methods_interface_superapi = retrofit.create(methods_interface_superapi::class.java)
+        val call: Call<String> = api.saveCoverages(appKey = BuildConfig.tokenSuper,map)
+        call.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                println("saveCoverages---------${response.code()}")
+                try {
+                    when (response.code()) {
+                        200 -> {
+                            val intent = Intent(activity.context, Formulario_cuatro_superapi::class.java)
+                            intent.putExtra("vehicleType",activity.vehicleType)
+                            intent.putExtra("description",activity.description)
+                            intent.putExtra("model",activity.model)
+                            intent.putExtra("nameBrand",activity.nameBrand)
+                            intent.putExtra("brand",activity.brand)
+                            intent.putExtra("nameSubBrand",activity.nameSubBrand)
+                            intent.putExtra("subBrand",activity.subBrand)
+                            intent.putExtra("internalKey",activity.internalKey)
+                            intent.putExtra("autoDescription",activity.autoDescription)
+                            intent.putExtra("ZIPCode",activity.ZIPCode)
+                            intent.putExtra("carQuoteId",activity.carQuoteId)
+                            intent.putExtra("insurance",activity.insurance)
+                            intent.putExtra("coverageId",activity.carQuoteId)
+                            intent.putExtra("coverage",activity.cotizacion)
+
+                            intent.putExtra("paymentForm", activity.paymentForm)
+                            intent.putExtra("applicableCoverages",activity.applicableCoverages)
+                            intent.putExtra("quoteNumber",activity.quoteNumber)
+                            intent.putExtra("totalCost",activity.totalCost)
+                            intent.putExtra("firstReceipt",activity.firstReceipt)
+                            intent.putExtra("subsequents",activity.subsequents)
+                            activity.context?.startActivity(intent)
+                        }
+                        500 -> {
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity.requireActivity())
+                        }
+                        else -> {
+                        }
+                    }
+                }catch (e: JSONException){
+                    println("JSONExceptionsaveCoverages---------$e")
+                }
+                helperDialogs!!.progressDesactivate()
+            }
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                println("onFailuresaveCoverages---------$t")
+                helperDialogs!!.progressDesactivate()
+
+            }
+        })
+    }
+
+    fun getGeneralQuotation(activity: Formulario_tres_superapi,map: HashMap<String, Any>){
+        val helperDialogs = helper_dialogs_superapi(activity)
+        helperDialogs.progressActivate(activity.resources.getString(R.string.cargandoCoberturas_superapi))
         val retrofit: Retrofit = Retrofit.Builder()
             .client(getokHttpclientPrincipalTime())
             .baseUrl(BuildConfig.apipartnersSuper)
@@ -350,21 +622,17 @@ class HelperConnectSuperApi {
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 println("getGeneralQuotation---------${response.code()}")
-                println("getGeneralQuotation---------${response.code()}")
-
                 try {
                     when (response.code()) {
                         200 -> {
                             val jsonBody = JSONObject(response.body().toString())
                             val jsonData = JSONArray(jsonBody.getString("data"))
                             val listTitles: Array<String> = Array(jsonData.length()) { "" }
-
                             val tabFragment: Array<Fragment> = Array(jsonData.length()) {Fragment()}
                             for(vr in 0 until jsonData.length()){
                                 listTitles[vr] = jsonData.getJSONObject(vr).getString("cotizacion")
                                 val fragment = fragment_coberturas()  // Crea el fragmento
                                 val bundle = Bundle()
-
                                 bundle.putString("vehicleType", activity.modelsDataPolicySuperapi.vehicleType)
                                 bundle.putString("description", activity.modelsDataPolicySuperapi.description)
                                 bundle.putString("model", activity.modelsDataPolicySuperapi.model)
@@ -377,10 +645,11 @@ class HelperConnectSuperApi {
                                 bundle.putString("insurance", activity.modelsDataPolicySuperapi.insurance)
                                 bundle.putString("cotizacion", jsonData.getJSONObject(vr).getString("cotizacion"))
                                 bundle.putString("ZIPCode",activity.modelsDataPolicySuperapi.ZIPCode)
-
+                                bundle.putString("carQuoteId",activity.modelsDataPolicySuperapi.carQuoteId)
+                                bundle.putString("coberturasAplicables",jsonData.getJSONObject(vr).getString("coberturasAplicables"))
+                                bundle.putString("imgAseguradoras",activity.imgAseguradoras_superapi)
 
                                 val listFormaPago: Array<String> = Array(jsonData.getJSONObject(vr).getJSONArray("coberturas").length()) { "" }
-                                val listCoberturasAplicables: Array<String> = Array(jsonData.getJSONObject(vr).getJSONArray("coberturas").length()) { "" }
                                 val listNumeroCotizacion: Array<String> = Array(jsonData.getJSONObject(vr).getJSONArray("coberturas").length()) { "" }
                                 val listCostoTotal: Array<String> = Array(jsonData.getJSONObject(vr).getJSONArray("coberturas").length()) { "" }
                                 val listPrimerRecibo: Array<String> = Array(jsonData.getJSONObject(vr).getJSONArray("coberturas").length()) { "" }
@@ -388,7 +657,6 @@ class HelperConnectSuperApi {
 
                                 for(rv in 0 until jsonData.getJSONObject(vr).getJSONArray("coberturas").length()){
                                     listFormaPago[rv] = jsonData.getJSONObject(vr).getJSONArray("coberturas").getJSONObject(rv).getString("formaPago")
-                                    listCoberturasAplicables[rv] = jsonData.getJSONObject(vr).getJSONArray("coberturas").getJSONObject(rv).getString("numeroCotizacion")
                                     listNumeroCotizacion[rv] = jsonData.getJSONObject(vr).getJSONArray("coberturas").getJSONObject(rv).getString("numeroCotizacion")
                                     listCostoTotal[rv] = jsonData.getJSONObject(vr).getJSONArray("coberturas").getJSONObject(rv).getJSONObject("costoTotal").getString("montoRedondeado")
                                     listPrimerRecibo[rv] = jsonData.getJSONObject(vr).getJSONArray("coberturas").getJSONObject(rv).getJSONObject("primerRecibo").getString("montoRedondeado")
@@ -396,7 +664,6 @@ class HelperConnectSuperApi {
                                 }
 
                                 bundle.putStringArray("listFormaPago",listFormaPago)
-                                bundle.putStringArray("listCoberturasAplicables",listCoberturasAplicables)
                                 bundle.putStringArray("listNumeroCotizacion",listNumeroCotizacion)
                                 bundle.putStringArray("listCostoTotal",listCostoTotal)
                                 bundle.putStringArray("listPrimerRecibo",listPrimerRecibo)
@@ -407,11 +674,10 @@ class HelperConnectSuperApi {
                             }
                             activity.mViewPager.adapter= fragment_coverage_superapi(activity, listTitles,tabFragment)
                             TabLayoutMediator(activity.mTablayout, activity.mViewPager) { tab, position -> tab.text = listTitles[position] }.attach()
-
-
                         }
                         500 -> {
-
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
                         }
                         else -> {
                         }
@@ -429,7 +695,6 @@ class HelperConnectSuperApi {
     }
 
     fun dataCar(activity: Formulario_cinco_superapi,map: HashMap<String, Any>){
-        println("dataCar---------${map}")
         val helperDialogs = helper_dialogs_superapi(activity)
         helperDialogs.progressActivate(activity.resources.getString(R.string.cargando_superapi))
         val retrofit: Retrofit = Retrofit.Builder()
@@ -446,9 +711,9 @@ class HelperConnectSuperApi {
                 try {
                     when (response.code()) {
                         200 -> {
-                            println("dataCar---------${response.body().toString()}")
                             val jsonBody = JSONObject(response.body().toString())
                             val jsonData = JSONObject(jsonBody.getString("data"))
+                            activity.modelsDataPolicySuperapi.idCar = jsonData.getString("id_car")
                             val intent = Intent(activity, Formulario_seis_superapi::class.java)
                             intent.putExtra("vehicleType",activity.modelsDataPolicySuperapi.vehicleType)
                             intent.putExtra("description",activity.modelsDataPolicySuperapi.description)
@@ -461,6 +726,9 @@ class HelperConnectSuperApi {
                             intent.putExtra("autoDescription",activity.modelsDataPolicySuperapi.autoDescription)
                             intent.putExtra("insurance",activity.modelsDataPolicySuperapi.insurance)
                             intent.putExtra("ZIPCode",activity.modelsDataPolicySuperapi.ZIPCode)
+                            intent.putExtra("carQuoteId",activity.modelsDataPolicySuperapi.carQuoteId)
+                            intent.putExtra("coverageId",activity.modelsDataPolicySuperapi.coverageId)
+                            intent.putExtra("coverage",activity.modelsDataPolicySuperapi.coverage)
 
                             intent.putExtra("paymentForm", activity.modelsDataPolicySuperapi.paymentForm)
                             intent.putExtra("applicableCoverages",activity.modelsDataPolicySuperapi.applicableCoverages)
@@ -473,11 +741,13 @@ class HelperConnectSuperApi {
                             intent.putExtra("VIN",map["VIN"].toString())
                             intent.putExtra("engineNumber",map["engineNumber"].toString())
 
-                            intent.putExtra("idCar",jsonData.getString("id_car"))
+                            intent.putExtra("idCar",activity.modelsDataPolicySuperapi.idCar)
 
                             activity.startActivity(intent)
                         }
                         500 -> {
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
                         }
                         else -> {
                         }
@@ -495,7 +765,6 @@ class HelperConnectSuperApi {
     }
 
     fun dataDriver(activity: Formulario_seis_superapi,map: HashMap<String, Any>){
-        println("dataDriver---------${map}")
         val helperDialogs = helper_dialogs_superapi(activity)
         helperDialogs.progressActivate(activity.resources.getString(R.string.cargando_superapi))
         val retrofit: Retrofit = Retrofit.Builder()
@@ -513,10 +782,10 @@ class HelperConnectSuperApi {
                 try {
                     when (response.code()) {
                         200 -> {
-                            println("dataDriver---------${response.body().toString()}")
                             val jsonBody = JSONObject(response.body().toString())
                             val jsonData = JSONObject(jsonBody.getString("data"))
                             val intent = Intent(activity, Formulario_siete_superapi::class.java)
+                            activity.modelsDataPolicySuperapi.idDriver = jsonData.getString("id_driver")
                             intent.putExtra("vehicleType",activity.modelsDataPolicySuperapi.vehicleType)
                             intent.putExtra("description",activity.modelsDataPolicySuperapi.description)
                             intent.putExtra("model",activity.modelsDataPolicySuperapi.model)
@@ -528,6 +797,9 @@ class HelperConnectSuperApi {
                             intent.putExtra("autoDescription",activity.modelsDataPolicySuperapi.autoDescription)
                             intent.putExtra("insurance",activity.modelsDataPolicySuperapi.insurance)
                             intent.putExtra("ZIPCode",activity.modelsDataPolicySuperapi.ZIPCode)
+                            intent.putExtra("coverageId",activity.modelsDataPolicySuperapi.coverageId)
+                            intent.putExtra("carQuoteId",activity.modelsDataPolicySuperapi.carQuoteId)
+                            intent.putExtra("coverage",activity.modelsDataPolicySuperapi.coverage)
 
                             intent.putExtra("paymentForm", activity.modelsDataPolicySuperapi.paymentForm)
                             intent.putExtra("applicableCoverages",activity.modelsDataPolicySuperapi.applicableCoverages)
@@ -546,11 +818,19 @@ class HelperConnectSuperApi {
                             intent.putExtra("paternalSurname",map["paternalSurname"].toString())
                             intent.putExtra("maternalSurname",map["maternalSurname"].toString())
                             intent.putExtra("bornDate",map["bornDate"].toString())
+                            intent.putExtra("gender",map["gender"].toString())
+                            intent.putExtra("maritalStatus",map["maritalStatus"].toString())
+                            intent.putExtra("genderID",activity.modelsDataPolicySuperapi.genderID)
+                            intent.putExtra("maritalStatusID",activity.modelsDataPolicySuperapi.maritalStatusID)
+                            intent.putExtra("rfc",map["rfc"].toString())
+
                             intent.putExtra("idDriver",jsonData.getString("id_driver"))
 
                             activity.startActivity(intent)
                         }
                         500 -> {
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
                         }
                         else -> {
                         }
@@ -568,7 +848,6 @@ class HelperConnectSuperApi {
     }
 
     fun dataAddress(activity: Formulario_siete_superapi,map: HashMap<String, Any>){
-        println("dataAddress---------${map}")
         val helperDialogs = helper_dialogs_superapi(activity)
         helperDialogs.progressActivate(activity.resources.getString(R.string.cargando_superapi))
         val retrofit: Retrofit = Retrofit.Builder()
@@ -586,10 +865,10 @@ class HelperConnectSuperApi {
                 try {
                     when (response.code()) {
                         200 -> {
-                            println("dataAddress---------${response.body().toString()}")
-                            //val jsonBody = JSONObject(response.body().toString())
-                            //val jsonData = JSONObject(jsonBody.getString("data"))
+                            val jsonBody = JSONObject(response.body().toString())
+                            val jsonData = JSONObject(jsonBody.getString("data"))
                             val intent = Intent(activity, Formulario_vincula_superapi::class.java)
+                            activity.modelsDataPolicySuperapi.id_Address = jsonData.getString("id_Address")
                             intent.putExtra("vehicleType",activity.modelsDataPolicySuperapi.vehicleType)
                             intent.putExtra("description",activity.modelsDataPolicySuperapi.description)
                             intent.putExtra("model",activity.modelsDataPolicySuperapi.model)
@@ -600,6 +879,9 @@ class HelperConnectSuperApi {
                             intent.putExtra("internalKey",activity.modelsDataPolicySuperapi.internalKey)
                             intent.putExtra("autoDescription",activity.modelsDataPolicySuperapi.autoDescription)
                             intent.putExtra("insurance",activity.modelsDataPolicySuperapi.insurance)
+                            intent.putExtra("carQuoteId",activity.modelsDataPolicySuperapi.carQuoteId)
+                            intent.putExtra("coverageId",activity.modelsDataPolicySuperapi.coverageId)
+                            intent.putExtra("coverage",activity.modelsDataPolicySuperapi.coverage)
 
                             intent.putExtra("paymentForm", activity.modelsDataPolicySuperapi.paymentForm)
                             intent.putExtra("applicableCoverages",activity.modelsDataPolicySuperapi.applicableCoverages)
@@ -618,18 +900,25 @@ class HelperConnectSuperApi {
                             intent.putExtra("paternalSurname",activity.modelsDataPolicySuperapi.paternalSurname)
                             intent.putExtra("maternalSurname",activity.modelsDataPolicySuperapi.maternalSurname)
                             intent.putExtra("bornDate",activity.modelsDataPolicySuperapi.bornDate)
-                            intent.putExtra("idDriver",activity.modelsDataPolicySuperapi.idDriver)
-                            intent.putExtra("street",activity.modelsDataPolicySuperapi.street)
-
-                            intent.putExtra("id_Address",activity.modelsDataPolicySuperapi.id_Address)
-                            intent.putExtra("streetNumber",activity.modelsDataPolicySuperapi.streetNumber)
-                            intent.putExtra("apartmentNumber",activity.modelsDataPolicySuperapi.apartmentNumber)
-                            intent.putExtra("state",activity.modelsDataPolicySuperapi.state)
-                            intent.putExtra("city",activity.modelsDataPolicySuperapi.city)
-                            intent.putExtra("neighborhood",activity.modelsDataPolicySuperapi.neighborhood)
+                            intent.putExtra("gender",activity.modelsDataPolicySuperapi.gender)
+                            intent.putExtra("maritalStatus",activity.modelsDataPolicySuperapi.maritalStatus)
+                            intent.putExtra("genderID",activity.modelsDataPolicySuperapi.genderID)
+                            intent.putExtra("maritalStatusID",activity.modelsDataPolicySuperapi.maritalStatusID)
+                            intent.putExtra("rfc",activity.modelsDataPolicySuperapi.rfc)
+                            intent.putExtra("ZIPCode",map["ZIPCode"].toString())
+                            intent.putExtra("idDriver", map["id_driver"].toString())
+                            intent.putExtra("street",map["street"].toString())
+                            intent.putExtra("id_Address",jsonData.getString("id_Address"))
+                            intent.putExtra("streetNumber",map["streetNumber"].toString())
+                            intent.putExtra("apartmentNumber",map["apartmentNumber"].toString())
+                            intent.putExtra("state",map["state"].toString())
+                            intent.putExtra("city",map["city"].toString())
+                            intent.putExtra("neighborhood",map["neighborhood"].toString())
                             activity.startActivity(intent)
                         }
                         500 -> {
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
                         }
                         else -> {
                         }
@@ -647,7 +936,6 @@ class HelperConnectSuperApi {
     }
 
     fun verifyEmail(activity: Formulario_vincula_superapi,map: HashMap<String, Any>){
-        println("verifyEmail---------${map}")
         val helperDialogs = helper_dialogs_superapi(activity)
         helperDialogs.progressActivate(activity.resources.getString(R.string.cargando_superapi))
         val retrofit: Retrofit = Retrofit.Builder()
@@ -665,7 +953,6 @@ class HelperConnectSuperApi {
                 try {
                     when (response.code()) {
                         200 -> {
-                            println("verifyEmail---------${response.body().toString()}")
                             val jsonBody = JSONObject(response.body().toString())
                             val jsonData = JSONObject(jsonBody.getString("data"))
                             if(jsonData.getString("registrado")=="1"){
@@ -680,6 +967,10 @@ class HelperConnectSuperApi {
                                 intent.putExtra("internalKey",activity.modelsDataPolicySuperapi.internalKey)
                                 intent.putExtra("autoDescription",activity.modelsDataPolicySuperapi.autoDescription)
                                 intent.putExtra("insurance",activity.modelsDataPolicySuperapi.insurance)
+                                intent.putExtra("coverageId",activity.modelsDataPolicySuperapi.coverageId)
+                                intent.putExtra("carQuoteId",activity.modelsDataPolicySuperapi.carQuoteId)
+                                intent.putExtra("coverage",activity.modelsDataPolicySuperapi.coverage)
+                                intent.putExtra("ZIPCode",activity.modelsDataPolicySuperapi.ZIPCode)
 
                                 intent.putExtra("paymentForm", activity.modelsDataPolicySuperapi.paymentForm)
                                 intent.putExtra("applicableCoverages",activity.modelsDataPolicySuperapi.applicableCoverages)
@@ -698,6 +989,12 @@ class HelperConnectSuperApi {
                                 intent.putExtra("paternalSurname",activity.modelsDataPolicySuperapi.paternalSurname)
                                 intent.putExtra("maternalSurname",activity.modelsDataPolicySuperapi.maternalSurname)
                                 intent.putExtra("bornDate",activity.modelsDataPolicySuperapi.bornDate)
+                                intent.putExtra("gender",activity.modelsDataPolicySuperapi.gender)
+                                intent.putExtra("maritalStatus",activity.modelsDataPolicySuperapi.maritalStatus)
+                                intent.putExtra("genderID",activity.modelsDataPolicySuperapi.genderID)
+                                intent.putExtra("maritalStatusID",activity.modelsDataPolicySuperapi.maritalStatusID)
+                                intent.putExtra("rfc",activity.modelsDataPolicySuperapi.rfc)
+
                                 intent.putExtra("idDriver",activity.modelsDataPolicySuperapi.idDriver)
 
                                 intent.putExtra("street",activity.modelsDataPolicySuperapi.street)
@@ -720,6 +1017,10 @@ class HelperConnectSuperApi {
                                 intent.putExtra("internalKey",activity.modelsDataPolicySuperapi.internalKey)
                                 intent.putExtra("autoDescription",activity.modelsDataPolicySuperapi.autoDescription)
                                 intent.putExtra("insurance",activity.modelsDataPolicySuperapi.insurance)
+                                intent.putExtra("coverageId",activity.modelsDataPolicySuperapi.coverageId)
+                                intent.putExtra("carQuoteId",activity.modelsDataPolicySuperapi.carQuoteId)
+                                intent.putExtra("coverage",activity.modelsDataPolicySuperapi.coverage)
+                                intent.putExtra("ZIPCode",activity.modelsDataPolicySuperapi.ZIPCode)
 
                                 intent.putExtra("paymentForm", activity.modelsDataPolicySuperapi.paymentForm)
                                 intent.putExtra("applicableCoverages",activity.modelsDataPolicySuperapi.applicableCoverages)
@@ -738,6 +1039,11 @@ class HelperConnectSuperApi {
                                 intent.putExtra("paternalSurname",activity.modelsDataPolicySuperapi.paternalSurname)
                                 intent.putExtra("maternalSurname",activity.modelsDataPolicySuperapi.maternalSurname)
                                 intent.putExtra("bornDate",activity.modelsDataPolicySuperapi.bornDate)
+                                intent.putExtra("gender",activity.modelsDataPolicySuperapi.gender)
+                                intent.putExtra("maritalStatus",activity.modelsDataPolicySuperapi.maritalStatus)
+                                intent.putExtra("rfc",activity.modelsDataPolicySuperapi.rfc)
+                                intent.putExtra("genderID",activity.modelsDataPolicySuperapi.genderID)
+                                intent.putExtra("maritalStatusID",activity.modelsDataPolicySuperapi.maritalStatusID)
                                 intent.putExtra("idDriver",activity.modelsDataPolicySuperapi.idDriver)
 
                                 intent.putExtra("street",activity.modelsDataPolicySuperapi.street)
@@ -752,6 +1058,8 @@ class HelperConnectSuperApi {
 
                         }
                         500 -> {
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
                         }
                         else -> {
                         }
@@ -769,7 +1077,6 @@ class HelperConnectSuperApi {
     }
 
     fun associateUser(activity: Formulario_iniciar_sesion_superapi,map: HashMap<String, Any>){
-        println("associateUser---------${map}")
         val helperDialogs = helper_dialogs_superapi(activity)
         helperDialogs.progressActivate(activity.resources.getString(R.string.cargando_superapi))
         val retrofit: Retrofit = Retrofit.Builder()
@@ -787,9 +1094,8 @@ class HelperConnectSuperApi {
                 try {
                     when (response.code()) {
                         200 -> {
-                            println("associateUser---------${response.body().toString()}")
-                            //val jsonBody = JSONObject(response.body().toString())
-                            //val jsonData = JSONObject(jsonBody.getString("data"))
+                            val jsonBody = JSONObject(response.body().toString())
+                            val jsonData = JSONObject(jsonBody.getString("data"))
                             val intent = Intent(activity, Formulario_pago_poliza_superapi::class.java)
                             intent.putExtra("vehicleType",activity.modelsDataPolicySuperapi.vehicleType)
                             intent.putExtra("description",activity.modelsDataPolicySuperapi.description)
@@ -801,6 +1107,10 @@ class HelperConnectSuperApi {
                             intent.putExtra("internalKey",activity.modelsDataPolicySuperapi.internalKey)
                             intent.putExtra("autoDescription",activity.modelsDataPolicySuperapi.autoDescription)
                             intent.putExtra("insurance",activity.modelsDataPolicySuperapi.insurance)
+                            intent.putExtra("coverageId",activity.modelsDataPolicySuperapi.coverageId)
+                            intent.putExtra("carQuoteId",activity.modelsDataPolicySuperapi.carQuoteId)
+                            intent.putExtra("coverage",activity.modelsDataPolicySuperapi.coverage)
+                            intent.putExtra("ZIPCode",activity.modelsDataPolicySuperapi.ZIPCode)
 
                             intent.putExtra("paymentForm", activity.modelsDataPolicySuperapi.paymentForm)
                             intent.putExtra("applicableCoverages",activity.modelsDataPolicySuperapi.applicableCoverages)
@@ -819,6 +1129,13 @@ class HelperConnectSuperApi {
                             intent.putExtra("paternalSurname",activity.modelsDataPolicySuperapi.paternalSurname)
                             intent.putExtra("maternalSurname",activity.modelsDataPolicySuperapi.maternalSurname)
                             intent.putExtra("bornDate",activity.modelsDataPolicySuperapi.bornDate)
+                            intent.putExtra("gender",activity.modelsDataPolicySuperapi.gender)
+                            intent.putExtra("genderID",activity.modelsDataPolicySuperapi.genderID)
+
+                            intent.putExtra("rfc",activity.modelsDataPolicySuperapi.rfc)
+                            intent.putExtra("maritalStatus",activity.modelsDataPolicySuperapi.maritalStatus)
+                            intent.putExtra("maritalStatusID",activity.modelsDataPolicySuperapi.maritalStatusID)
+
                             intent.putExtra("idDriver",activity.modelsDataPolicySuperapi.idDriver)
                             intent.putExtra("id_Address",activity.modelsDataPolicySuperapi.id_Address)
 
@@ -831,10 +1148,13 @@ class HelperConnectSuperApi {
 
                             intent.putExtra("email",activity.modelsDataPolicySuperapi.email)
                             intent.putExtra("password",activity.modelsDataPolicySuperapi.password)
+                            intent.putExtra("userId",jsonData.getString("userId"))
 
                             activity.startActivity(intent)
                         }
                         500 -> {
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
                         }
                         else -> {
                         }
@@ -852,7 +1172,6 @@ class HelperConnectSuperApi {
     }
 
     fun registerUser(activity: Formulario_registro_superapi,map: HashMap<String, Any>){
-        println("registerUser---------${map}")
         val helperDialogs = helper_dialogs_superapi(activity)
         helperDialogs.progressActivate(activity.resources.getString(R.string.cargando_superapi))
         val retrofit: Retrofit = Retrofit.Builder()
@@ -870,9 +1189,8 @@ class HelperConnectSuperApi {
                 try {
                     when (response.code()) {
                         200 -> {
-                            println("registerUser---------${response.body().toString()}")
-                            //val jsonBody = JSONObject(response.body().toString())
-                            //val jsonData = JSONObject(jsonBody.getString("data"))
+                            val jsonBody = JSONObject(response.body().toString())
+                            val jsonData = JSONObject(jsonBody.getString("data"))
                             val intent = Intent(activity, Formulario_pago_poliza_superapi::class.java)
                             intent.putExtra("vehicleType",activity.modelsDataPolicySuperapi.vehicleType)
                             intent.putExtra("description",activity.modelsDataPolicySuperapi.description)
@@ -884,6 +1202,10 @@ class HelperConnectSuperApi {
                             intent.putExtra("internalKey",activity.modelsDataPolicySuperapi.internalKey)
                             intent.putExtra("autoDescription",activity.modelsDataPolicySuperapi.autoDescription)
                             intent.putExtra("insurance",activity.modelsDataPolicySuperapi.insurance)
+                            intent.putExtra("coverageId",activity.modelsDataPolicySuperapi.coverageId)
+                            intent.putExtra("carQuoteId",activity.modelsDataPolicySuperapi.carQuoteId)
+                            intent.putExtra("coverage",activity.modelsDataPolicySuperapi.coverage)
+                            intent.putExtra("ZIPCode",activity.modelsDataPolicySuperapi.ZIPCode)
 
                             intent.putExtra("paymentForm", activity.modelsDataPolicySuperapi.paymentForm)
                             intent.putExtra("applicableCoverages",activity.modelsDataPolicySuperapi.applicableCoverages)
@@ -902,6 +1224,11 @@ class HelperConnectSuperApi {
                             intent.putExtra("paternalSurname",map["paternalSurname"].toString())
                             intent.putExtra("maternalSurname",map["maternalSurname"].toString())
                             intent.putExtra("bornDate",activity.modelsDataPolicySuperapi.bornDate)
+                            intent.putExtra("gender",activity.modelsDataPolicySuperapi.gender)
+                            intent.putExtra("maritalStatus",activity.modelsDataPolicySuperapi.maritalStatus)
+                            intent.putExtra("genderID",activity.modelsDataPolicySuperapi.genderID)
+                            intent.putExtra("maritalStatusID",activity.modelsDataPolicySuperapi.maritalStatusID)
+                            intent.putExtra("rfc",activity.modelsDataPolicySuperapi.rfc)
                             intent.putExtra("idDriver",activity.modelsDataPolicySuperapi.idDriver)
                             intent.putExtra("id_Address",activity.modelsDataPolicySuperapi.id_Address)
 
@@ -915,10 +1242,13 @@ class HelperConnectSuperApi {
                             intent.putExtra("email",map["email"].toString())
                             intent.putExtra("password",map["password"].toString())
                             intent.putExtra("phoneNumber",map["phoneNumber"].toString())
+                            intent.putExtra("userId",jsonData.getString("userId"))
 
                             activity.startActivity(intent)
                         }
                         500 -> {
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
                         }
                         else -> {
                         }
@@ -930,6 +1260,105 @@ class HelperConnectSuperApi {
             }
             override fun onFailure(call: Call<String>, t: Throwable) {
                 println("onFailureregisterUser---------$t")
+                helperDialogs.progressDesactivate()
+            }
+        })
+    }
+
+    fun payQuotation(activity: Formulario_pago_poliza_superapi,map: HashMap<String, Any>){
+        val helperDialogs = helper_dialogs_superapi(activity)
+        helperDialogs.progressActivate(activity.resources.getString(R.string.cargando_superapi))
+        val retrofit: Retrofit = Retrofit.Builder()
+            .client(getokHttpclientPrincipalTime())
+            .baseUrl(BuildConfig.apipartnersSuper)
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val api: methods_interface_superapi = retrofit.create(methods_interface_superapi::class.java)
+        val call: Call<String> = api.payQuotation(appKey = BuildConfig.tokenSuper,map)
+        call.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                println("payQuotation---------${response.code()}")
+                try {
+                    when (response.code()) {
+                        200 -> {
+                            val jsonBody = JSONObject(response.body().toString())
+                            val jsonData = JSONArray(jsonBody.getJSONObject("data").getString("documents"))
+                            for(vr in 0 until jsonData.length()) {
+                                if(jsonData.getJSONObject(vr).getString("typeDocument")=="policy")
+                                    activity.modelsDataPolicySuperapi.policySuper=jsonData.getJSONObject(vr).getString("path")
+                                if(jsonData.getJSONObject(vr).getString("typeDocument")=="receipt")
+                                    activity.modelsDataPolicySuperapi.receiptSuper=jsonData.getJSONObject(vr).getString("path")
+                                if(jsonData.getJSONObject(vr).getString("typeDocument")=="rcusa")
+                                    activity.modelsDataPolicySuperapi.rcusaSuper=jsonData.getJSONObject(vr).getString("path")
+                            }
+                            val intent = Intent(activity, Formulario_bienvenida_superapi::class.java)
+                            intent.putExtra("vehicleType",activity.modelsDataPolicySuperapi.vehicleType)
+                            intent.putExtra("description",activity.modelsDataPolicySuperapi.description)
+                            intent.putExtra("model",activity.modelsDataPolicySuperapi.model)
+                            intent.putExtra("nameBrand",activity.modelsDataPolicySuperapi.nameBrand)
+                            intent.putExtra("brand",activity.modelsDataPolicySuperapi.brand)
+                            intent.putExtra("nameSubBrand",activity.modelsDataPolicySuperapi.nameSubBrand)
+                            intent.putExtra("subBrand",activity.modelsDataPolicySuperapi.subBrand)
+                            intent.putExtra("internalKey",activity.modelsDataPolicySuperapi.internalKey)
+                            intent.putExtra("autoDescription",activity.modelsDataPolicySuperapi.autoDescription)
+                            intent.putExtra("insurance",activity.modelsDataPolicySuperapi.insurance)
+                            intent.putExtra("coverageId",activity.modelsDataPolicySuperapi.coverageId)
+                            intent.putExtra("carQuoteId",activity.modelsDataPolicySuperapi.carQuoteId)
+                            intent.putExtra("coverage",activity.modelsDataPolicySuperapi.coverage)
+                            intent.putExtra("ZIPCode",activity.modelsDataPolicySuperapi.ZIPCode)
+                            intent.putExtra("paymentForm", activity.modelsDataPolicySuperapi.paymentForm)
+                            intent.putExtra("applicableCoverages",activity.modelsDataPolicySuperapi.applicableCoverages)
+                            intent.putExtra("quoteNumber",activity.modelsDataPolicySuperapi.quoteNumber)
+                            intent.putExtra("totalCost",activity.modelsDataPolicySuperapi.totalCost)
+                            intent.putExtra("firstReceipt",activity.modelsDataPolicySuperapi.firstReceipt)
+                            intent.putExtra("subsequents",activity.modelsDataPolicySuperapi.subsequents)
+                            intent.putExtra("licensePlate",activity.modelsDataPolicySuperapi.licensePlate)
+                            intent.putExtra("VIN",activity.modelsDataPolicySuperapi.VIN)
+                            intent.putExtra("engineNumber",activity.modelsDataPolicySuperapi.engineNumber)
+                            intent.putExtra("idCar",activity.modelsDataPolicySuperapi.idCar)
+                            intent.putExtra("name",activity.modelsDataPolicySuperapi.name)
+                            intent.putExtra("paternalSurname",activity.modelsDataPolicySuperapi.paternalSurname)
+                            intent.putExtra("maternalSurname",activity.modelsDataPolicySuperapi.maternalSurname)
+                            intent.putExtra("bornDate",activity.modelsDataPolicySuperapi.bornDate)
+                            intent.putExtra("gender",activity.modelsDataPolicySuperapi.gender)
+                            intent.putExtra("maritalStatus",activity.modelsDataPolicySuperapi.maritalStatus)
+                            intent.putExtra("genderID",activity.modelsDataPolicySuperapi.genderID)
+                            intent.putExtra("maritalStatusID",activity.modelsDataPolicySuperapi.maritalStatusID)
+                            intent.putExtra("rfc",activity.modelsDataPolicySuperapi.rfc)
+                            intent.putExtra("idDriver",activity.modelsDataPolicySuperapi.idDriver)
+                            intent.putExtra("id_Address",activity.modelsDataPolicySuperapi.id_Address)
+                            intent.putExtra("street",activity.modelsDataPolicySuperapi.street)
+                            intent.putExtra("streetNumber",activity.modelsDataPolicySuperapi.streetNumber)
+                            intent.putExtra("apartmentNumber",activity.modelsDataPolicySuperapi.apartmentNumber)
+                            intent.putExtra("state",activity.modelsDataPolicySuperapi.state)
+                            intent.putExtra("city",activity.modelsDataPolicySuperapi.city)
+                            intent.putExtra("neighborhood",activity.modelsDataPolicySuperapi.neighborhood)
+                            intent.putExtra("email",activity.modelsDataPolicySuperapi.email)
+                            intent.putExtra("password",activity.modelsDataPolicySuperapi.password)
+                            intent.putExtra("phoneNumber",activity.modelsDataPolicySuperapi.phoneNumber)
+                            intent.putExtra("userId",activity.modelsDataPolicySuperapi.userId)
+                            intent.putExtra("policySuper",activity.modelsDataPolicySuperapi.policySuper)
+                            intent.putExtra("receiptSuper",activity.modelsDataPolicySuperapi.receiptSuper)
+                            intent.putExtra("rcusaSuper",activity.modelsDataPolicySuperapi.rcusaSuper)
+                            intent.putExtra("paid",jsonBody.getJSONObject("data").getString("paid"))
+                            activity.startActivity(intent)
+                            }
+                        500 -> {
+                            val jsonData = JSONObject( response.errorBody()!!.string())
+                            dialogError(jsonData.getString("message"),activity)
+                        }
+                        else -> {
+                        }
+                    }
+                }catch (e: JSONException){
+                    println("JSONExceptionpayQuotation---------$e")
+                }
+                helperDialogs.progressDesactivate()
+            }
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                println("onFailurepayQuotation---------$t")
                 helperDialogs.progressDesactivate()
             }
         })

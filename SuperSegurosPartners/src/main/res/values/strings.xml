@@ -1,9 +1,39 @@
 <resources>
     <string name="app_name_superapi">Súper Seguros</string>
     <string name="cotizaTu_superapi">Cotiza tu</string>
+
+    <string name="felicidades_superapi">¡Felicidades! </string>
+    <string name="yaCuentasConTuSeguroDeAuto_superapi">Ya cuentas con tu seguro de auto</string>
+    <string name="conTuNuevaPolizaDeSeguro_superapi">Con tu nueva póliza de seguro, puedes tener la tranquilidad de saber que tu auto está protegido, conducir sin preocupaciones.</string>
+    <string name="tuPolizaSeraVigenteUnDiaDespuesDeTuContratacion_superapi">Tu póliza será vigente un día después de tu contratación. Enviaremos los datos de tu póliza a tu correo electrónico y teléfono proporcionado.</string>
+    <string name="importante_superapi">Importante:</string>
+    <string name="tuCuentaFuncionaParaSuperYMidoconline_superapi">Tu cuenta funciona para Súper y Midoconline.</string>
+    <string name="superEnviamosTusDatos_superapi">¡Súper! Enviamos tus datos</string>
+    <string name="tienesDudas_superapi">¿Tienes dudas?</string>
+    <string name="contactanos_superapi"> Contáctanos</string>
+
+    <string name="seguroDeAuto_superapi">Seguro de Auto</string>
+    <string name="numeroDePoliza_superapi">Número de póliza</string>
+    <string name="poliza_superapi">Póliza</string>
+
+    <string name="numeroDeCotizacion_superapi">Número de cotización</string>
+    <string name="fechaDeContracion_superapi">fecha de contratación:</string>
+    <string name="DocumentosDeTuPoliza_superapi">Documentos de tu póliza</string>
+    <string name="estosSonLosDatosMasImportantes_superapi">Estos son los datos más importantes. Si llegas a tener un siniestro, esta es la información que necesitaras.</string>
+    <string name="tienesUnSiniestro_superapi">¿Tienes un siniestro?</string>
+    <string name="telefono2_superapi">Teléfono: 800 472 7696</string>
+    <string name="telefonoGS_superapi">800 472 7696</string>
+    <string name="reciboDePago_superapi">Recibo de pago</string>
+    <string name="polizaDeAuto_superapi">Póliza de auto</string>
+    <string name="coberturaEnElExtranjero_superapi">Cobertura en el extranjero</string>
+    <string name="condicionesGenerales_superapi">Condiciones generales</string>
+
     <string name="seguro_superapi">seguro</string>
     <string name="aqui_superapi">aquí</string>
     <string name="cargando_superapi">Cargando</string>
+    <string name="cargandoGeneros_superapi">Cargando géneros</string>
+    <string name="cargandoAseguradoras_superapi">Cargando aseguradoras</string>
+    <string name="cargandoCoberturas_superapi">Cargando coberturas</string>
     <string name="laProteccionQue_superapi">La protección que tu auto y tú, se merecen.</string>
     <string name="conCoberturasQue_superapi">Con coberturas que se adaptan a ti, disfruta cada viaje con la tranquilidad de estar siempre protegido.</string>
     <string name="tuSeguroDesde_superapi">Tu seguro desde $184 mxn al mes</string>
@@ -15,6 +45,14 @@
     <string name="conoceADetalleLasCoberturas_superapi">Conoce a detalle las coberturas</string>
     <string name="auto_superapi">Auto</string>
     <string name="vacio_superapi"> </string>
+    <string name="usuarioEncontrado_superapi">Usuario encontrado</string>
+    <string name="usuarioNoEncontrado_superapi">Usuario no encontrado</string>
+
+    <string name="costoTotal_superapi">Costo total</string>
+    <string name="primerPago_superapi">Primer pago</string>
+    <string name="pagoSubsecuente_superapi">Pago subsecuente</string>
+
+
     <string name="preciovacio_superapi">$0.00 MXN</string>
     <string name="siLoQuiero_superapi">Sí, lo quiero</string>
     <string name="estasAPocosPasosDeObtenerTuSeguro_apisuper">Estás a pocos pasos de obtener tu seguro</string>
@@ -27,11 +65,11 @@
     <string name="paraContratarTuSeguroNoPedimosDocumentosDePropiedad_superapi">Para contratar tu seguro, no pedimos documentos de propiedad, ni contrato de alquiler</string>
     <string name="datosSobreElVehiculo_superapi">Datos sobre el vehículo</string>
     <string name="matricula_superapi">Matrícula</string>
-    <string name="ingresaTuPlaca_superapi">Ingresa tu placa</string>
+    <string name="ingresaTuPlaca_superapi">No. de placa (7 caracteres)</string>
     <string name="NDSDVehiculo_superapi">No. de serie (VIN) del vehículo</string>
     <string name="NDSCaracteres_superiapi">No. de serie (17 caracteres)</string>
     <string name="NumeroDeMotor_superapi">No. de motor</string>
-    <string name="IngresaElNumeroDeTuMotor_superapi">Ingresa el número de tu motor</string>
+    <string name="IngresaElNumeroDeTuMotor_superapi">No. de motor (20 caracteres)</string>
     <string name="TipoDeUsoDelVehiculo_superapi">Tipo de uso del vehículo</string>
     <string name="usoDelVehiculo_superapi">Uso del vehículo</string>
     <string name="conductor_superapi">Conductor</string>
@@ -41,6 +79,8 @@
     <string name="agregaUnApellidoPaterno_superapi">Agrega un apellido paterno</string>
     <string name="agregaUnApellidoMaterno_superapi">Agrega un apellido materno</string>
     <string name="agregaUnaFechaDeNacimiento_superapi">Agrega una fecha de nacimiento</string>
+    <string name="agregaUnRFC_superapi">Agrega una RFC</string>
+    <string name="tipoDeAuto_superapi">Tipo de auto</string>
 
     <string name="agregaUnaCalle_superapi">Agrega una calle</string>
     <string name="agregaUnNumeroExterior_superapi">Agrega un número exterior</string>
@@ -49,6 +89,14 @@
     <string name="agregaUnMunicipio_superapi">Agrega un municipio/delegación</string>
     <string name="agregaUnCodigoPostal_superapi">Agrega un Código postal</string>
     <string name="agregaUnCorreoElectrónico_superapi">Agrega un correo electrónico</string>
+
+    <string name="agregaUnEstadoCivil_superapi">Agrega un estado civil</string>
+    <string name="agregaUnGenero_superapi">Agrega un género</string>
+
+    <string name="agregaUnNumeroDeTarjeta_superapi">Agrega un número de tarjeta</string>
+    <string name="agregaUnMes_superapi">Agrega un mes</string>
+    <string name="agregaUnAno_superapi">Agrega un año</string>
+    <string name="agregaUnCodigoDeSeguridad_superapi">Agrega un código de seguridad</string>
 
     <string name="apellidoPaterno_superapi">Apellido paterno</string>
     <string name="apellidoPaternoSigno_superapi">Apellido paterno*</string>
@@ -67,6 +115,7 @@
     <string name="avisoDePrivacidad_superapi">Aviso de privacidad</string>
     <string name="crearCuenta_superapi">Crear cuenta</string>
     <string name="dma_superapi">DD/MM/AAAA</string>
+    <string name="rfcsigno_superapi">RFC*</string>
 
     <string name="encontramosUnaCuenta_superapi">Encontramos una cuenta</string>
     <string name="ingresaTuContrasena_superapi">Ingresa tu Contraseña</string>
@@ -114,7 +163,9 @@
     <string name="numeroDeTarjeta_superapi">Número de tarjeta</string>
     <string name="ceros_superapi">0000 0000 0000 0000</string>
     <string name="expiracion_superapi">Expiración</string>
-    <string name="MMAA_superapi">MM/AA</string>
+    <string name="MM_superapi">MM</string>
+    <string name="AA_superapi">AA</string>
+
     <string name="codigoDeSeguridad_superapi">Código de seguridad</string>
     <string name="cvv_superapi">CVV</string>
     <string name="consultaElReciboDePagoQueEnviamosATuCorreo_superapi">Consulta el recibo de pago que enviamos a tu correo electrónico para ver los métodos de pago disponibles.</string>
@@ -122,6 +173,7 @@
     <string name="requieroFactura_superapi">Requiero factura</string>
     <string name="alPagarAceptasLos_superapi">Al pagar aceptas los </string>
     <string name="terminosYCondiciones_superapi">Términos y condiciones</string>
+    <string name="rfc_superapi">RFC</string>
 
     <string name="loSentimos_superapi">😞 ¡Lo sentimos! 😞</string>
     <string name="noContamosConUnaCobertura_superapi">No contamos con una cobertura para tu auto. Registraremos tu solicitud y te avisaremos cuando tengamos una cobertura disponible.</string>
@@ -137,13 +189,23 @@
     <string name="asistenciaJuridica_superapi">Asistencia Jurídica</string>
     <string name="asistenciaVialYEnViajesGS_superapi">Asistencia Vial y en Viajes</string>
     <string name="asistenciaEnEU_superapi">Asistencia en Estados Unidos</string>
-    <string name="cotizaTuSeguroDeAuto_superapi">Cotiza tu seguro de auto en menos de 1 minuto</string>
+    <string name="cotizaTuSeguroDeAuto_superapi">Cotiza tu seguro de auto</string>
+    <string name="enMenosDeUnMinuto_superapi">en menos de 1 minuto</string>
     <string name="seleccionaElAnoMarcaModelo_superapi">Selecciona el año, marca y modelo de tu auto</string>
     <string name="seleccionaUnaAseguradora_superapi">Selecciona una aseguradora</string>
-    <string name="tipoDeAuto_superapi">Tipo de auto</string>
+    <string name="genero_superapi">Género</string>
+    <string name="seleccioneUnaColonia_superapi">Seleccione una colonia</string>
+    <string name="seleccioneUnGenero_superapi">Seleccione un género</string>
+    <string name="estadoCivil_superapi">Estado civil</string>
+    <string name="seleccioneUnEstadoCivil_superapi">Seleccione un estado civil</string>
+
     <string name="autoOPickup_superapi">Auto o Pickup</string>
     <string name="seleccionaUnTipoDeAuto_superapi">Selecciona un tipo de auto</string>
     <string name="marca_superapi">Marca</string>
+    <string name="hemosEnviadoATuCorreoYTelefono_superapi">hemos enviado a tu correo y teléfono registrado la emisión de tu póliza. Por favor, descárgala y consulta las opciones de pago disponibles</string>
+    <string name="realizaElPagoAntesDeLaFecha_superapi">Realiza el pago antes de la fecha límite de 15 días, de lo contrario se cancelara tu póliza. Tener la tranquilidad de saber que tu auto está protegido y conducir sin preocupaciones.</string>
+
+    <string name="lamentamosInformarteQueElPagoDeTu_superapi">Lamentamos informarte que el pago de tu póliza no se procesó exitosamente.</string>
     <string name="obteniendoCoberturas_superapi">Obteniendo coberturas</string>
     <string name="lada_superapi">Lada</string>
     <string name="seleccionaLaMarcaDeTuAuto_superapi">Selecciona la Marca de tu auto</string>

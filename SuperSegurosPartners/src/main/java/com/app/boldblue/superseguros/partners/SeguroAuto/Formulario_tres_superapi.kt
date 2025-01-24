@@ -1,6 +1,7 @@
 package com.app.boldblue.superseguros.partners.SeguroAuto
 
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager2.widget.ViewPager2
@@ -15,6 +16,7 @@ class Formulario_tres_superapi : AppCompatActivity() {
     lateinit var modelsDataPolicySuperapi: models_data_policy_superapi
     lateinit var mTablayout : TabLayout
     lateinit var mViewPager : ViewPager2
+    lateinit var imgAseguradoras_superapi :String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,8 @@ class Formulario_tres_superapi : AppCompatActivity() {
         modelsDataPolicySuperapi.autoDescription= intent.getStringExtra("autoDescription").toString()
         modelsDataPolicySuperapi.insurance= intent.getStringExtra("insurance").toString()
         modelsDataPolicySuperapi.ZIPCode= intent.getStringExtra("ZIPCode").toString()
+        modelsDataPolicySuperapi.carQuoteId= intent.getStringExtra("carQuoteId").toString()
+        imgAseguradoras_superapi =intent.getStringExtra("img").toString()
 
         val myToolbar: Toolbar = findViewById(R.id.toolbar_superapi)
         myToolbar.setTitle(R.string.auto_superapi)

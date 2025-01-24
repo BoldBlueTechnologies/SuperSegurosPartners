@@ -14,6 +14,8 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.app.boldblue.superseguros.partners.Methods.models_data_policy_superapi
 import com.app.boldblue.superseguros.partners.R.*
+import com.app.boldblue.superseguros.partners.Services.HelperConnectSuperApi
+import java.util.HashMap
 
 class Formulario_uno_superapi : AppCompatActivity() {
 
@@ -43,12 +45,14 @@ class Formulario_uno_superapi : AppCompatActivity() {
     private lateinit var cardTipoSuperApi : CardView
     private lateinit var txtTipoSuperApi : TextView
 
-    private lateinit var modelsDataPolicySuperapi: models_data_policy_superapi
+    lateinit var modelsDataPolicySuperapi: models_data_policy_superapi
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_formulario_uno_superapi)
+
+        val helperConnectSuperApi = HelperConnectSuperApi()
 
         modelsDataPolicySuperapi = models_data_policy_superapi()
         txtCPSuperApi = findViewById(id.txtCPSuperApi)
@@ -85,18 +89,14 @@ class Formulario_uno_superapi : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         myToolbar.setNavigationOnClickListener { finish() }
         btnCotizaSuperApi.setOnClickListener {
-            val intent = Intent(this, Formulario_dos_superapi::class.java)
-            intent.putExtra("vehicleType",modelsDataPolicySuperapi.vehicleType)
-            intent.putExtra("description",modelsDataPolicySuperapi.description)
-            intent.putExtra("model",modelsDataPolicySuperapi.model)
-            intent.putExtra("nameBrand",modelsDataPolicySuperapi.nameBrand)
-            intent.putExtra("brand",modelsDataPolicySuperapi.brand)
-            intent.putExtra("nameSubBrand",modelsDataPolicySuperapi.nameSubBrand)
-            intent.putExtra("subBrand",modelsDataPolicySuperapi.subBrand)
-            intent.putExtra("internalKey",modelsDataPolicySuperapi.internalKey)
-            intent.putExtra("autoDescription",modelsDataPolicySuperapi.autoDescription)
-            intent.putExtra("ZIPCode",modelsDataPolicySuperapi.ZIPCode)
-            resultadoLauncher.launch(intent)
+            val map: HashMap<String, Any> = HashMap()
+            map["carType"]= modelsDataPolicySuperapi.description
+            map["year"]= modelsDataPolicySuperapi.model
+            map["brand"]= modelsDataPolicySuperapi.nameBrand
+            map["model"]= modelsDataPolicySuperapi.nameSubBrand
+            map["version"]= modelsDataPolicySuperapi.autoDescription
+            map["postalCode"]= modelsDataPolicySuperapi.ZIPCode
+            helperConnectSuperApi.saveQuotation(this,map)
         }
         itemTipoSuperApi.setOnClickListener {
             val intent = Intent(this, Listados::class.java)
@@ -151,7 +151,7 @@ class Formulario_uno_superapi : AppCompatActivity() {
         })
     }
 
-    private val resultadoLauncher = registerForActivityResult(
+    val resultadoLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == RESULT_OK) {
@@ -200,10 +200,10 @@ class Formulario_uno_superapi : AppCompatActivity() {
                         println("-----${modelsDataPolicySuperapi.model}")
                         cardAnoSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.purple1_superapi)
                         itemMarcaSuperApi.visibility = View.VISIBLE
-
                         itemModeloSuperApi.visibility = View.GONE
                         itemVersionSuperApi.visibility = View.GONE
                         itemCPSuperApi.visibility = View.GONE
+                        txtMarcaSuperApi.text = resources.getString(string.seleccionaLaMarcaDeTuAuto_superapi)
                         txtModeloSuperApi.text = resources.getString(string.seleccionaElModeloDeTuAuto_superapi)
                         txtModeloSuperApi.setTextColor(ContextCompat.getColor(this, color.grey2_superapi))
                         txtVersionSuperApi.text = resources.getString(string.seleccionaLaVersionDeTuAuto_superapi)
@@ -232,6 +232,7 @@ class Formulario_uno_superapi : AppCompatActivity() {
 
                         itemVersionSuperApi.visibility = View.GONE
                         itemCPSuperApi.visibility = View.GONE
+                        txtModeloSuperApi.text = resources.getString(string.seleccionaUnModelo_superapi)
                         txtVersionSuperApi.text = resources.getString(string.seleccionaLaVersionDeTuAuto_superapi)
                         txtVersionSuperApi.setTextColor(ContextCompat.getColor(this, color.grey2_superapi))
                         txtCPSuperApi.text = ""
@@ -256,7 +257,7 @@ class Formulario_uno_superapi : AppCompatActivity() {
                         println("-----${modelsDataPolicySuperapi.nameSubBrand}")
                         cardModeloSuperApi.backgroundTintList = ContextCompat.getColorStateList(this, color.purple1_superapi)
                         itemVersionSuperApi.visibility = View.VISIBLE
-
+                        txtVersionSuperApi.text = resources.getString(string.seleccionaLaVersionDeTuAuto_superapi)
                         itemCPSuperApi.visibility = View.GONE
                         txtCPSuperApi.text = ""
                         txtCPSuperApi.setTextColor(ContextCompat.getColor(this, color.grey2_superapi))

@@ -55,12 +55,17 @@
             android:layout_height="wrap_content"
             app:cardElevation="5dp"
             android:layout_margin="6dp"
+            android:backgroundTint="@color/white1_superapi"
             app:cardCornerRadius="8dp">
             <LinearLayout
                 android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/super_sin_seguros_superapi"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

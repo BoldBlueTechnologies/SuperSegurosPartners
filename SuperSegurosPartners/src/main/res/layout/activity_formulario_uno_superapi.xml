@@ -43,6 +43,14 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:textSize="17sp"
                 android:gravity="center"
+                android:textColor="@color/black1_superapi"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enMenosDeUnMinuto_superapi"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="17sp"
+                android:gravity="center"
                 android:layout_marginBottom="8dp"
                 android:textColor="@color/black1_superapi"/>
             <TextView
@@ -73,11 +81,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardElevation="4dp"
-                    app:cardCornerRadius="5dp"
+                    app:cardCornerRadius="12dp"
                     android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
+                        app:cardCornerRadius="12dp"
                         android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"                        android:layout_width="match_parent"
+                        android:background="@drawable/rounded_corner"                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal">
@@ -112,6 +121,7 @@
                 android:id="@+id/itemAnoSuperApi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
@@ -123,6 +133,7 @@
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardAnoSuperApi"
+                    app:cardCornerRadius="12dp"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -130,7 +141,7 @@
                     android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
                         android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
+                        android:background="@drawable/rounded_corner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -182,10 +193,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardElevation="4dp"
+                    app:cardCornerRadius="12dp"
                     android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
                         android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
+                        android:background="@drawable/rounded_corner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -231,6 +243,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="12dp"
                     android:id="@+id/cardModeloSuperApi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
@@ -239,7 +252,7 @@
                     android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
                         android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
+                        android:background="@drawable/rounded_corner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -285,6 +298,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="12dp"
                     android:id="@+id/cardVersionSuperApi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
@@ -293,7 +307,7 @@
                     android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
                         android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
+                        android:background="@drawable/rounded_corner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -341,6 +355,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="12dp"
                     android:id="@+id/cardCPSuperApi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
@@ -349,7 +364,7 @@
                     android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
                         android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
+                        android:background="@drawable/rounded_corner"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:gravity="center"

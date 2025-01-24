@@ -158,7 +158,7 @@
                     app:tabSelectedTextColor="@color/purple1_superapi"
                     app:tabIndicatorColor="@color/purple1_superapi"
                     app:tabTextColor="@color/purple1_superapi"
-                    app:tabMode="fixed"
+                    app:tabMode="scrollable"
                     app:tabGravity="center" />
             </RelativeLayout>
             <LinearLayout

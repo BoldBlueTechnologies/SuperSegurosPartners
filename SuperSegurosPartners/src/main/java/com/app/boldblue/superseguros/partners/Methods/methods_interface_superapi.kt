@@ -47,4 +47,19 @@ interface methods_interface_superapi {
 
     @POST("registerUser")
     fun registerUser (@Header("x-app-key") appKey: String,@Body user: HashMap<String, Any>): Call<String>
+
+    @POST("saveQuotation")
+    fun saveQuotation (@Header("x-app-key") appKey: String,@Body user: HashMap<String, Any>): Call<String>
+
+    @POST("saveCoverages")
+    fun saveCoverages (@Header("x-app-key") appKey: String,@Body user: HashMap<String, Any>): Call<String>
+
+    @POST("addressValidation")
+    fun addressValidation (@Header("x-app-key") appKey: String,@Body user: HashMap<String, Any>): Call<String>
+
+    @GET("catalogs")
+    fun catalogs(@Header("x-app-key") appKey: String): Call<String>
+
+    @POST("payQuotation")
+    fun payQuotation (@Header("x-app-key") appKey: String,@Body user: HashMap<String, Any>): Call<String>
 }

@@ -58,6 +58,9 @@ class AdapterAseguradoras_superapi (arrayList:ArrayList<models_list_insurance_su
             intent.putExtra("autoDescription",activity.modelsDataPolicySuperapi.autoDescription)
             intent.putExtra("insurance",activity.modelsDataPolicySuperapi.insurance)
             intent.putExtra("ZIPCode",activity.modelsDataPolicySuperapi.ZIPCode)
+            intent.putExtra("carQuoteId",activity.modelsDataPolicySuperapi.carQuoteId)
+            intent.putExtra("img",arrayList[vr].img)
+
             activity.startActivity(intent)
         }
     }

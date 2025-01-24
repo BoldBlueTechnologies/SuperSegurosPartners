@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/blue5_superapi"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent">
@@ -52,6 +53,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="12dp"
                     android:id="@+id/cardNombre_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
@@ -60,7 +62,7 @@
                     android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
                         android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
+                        android:background="@drawable/rounded_corner"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:gravity="center"
@@ -92,6 +94,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="12dp"
                     android:id="@+id/cardApellidoPaterno_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
@@ -100,7 +103,7 @@
                     android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
                         android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
+                        android:background="@drawable/rounded_corner"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:gravity="center"
@@ -132,6 +135,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="12dp"
                     android:id="@+id/cardApellidoMaterno_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
@@ -140,7 +144,7 @@
                     android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
                         android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
+                        android:background="@drawable/rounded_corner"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:gravity="center"
@@ -172,6 +176,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="12dp"
                     android:id="@+id/cardCorreoElectronico_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
@@ -180,7 +185,7 @@
                     android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
                         android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
+                        android:background="@drawable/rounded_corner"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:gravity="center"
@@ -215,6 +220,7 @@
                     android:textColor="@color/black1_superapi"/>
 
                 <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="12dp"
                     android:id="@+id/cardContrasena_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
@@ -223,7 +229,7 @@
                     android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
                         android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
+                        android:background="@drawable/rounded_corner"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:gravity="center"
@@ -256,6 +262,7 @@
                     android:gravity="center"
                     android:textColor="@color/black1_superapi"/>
                 <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="12dp"
                     android:id="@+id/cardContrasenaConfirmar_superapi"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
@@ -264,7 +271,7 @@
                     android:backgroundTint="@color/grey1_superapi">
                     <LinearLayout
                         android:layout_margin="2dp"
-                        android:background="@color/white1_superapi"
+                        android:background="@drawable/rounded_corner"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:gravity="center"
@@ -303,6 +310,7 @@
                         android:gravity="center"
                         android:textColor="@color/black1_superapi"/>
                     <androidx.cardview.widget.CardView
+                        app:cardCornerRadius="12dp"
                         android:layout_gravity="center"
                         android:layout_margin="8dp"
                         android:layout_width="match_parent"
@@ -312,7 +320,7 @@
                         <LinearLayout
                             android:layout_margin="2dp"
                             android:padding="8dp"
-                            android:background="@color/white1_superapi"
+                            android:background="@drawable/rounded_corner"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:orientation="horizontal">
@@ -344,6 +352,7 @@
                         android:gravity="center"
                         android:textColor="@color/black1_superapi"/>
                     <androidx.cardview.widget.CardView
+                        app:cardCornerRadius="12dp"
                         android:id="@+id/cardTelefono_superapi"
                         android:layout_margin="8dp"
                         android:layout_width="match_parent"
@@ -352,7 +361,7 @@
                         android:backgroundTint="@color/grey1_superapi">
                         <LinearLayout
                             android:layout_margin="2dp"
-                            android:background="@color/white1_superapi"
+                            android:background="@drawable/rounded_corner"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:gravity="center"

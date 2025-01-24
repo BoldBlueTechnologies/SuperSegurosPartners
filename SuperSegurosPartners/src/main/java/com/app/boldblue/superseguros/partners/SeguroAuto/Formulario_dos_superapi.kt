@@ -36,6 +36,7 @@ class Formulario_dos_superapi : AppCompatActivity() {
         modelsDataPolicySuperapi.internalKey= intent.getStringExtra("internalKey").toString()
         modelsDataPolicySuperapi.autoDescription= intent.getStringExtra("autoDescription").toString()
         modelsDataPolicySuperapi.ZIPCode= intent.getStringExtra("ZIPCode").toString()
+        modelsDataPolicySuperapi.carQuoteId= intent.getStringExtra("carQuoteId").toString()
         val myToolbar: Toolbar = findViewById(R.id.toolbar_superapi)
         recyclerAseguradoras_superapi = findViewById(R.id.recyclerAseguradoras_superapi)
         cardClean_superapi = findViewById(R.id.cardClean_superapi)
